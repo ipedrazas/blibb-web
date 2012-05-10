@@ -1,0 +1,25 @@
+#entry{
+	border-color: 1px solid white;
+	background: black;
+	color: green;
+	padding: 5px;
+}
+.Song{
+	font-weight: bolder;
+	padding-top: 3px;
+	padding-left: 10px;
+}
+.time{
+	float: right;
+	margin-top: 3px;
+	margin-righ: 15px;
+	padding-right: 5px;
+}
+.Band{
+	padding-top: 3px;
+	padding-left: 10px;	
+}
+.Album{
+	float: right;
+	padding-right: 5px;	
+}

@@ -1,0 +1,68 @@
+
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<style>
+
+#addEntryToList{
+    width: 450px;
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    var post_opts = new Array();
+
+    $("#entryButton").live("click", function(){
+
+        var name =  $("#entryName").val();
+        var val =  $("#entryVal").val();
+        var select =  document.getElementById('superselect');
+        addOption(select,name,val);
+        //$("#select-holder").html(select_element);
+
+    });
+
+
+    function addOption(select, name, value){
+        // var _opt = new array();
+        // _opt.push(name,value); 
+        var opt = new Option(name, value, false, false);
+        post_opts.push(name, value);
+        select.appendChild(opt);
+
+    }
+
+    function toJson(){
+        return JSON.stringify(post_opts);
+    }
+
+    $("#debugButton").live("click", function(){
+        $("#debugArray").html(toJson());
+
+    });
+</script>
+
+<body>
+
+
+<div id="addEntryToList">
+<form class="well form-inline">
+  <input type="text" class="input-large" placeholder="Name" id="entryName">
+  <input type="text" class="input-large" placeholder="Value" id="entryVal">
+  <a  class="btn" id="entryButton" href="#">Add Entry to List</a>
+</form>
+</div>
+<div id="select-holder" >
+    <select id="superselect">
+        <option>shhhhh</option>
+    </select>
+</div>
+<a  class="btn" id="debugButton" href="#">Debug!</a>
+<div id="debugArray">
+</div>
+
+
+</body>

@@ -1,0 +1,63 @@
+/*!
+ * Blibb v0.0.1
+ *
+ * Copyright 2012 Blibb
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world by @ipedrazas and @valgreens .
+ */
+
+html, body {
+	height: 100%;
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-inner {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    background-color: #B21006;
+    background-image: none;
+}
+
+.topTitle{
+	color: white;
+	font-size: 1.3em;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+ul.menu{
+	float: right;
+	top: 0;
+	padding-top: 10px;
+	height: 40px;
+}
+
+ul.menu li{
+	display: inline;
+	list-style-type: none;
+	padding-right: 20px;
+
+}
+
+ul.menu li a{
+	font-size: 0.9em;
+	color: #b21006;
+	color: white;
+	text-decoration: none;
+}
+
+
+.nav > li > a.dropdown-toggle:link, .nav > li > a.dropdown-toggle:visited {
+	text-decoration: none;
+	color: #FFF;
+	font-weight: bold;
+}
+.nav > li > a.dropdown-toggle:hover {
+  text-decoration: none;
+  background-color: #b21006;
+  color: #FB8F3D;
+}

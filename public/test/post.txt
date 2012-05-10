@@ -1,0 +1,19 @@
+Uploading
+
+One of the biggest challenges when building :blibb is to find a simpile and easy way to upload files. Yes, it is very nice to be able to define your own data model with a few clicks, but if then you cannot manage that model esily, the whole point is missed.
+
+Because the core idea behind :blibb is simplicity.
+
+So, you could define a structure like this: Title, picture, date, comments. Easy, 4 fields, 4 kind of texts. Nothing to worry because :bibb can handle that an much more. In fact, when uploading a picture, :blibb will analyse the picture and it will extract as much metadata as possible and then it will create the thumbnails.
+
+But, what happens when instead of one file to upload you have several? and what happens when every file is of a different kind?
+
+You could define a structure that has a Title, a picure, a song and a document.
+
+Suddenly you have to upload 3 different kind of files that have 3 different ways of handling. Songs in MP3, for example, are scanned to extract the ID3 tags, :blibb tries to get the custom properties from the documents when it's possible, and we've seen already that pictures go through a very similar process.
+
+The solution that we've implemented is based on the pattern "If you cannot decide, just don't". Becase having a unique process that uploads any kind of file is good: easy and simple (we like that), but since we aim for specialisation, the system doesn't scale well.
+
+Remember the pictures? :blibb creates the thumbnails for you, but there are different kind of pictures. For example, the pictures you use in your Blibbs or inside your structures are very differnt than te pictures that you use for your user, profile, etc. They are pictures, and they all a scanned and analysed to get the metadata, but the post-process is slightly different. And here it is when we hit the wall. Having a single controller to upload files means that the script has to manage all the different types of content, and all the exceptions (yes, we have a few of those too).
+
+So, we solve this problem by creating specialised controllers that do only one thing (but well): upload and post-process a single data type. But even it's a big temptation, binding a control to a controller would over-complicate the structure processing (remember that the whole point is to create a dataset using that structure), so control specialisation is reserved for very special cases, like uploading, because uploading is not about the structure, it's about the location of a file.

@@ -1,0 +1,34 @@
+#entry li{
+	display: inline;
+	list-style-type: none;
+	padding-right: 20px;
+} 
+#entry .username{
+	font-size: 100%;
+	font-weight: bolder;
+	width: 200px;
+} 
+
+#entry a:link{
+	color: #6685BA;
+	text-decoration: none;	
+}
+#entry a:visited{
+	color: #6685BA;
+	text-decoration: none;	
+}
+#entry a:hover{
+	color: #D67206;
+	text-decoration: none;	
+}
+#entry .distance{
+	color: black;
+	font-size: 100%;
+	width: 200px;
+} 
+#entry .time{
+	color: #787878;
+}
+#entry .date{
+	color: #787878;
+}

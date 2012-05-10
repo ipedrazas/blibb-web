@@ -1,0 +1,40 @@
+li{
+	
+	display: inline;
+	list-style-type: none;
+	padding-right: 20px;
+}
+
+a.bNewBlibb{
+
+	background: -webkit-gradient(linear,left top,left bottom,from(#FDA352),to(#FB8F3D));
+	border: 1px solid #FB8F3D;
+	color: white;
+	-webkit-border-radius: 2px;
+	-webkit-transition: all 0.2s;
+
+	display: inline-block;
+	border-radius: 2px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+#	color: #555;
+	height: 27px;
+	padding: 0 10px;
+	line-height: 26px;
+	text-align: center;
+	font-size: 11px;
+	font-weight: bold;
+	vertical-align: middle;
+	text-decoration: none;
+	cursor: auto;
+}
+
+textarea{
+	width: 600px;
+}
+input {
+	width: 600px;
+}
+
+#groupInvites{
+	display: none;
+}

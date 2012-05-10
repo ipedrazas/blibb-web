@@ -1,0 +1,28 @@
+#entry{
+	margin: 25px;
+	padding: 25px;
+	width: 275px;
+	height: 275px;
+	background-color: #aeaeae;
+}
+.pictureBox{
+	margin: auto;
+}
+.picture{
+	width: 225px;
+	height: 225px;
+	margin: auto;
+}
+.description{
+	font-size: 75%;
+	color: #ad3d24;
+	padding-top: 10px;
+}
+.date{
+	display: none;
+}
+ul li{
+	display: inline;
+	padding-right: 20px;
+	font-size: 65%;
+}

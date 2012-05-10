@@ -1,0 +1,15 @@
+#entry{
+	border-bottom: 1px dotted #999;
+}
+#entry .postDate{
+	float: right;
+	margin-right: 30px;
+}
+#entry .postTitle{
+	font-weight: bolder;
+	font-size: 30px;
+}
+#entry .postPost{
+	padding-left: 35px;
+	padding-top: 15px;
+}

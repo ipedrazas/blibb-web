@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>Do</title>
+<script src="../../js/libs/jquery-1.7.1.min"></script>
+
+
+<script type="text/javascript" charset="utf-8">
+
+	var tid = '123456789098'
+
+	// we'll have to save the order... let's start with this
+	var numElems = 0;
+
+	// This will load the new Resource
+	$('a[name=menuEntry]').live("click", function(){
+		numElems++;
+		var id = $(this).attr('data-cid');
+			$.ajax({
+				  url: 'getBlitem',
+				    type: "POST",
+						data: {c_id: id, t_id: tid},
+				  	success: function(msg) {
+				  		$('#fForm').append(msg);
+				  }
+				});
+	}); 
+	
+	
+	// This enables the editing and post the data to update the
+	// Template Object
+	$('.click').live("hover", function(){
+		var e = $(this);
+		var tid = e.attr('data-tid');
+		var cid = e.attr('data-cid');
+		e.editable(function(value, settings) { 			
+			 $.ajax({
+				  url: 'save.php',
+				    type: "POST",
+						data: {tid : tid, cid: cid, value: value, order: numElems},
+				  	success: function(msg) {
+				  		e.html(msg);						
+				  }
+				});			 
+		  });
+	 
+	 });
+
+	var post_opts = new Array();
+
+    $("#entryButton").live("click", function(){
+
+        var name =  $("#entryName").val();
+        var val =  $("#entryVal").val();
+        var select =  document.getElementById('superselect');
+        addOption(select,name,val);
+        //$("#select-holder").html(select_element);
+
+    });
+
+
+    function addOption(select, name, value){
+        // var _opt = new array();
+        // _opt.push(name,value); 
+        var opt = new Option(name, value, false, false);
+        post_opts.push(name, value);
+        select.appendChild(opt);
+
+    }
+
+    $("a[name=ilu]").live("click", function(){
+ 		var e = $(this);
+		var fid = e.attr('data-cid');
+		var tid = e.attr('data-tid');
+		var t = Array();
+		$('#'+fid).find('input').each(
+			function(){ 
+				var value = $(this).attr('value');
+				var name = $(this).attr('name');
+				t.push(name + ':' + value);
+			});
+		var s = '';
+		for (var i = 0; i < t.length; i++) {
+			s += t[i] + ', ';
+		};
+		$.ajax({
+			  url: 'saveControl.php',
+			    type: "POST",
+					data: {tid : tid, cid: fid, value: s, order: numElems},
+			  	success: function(msg) {
+			  		e.html(msg);						
+			  }
+			});
+		// alert(s);
+ 	});
+</script>
+<body>
+	<ul>
+		<li><a href="#" name="menuEntry" data-cid="4f6b55778837f0a6810f7fed">Single Line Text Control</a></li>
+		<li><a href="#" name="menuEntry" data-cid="4f6b55778837f0a6810f7fef">Date Control</a></li>
+		<li><a href="#" name="menuEntry" data-cid="4f6b55778837f0a6810f7fee">Multi Line Text Control</a></li>
+		<li><a href="#" name="menuEntry" data-cid="4f6b55778837f0a6810f7ff0">Select List Control</a></li>
+	</ul>
+	
+	<div id="fForm"></div>
+
+	<div  id="4f6b55778837f0a6810f7ff0">
+		<input type="hidden" name="bhidden1" value="silence" data-cid="4f6b55778837f0a6810f7ff0" />
+		<input type="hidden" name="bhidden2" value="noise" data-cid="4f6b55778837f0a6810f7ff0" />
+		<input type="text" name="title" value="" data-cid="4f6b55778837f0a6810f7ff0" />
+		<input type="text" name="desc" value="" data-cid="4f6b55778837f0a6810f7ff0" />
+		<a href="#" name="ilu" data-tid="4f6b55778837444440f7ff0" data-cid="4f6b55778837f0a6810f7ff0">Post Form</a>
+	</div>
+	<div  id="4f6b55775833f0a6810f7ff0">
+		<input type="hidden" name="ab4" value="ab654" data-cid="4f6b55775833f0a6810f7ff0" />
+		<input type="hidden" name="ab5" value="ab654e" data-cid="4f6b55775833f0a6810f7ff0" />
+		<input type="text" name="ab6" value="asdfas" data-cid="4f6b55775833f0a6810f7ff0" />
+		<a href="#" name="ilu" data-cid="4f6b55775833f0a6810f7ff0">Post Form</a>
+	</div>
+</body>
+
+
+</html>

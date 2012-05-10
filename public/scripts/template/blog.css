@@ -1,0 +1,26 @@
+#entry{
+	margin-top: 10px;
+	padding-bottom: 7px;
+	padding-left: 65px; 
+	border-bottom: 1px dotted black;
+	font-size: 100%;
+} 
+#entry .postDate{
+	font-size: 75%;
+	color: #9C9A9A;
+	float:right;
+	margin-right: 45px
+} 
+#entry .postTitle{
+	color: #BA0909;
+	font-size: 26px;
+	font-weight: bolder;
+} 
+#entry .postPost{
+	font-size: 100%;
+	width: 85%;
+	color: #9C9A9A;
+	padding-left: 45px;
+	margin-top: 20px;
+	margin-left: 55px;
+}

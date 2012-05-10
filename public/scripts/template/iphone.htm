@@ -1,0 +1,56 @@
+<style>
+html , body {
+	margin: 0;
+}
+.blibbName{
+	font-weight: bolder;
+	color: #365791;
+	background-color: #D7E3F7;
+	margin:0;
+	padding-top: 12px;
+	padding-left: 30px;
+	padding-bottom: 12px;
+	font-size: 45px;
+}
+.entryItems{
+	margin: 10px;
+}
+#entry{
+	border-bottom: 1px dotted #999;
+}
+#entry .postDate{
+	float: right;
+	margin-right: 30px;
+}
+#entry .postTitle{
+	font-weight: bolder;
+	font-size: 30px;
+}
+#entry .postPost{
+	padding-left: 35px;
+	padding-top: 15px;
+}
+ul li{
+	display: inline;
+	padding-right: 25px;
+}
+#options a:link, a:visited{
+	color: #80848C;
+	text-decoration: none;
+}
+</style>
+<div class="blibbName">My Little Blog</div>
+<div class="entryItems">
+	<div id="entry">
+		<div class="postDate">23/2/2012</div>
+		<div class="postTitle">From my telephone</div>
+		<div class="postPost">I know it sounds silly, but you should be able to se this very nicely from your telephone. There's not much point otherwise!</div>
+		<div id="options">
+			<ul>
+				<li><a href="#" name="comments" id="c_{{id}}">Comments</a></li>
+				<li><a href="#" name="tags" id="t_{{id}}">Tags</a></li>
+			</ul>
+			<div id="box{{id}}"></div>
+		</div>
+	</div>
+</div>
