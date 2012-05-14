@@ -110,11 +110,12 @@ class qqFileUploader {
      */
     function handleUpload($uploadDirectory, $replaceOldFile = FALSE, $filename){
         // Check if the dir exists, if not, create it
-        if (!is_dir($uploadDirectory)) {
-            mkdir($uploadDirectory, 0755, true);
-        }
+        
         if (!is_writable($uploadDirectory)){
             return array('error' => "Server error. Upload directory ".$uploadDirectory." isn't writable.");
+        }
+        if (!is_dir($uploadDirectory)) {
+            mkdir($uploadDirectory, 0755, true);
         }
         
         if (!$this->file){
@@ -224,9 +225,11 @@ $imgId = $pest->post('/picture',array(
             'k' => $key
         ));
 
+//echo __DIR__.'/../../uploads/images/';
+
 if(strlen($imgId)>0){
 
-    $result['i'] = $uploader->handleUpload(__DIR__.'/../../../uploads/images/', true, $imgId);
+    $result['i'] = $uploader->handleUpload(__DIR__.'/../../uploads/images/', true, $imgId);
     $result['b'] = $b;
     $result['u'] = current_user();
     $result['id'] = $imgId;

@@ -64,7 +64,13 @@
 <link href="css/fileuploader.css" rel="stylesheet" type="text/css">
 <script src="js/fileuploader.js" type="text/javascript"></script>
 <script>
-    $(function() {                
+    $(function() {
+    	$("#bname").keyup(function(){
+	        var Text = $(this).val();
+	        Text = Text.toLowerCase();
+	        Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
+	        $("#bslug").val(Text);        
+		});             
         createUploader('imageUploader', '', '<?php echo $key ?>');
     }); 
     function createUploader(element, bid, key){            
@@ -85,13 +91,8 @@
             	$(".qq-upload-failed-text").hide();
             },
         });
-       $("#bname").keyup(function(){
-        var Text = $(this).val();
-        Text = Text.toLowerCase();
-        Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
-        $("#bslug").val(Text);        
-});
     }
+    
 </script>
 	<div class="container">
 		<form action="saveBlibb" method="post" id="nform" >

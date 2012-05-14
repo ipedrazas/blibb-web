@@ -33,8 +33,8 @@ $key = getKey();
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
   <!-- All JavaScript at the bottom, except for Modernizr / Respond.
        Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
-       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
 <script src="/js/libs/modernizr-2.0.6.min.js"></script>
