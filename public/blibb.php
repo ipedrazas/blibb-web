@@ -13,9 +13,13 @@ class Application extends lib {
 		$pest = new Pest(REST_API_URL);
     	$jb = $pest->get('/blibb/' . $bid . '/view/Default');
  		$bli = json_decode($jb);
+
+ 		// print_r($bli);
+
  		$bname = $bli->name;
  		$bdesc = $bli->description;
  		$author = $bli->owner;
+ 		
  		$btags = array();
  		
  		if(isset($bli->tags)){
@@ -113,7 +117,7 @@ class Application extends lib {
 			$blibb['created'] = $date->format('d-m-Y H:i:s');
 	    	$blibb['ENTRIES'] = $itemsResult;
 	    	$blibb['css'] = $css;
-	    	$blibb['bid'] = $bid;
+	    	$blibb['id'] = $bid;
 	    	$blibb['TAGLIST'] = $btags;
 
 	    	$m = new Mustache();
