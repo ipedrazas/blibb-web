@@ -13,12 +13,12 @@ class Application extends lib {
 
 		$pestParams = array();
 		$pestParams['c'] = $this->gt("comment");
-		$pestParams['k'] = $this->gt("k");
+		$pestParams['k'] = getKey();
 
 		$parent = $this->gt("parent");
 		$pestParams[$parent] = $this->gt("pid");
 
-		$pest = new Pest('http://localhost:5000');
+		$pest = new Pest(REST_API_URL);
 		$result = $pest->post('/comment',$pestParams);
 		
 		// $rMsg = json_decode($result);

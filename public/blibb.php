@@ -10,7 +10,7 @@ class Application extends lib {
     	$this->setRedirect();
     	$fullView = $this->gt("v");
 		$bid = $this->gt("b");
-		$pest = new Pest('http://localhost:5000');
+		$pest = new Pest(REST_API_URL);
     	$jb = $pest->get('/blibb/' . $bid . '/view/Default');
  		$bli = json_decode($jb);
  		$bname = $bli->name;
@@ -82,10 +82,9 @@ class Application extends lib {
 						
 					}						
 				}
+				print_r($eRs);
 				// Comments
-				$cmnts = $eRs->cs;
-				$comments = json_decode($cmnts);
-				$_blitem['COMMENTS'] =  $comments->resultset;
+				$_blitem['COMMENTS'] =  $eRs->cs;
 				$_blitem['key'] = getKey();
 				if (isset($eRs->tags)){
 					$_blitem['TAGS'] = $eRs->tags;	

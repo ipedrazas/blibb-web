@@ -23,7 +23,7 @@ class Application extends lib {
 		
 
 
-		$pest = new Pest('http://localhost:5000');
+		$pest = new Pest(REST_API_URL);
     	$jresp = $pest->get('/blibb/' . $userspace);
     	
     	$this->setRedirect();

@@ -4,70 +4,43 @@
 require_once(__DIR__.'/../lib/getid3/getid3.php');
 
 
-
 function getKey(){
+  if(isset($_SESSION['K'])){
+    return $_SESSION['K'];
+  }
+}
+function getUserName($key){
   $redis = new Predis\Client();
-  return $redis->get(session_id());
+  return $redis->get($key.':name');
 }
 
-function getUserName(){
+function getUserImage($key){
   $redis = new Predis\Client();
-  return $redis->get(getKey().':name');
+  return $redis->get($key.':thumbnail');
 }
 
-function getUserImage(){
+function getUserId($key){
   $redis = new Predis\Client();
-  return $redis->get(getKey().':thumbnail');
-}
-
-function getUserId(){
-  $redis = new Predis\Client();
-  return $redis->get(getKey().':id');
+  return $redis->get($key.':id');
 }
 // Logs into the user $user
-function log_in($user_id, $user_name){
-
-  $redis = new Predis\Client();
-  $userkey = hash('sha1', $user_name . $user_id . time());
-  $expire = 3600;
-
-  $redis->set(session_id(),$userkey);
-  $redis->set($userkey,$user_name);
+function log_in($k){
+    $key = json_decode($k);
+    $_SESSION['K'] = $key->key;
+    $_SESSION['user_id'] = getUserId($k);
+    $_SESSION['user_name'] = getUserName($k);
+    $_SESSION['user_key'] =  getUserImage($k);
   
-  $basekey = $userkey . ':';
-  $namekey = $basekey.'name';
-  $imagekey = $basekey.'thumbnail';
-  $idkey = $basekey.'id';
-//http://localhost/img/60x60.gif
-  $redis->set($namekey, $user_name);
-  $redis->set($imagekey, $user_name);
-  $redis->set($idkey, $user_id);
-
-  $redis->expire($userkey,$expire);
-  $redis->expire($namekey,$expire);
-  $redis->expire($imagekey,$expire);
-  $redis->expire($idkey,$expire);
-
-  $_SESSION['user_id'] = $user_id;
-  $_SESSION['user_name'] = $user_name;
-  $_SESSION['user_key'] =  $userkey;
 }
 
 
 // Returns the currently logged in user (if any)
 function current_user(){
   static $current_user;
-  
   if(!$current_user){
-    if(isset($_SESSION['user_name'])){
-      return $_SESSION['user_name'];
-    }
-    if(isset($_SESSION['user_id'])){
-      $user_id = $_SESSION['user_id'];
-      $u = Dbo::findOne('User', array('_id' => $user_id));
-      if(strlen($u->n)>0){
-        return $u->n;
-      }
+    if(isset($_SESSION['K'])){
+      $k = $_SESSION['K'];
+      return getUserName($k);
     }
   }
   return $current_user;

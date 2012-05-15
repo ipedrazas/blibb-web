@@ -8,7 +8,7 @@ class ProfileApplication extends lib {
 		$current_user = current_user();
 		$nuser = $this->gt("p");
 
-		$pest = new Pest('http://localhost:5000');
+		$pest = new Pest(REST_API_URL);
 		$jr = $pest->get('/user/name/' . $nuser);
 		$user = json_decode($jr);
 

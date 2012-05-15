@@ -7,8 +7,6 @@ require_once(__DIR__.'/../system/config.php');
 class Application extends lib {
 
     public function run() {
-
-    	$expire = 86400 ; // 1 day
     	
 		$reqHash = hash('sha1', session_id() + session_id());
 		$t = $this->gt("t");
@@ -20,28 +18,26 @@ class Application extends lib {
 			$user = stripslashes($user);
 			$pwd = stripslashes($pwd);
 
-			$u = Dbo::findOne('User', array('e' => $user));
+			$pest = new Pest(REST_API_URL);
 
-			if(empty($u->n)){
-				$errorMsg = '<li class="errorLogin">User or Password not found!</li>';
-				
-			}else{	
-				if($u->authenticate($user,$pwd)){
-					$u->la = new DateTime('now');
-					Dbo::save($u);
-					if(!isset($_SESSION['redirect_to'])){
+			try {
+			    $result = $pest->post('/user/login',array(
+					'u' => $user,
+					'p' => $pwd
+				));
+				log_in($result);
+				if(!isset($_SESSION['redirect_to'])){
 						$destURL = 'main';
-					}else{
-						$destURL = $_SESSION['redirect_to'];	
-						unset($_SESSION['redirect_to']);
-					}						
-					log_in($u->_id,$u->n);
-
-					header("Location: $destURL");
-					exit();
 				}else{
-					$errorMsg = ' <li class="errorLogin">User or Password not found!</li>';
-				}	
+					$destURL = $_SESSION['redirect_to'];	
+					unset($_SESSION['redirect_to']);
+				}						
+				header("Location: $destURL");
+				exit();
+
+			} catch (Pest_NotFound $e) {
+			    // 404
+			    $errorMsg = '<li class="errorLogin">User or Password not found!</li>';
 			}
 			
 		}else{

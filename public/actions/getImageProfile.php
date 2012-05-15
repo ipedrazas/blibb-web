@@ -7,20 +7,18 @@ class StreamImage extends lib {
 
     public function run() {
 
-		$i = $this->gt("id");
-		$size = $this->gt("i");
+		$user = $this->gt("u");
 
-		if($i === 'undefined'){
-			die ("{'error':'Image not found'}");
-		}
 		$pest = new Pest(REST_API_URL);
-    	$jresp = $pest->get('/picture/' . $i);
-    	$picture = json_decode($jresp);
+    	$juser = $pest->get('/user/name/' . $user);
+    	$user = json_decode($juser);
 
-
-
+    	// print_r($user);
     	
-    	$path  = $picture->path . '/'. $size . '/';
+    	$jresp = $pest->get('/picture/' . $user->image_id);
+    	$picture = json_decode($jresp);
+    	
+    	$path  = $picture->path . '/60/';
     	$img_id = $picture->id;
     	$format = $picture->format;
 
@@ -52,4 +50,3 @@ class StreamImage extends lib {
 
 $app = new StreamImage();
 $app->run();  
-

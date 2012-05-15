@@ -110,14 +110,12 @@ class qqFileUploader {
      */
     function handleUpload($uploadDirectory, $replaceOldFile = FALSE, $filename){
         // Check if the dir exists, if not, create it
-        if (!is_dir($uploadDirectory)) {
-            mkdir($uploadDirectory,0755,true);
-        }
-
         if (!is_writable($uploadDirectory)){
             return array('error' => "Server error. Upload directory ".$uploadDirectory." isn't writable.");
         }
-        
+         if (!is_dir($uploadDirectory)) {
+            mkdir($uploadDirectory,0755,true);
+        }
         if (!$this->file){
             return array('error' => 'No files were uploaded.');
         }
@@ -179,7 +177,7 @@ $songId = $pest->post('/song/id',array(
             'k' => $key
         ));
 
-$result['i'] = $uploader->handleUpload('/var/www/blibb.net/php/uploads/music/', true, $songId);
+$result['i'] = $uploader->handleUpload(__DIR__.'/../../uploads/music/', true, $songId);
 $result['b'] = $b;
 $result['u'] = $k;
 $result['id'] = $songId;

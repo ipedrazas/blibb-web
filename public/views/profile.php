@@ -467,9 +467,9 @@
 			});
 
 			function updateProfilePicture(picture){
-				$.post("test.php", { id: picture, time: "2pm" },
+				$.post("/actions/updateProfilePicture", { id: picture },
 				   function(data) {
-				     alert("Data Loaded: " + data);
+				     alert("Data Loaded: " + data); 
 				   });
 			}
 
@@ -489,6 +489,7 @@
 		            	$("#img_image").attr("src",srcI);
 		            	$("#im_image").show();
 		            	$(".qq-upload-failed-text").hide();
+		            	updateProfilePicture(resp);
 		            },
 		        });
 		    }

@@ -11,7 +11,7 @@ class Application extends lib {
 		$bid = $this->gt("b");
 		$params = "t.i.w";
 
-		$pest = new Pest('http://localhost:5000');
+		$pest = new Pest(REST_API_URL);
     	$result = $pest->get('/blibb/' .$bid . '/p/' . $params);
 
 		$blibb = json_decode($result);

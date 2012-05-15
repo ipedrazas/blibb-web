@@ -219,7 +219,7 @@ if (strlen($b)<1){
     $b = '101'; 
 }
 
-$pest = new Pest('http://localhost:5000');
+$pest = new Pest(REST_API_URL);
 $imgId = $pest->post('/picture',array(
             'b' => $b,
             'k' => $key

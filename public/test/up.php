@@ -1,29 +1,16 @@
 <?php
-if ($_FILES["file"]["error"] > 0)
-  {
-  echo "Error: " . $_FILES["file"]["error"] . "<br />";
-  }
-else
-  {
-  echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-  echo "Type: " . $_FILES["file"]["type"] . "<br />";
-  echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-  echo "Stored in: " . $_FILES["file"]["tmp_name"];
-  }
 
-	if ($_FILES["file"]["error"] > 0){
-		echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
-	} else  {
-		echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-		echo "Type: " . $_FILES["file"]["type"] . "<br />";
-		echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-		echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
+require_once(__DIR__.'/../../system/config.php');
 
-		if (file_exists("/Blibb/uploads/" . $_FILES["file"]["name"])){
-		  echo $_FILES["file"]["name"] . " already exists. ";
-		}   else {
-		  move_uploaded_file($_FILES["file"]["tmp_name"], "/Blibb/uploads/" . $_FILES["file"]["name"]);
-		  echo "Stored in: " . "/Blibb/uploads/" . $_FILES["file"]["name"];
-		}
-	}
+
+$k = getKey();
+$uname = getUserName($k);
+// $email = getUserEmail($k);
+$image = getUserImage($k);
+
+echo $k . "<br>";
+echo $uname . "<br>";
+// echo $email . "<br>";
+echo $image  . "<br>";
+	
 ?>
