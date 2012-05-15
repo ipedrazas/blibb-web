@@ -24,6 +24,19 @@ class Application extends lib {
  		
  		$view = $bli->Default[0];
  		$blibbBox = stripcslashes($view->rb);
+
+ 		$fTags = __DIR__."/templates/taglist.html";
+		$cTags = file($fTags); 
+		$taglist = implode($cTags);
+
+		$fComments = __DIR__."/templates/comments.html";
+		$cComments = file($fComments); 
+		$comments = implode($cComments);
+
+
+ 		$blibbBox = str_replace('<blibb:tags/>', $taglist, $blibbBox);
+ 		$blibbBox = str_replace('<blibb:comments/>', $comments, $blibbBox);
+
  		$css = '<style>' . $view->sb . chr(10) . $view->si . '</style>';
  		$date = new DateTime( $bli->date);
  		
@@ -82,7 +95,7 @@ class Application extends lib {
 						
 					}						
 				}
-				print_r($eRs);
+				// print_r($eRs);
 				// Comments
 				$_blitem['COMMENTS'] =  $eRs->cs;
 				$_blitem['key'] = getKey();

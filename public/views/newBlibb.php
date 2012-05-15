@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="css/user.css">
 
-<script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script> 
+<script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js"></script> 
 <script type="text/javascript">
 
 	$('input[name=bgroup]').live("click", function(){	
