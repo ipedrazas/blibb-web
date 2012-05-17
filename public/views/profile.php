@@ -73,8 +73,8 @@
 								</div>
 							   </div>
 							</div>
-
-							<div class="control-group">
+							
+							<div id="imagebox" class="control-group">
 								<label class="control-label" for="inputFile">Picture</label>
 								<div class="controls">
 									 <div>
@@ -469,7 +469,9 @@
 			function updateProfilePicture(picture){
 				$.post("/actions/updateProfilePicture", { id: picture },
 				   function(data) {
-				     alert("Data Loaded: " + data); 
+				     alert("Data Loaded: " + data);
+				     $alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>" + data +"</div>";
+					$('#imagebox').after($alert);
 				   });
 			}
 
