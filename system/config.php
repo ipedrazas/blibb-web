@@ -12,7 +12,7 @@ require_once(__DIR__.'/classes/user.php');
 require_once(__DIR__.'/classes/audit.php');
 require_once(__DIR__.'/classes/comment.php');
 require_once(__DIR__.'/classes/userPage.php');
-require_once(__DIR__.'/classes/picture.php');
+
 
 require_once(__DIR__.'/classes/follow.php');
 require_once(__DIR__.'/classes/like.php');

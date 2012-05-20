@@ -172,6 +172,7 @@ class qqFileUploader {
             $this->resizeImage($image, '260', $uploadDirectory, $imageName);
             $this->resizeImage($image, '220', $uploadDirectory, $imageName);
             $this->resizeImage($image, '160', $uploadDirectory, $imageName);
+            $this->thumbnail_box($image, $uploadDirectory, $imageName);
             $this->resizeImage($image, '60', $uploadDirectory, $imageName);
             
             
@@ -184,9 +185,20 @@ class qqFileUploader {
                 'The upload was cancelled, or server error encountered');
         }
         
-    }  
+    }
 
-    function resizeImage($image, $size,$path, $imagename){
+    function thumbnail_box($image, $path, $imagename){
+        $img = imagecreatefromjpeg($path . '260/'. $imagename);
+        $thumbnail = $image->thumbnail_box($img,160,120);
+        imagedestroy($img);
+         $imagePath = $path . '160x120/';
+        if (!is_dir($imagePath)) {
+            mkdir($imagePath ,0755,true);
+        }
+        imagejpeg( $thumbnail, $imagePath. $imagename);
+    }
+
+    function resizeImage($image, $size, $path, $imagename){
         $imagePath = $path . $size . '/';
         if (!is_dir($imagePath)) {
             mkdir($imagePath ,0755,true);
