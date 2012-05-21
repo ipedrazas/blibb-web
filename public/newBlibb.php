@@ -11,7 +11,7 @@ class Application extends lib {
 		$k = getKey();
     	
 
-    	$pest = new Pest('http://localhost:5000');
+    	$pest = new Pest(REST_API_URL);
     	$jts = $pest->get('/template/active/n,d,t');
  		$rs = json_decode($jts);
  		
