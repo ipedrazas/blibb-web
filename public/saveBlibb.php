@@ -16,7 +16,7 @@ class Application extends lib {
 		$bimage = $this->gt("bimage");
 		$bslug = $this->gt("bslug");
 
-    	$pest = new Pest('http://localhost:5000');
+    	$pest = new Pest(REST_API_URL);
     	$result = $pest->post('/blibb',array(
 			'bname' => $bname,
 			'bdesc' => $bdesc,
@@ -31,6 +31,7 @@ class Application extends lib {
 		$result = $jsonResult->id;
 
 		header("Location: addItem?b=$result");
+ 		// header("Location: editBlibbCss?b=$result");
     	
     }
 

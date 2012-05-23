@@ -10,7 +10,7 @@ class PublishTemplateApplication extends lib {
 		
 	
 		
-		$pest = new Pest('http://localhost:5000');
+		$pest = new Pest(REST_API_URL);
 		$r = $pest->post('/template/pub', array(
 			'tid' => $tid,
 			'view' => 'default',

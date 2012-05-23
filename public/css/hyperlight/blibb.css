@@ -9,21 +9,21 @@
 
 .source-code {
     background: white;
-    color: black;
+    color: #333;
 }
 
 .source-code .keyword { color: #585858;  font-weight: bold; }
 .source-code .keyword.literal { color: #FC0; }
-.source-code .keyword.type { color: #FF8F00; }
-.source-code .keyword.builtin { color: #585858; }
-.source-code .preprocessor { color: black; }
-.source-code .comment { color: #0C808A; }
+.source-code .keyword.type { color: #F89406; }
+.source-code .keyword.builtin { color: #3A87AD; }
+.source-code .preprocessor { color: #F89406; }
+.source-code .comment { color: #468847; }
 .source-code .comment .doc { color: #399; font-weight: bold; }
 .source-code .identifier { color: black; }
 .source-code .string, .source-code .char { color: black; }
 .source-code .escaped { color: #AAA; }
 .source-code .number, .source-code .tag { color: black }
-.source-code .regex, .source-code .attribute { color: #CA0000; }
+.source-code .regex, .source-code .attribute { color: #B94A48; }
 .source-code .operator { color: #888; }
 .source-code .keyword.operator { color: #F60; }
 .source-code .whitespace { background: #333; }
@@ -37,11 +37,11 @@
 .source-code.cpp .preprocessor .identifier { color: #996; }
 
 .source-code::-moz-selection, .source-code span::-moz-selection {
-    background: orange;
-    color: black;
+    background: #B94A48;
+    color: white;
 }
 
 .source-code::selection, .source-code span::selection {
-    background: black;
-    color: black;
+    background: #B94A48;
+    color: white;
 }
