@@ -3,11 +3,8 @@
 
 require_once(__DIR__.'/../system/config.php');
 
-
-class Application extends lib {
-
+class Login extends lib {
     public function run() {
-    	
 		$reqHash = hash('sha1', session_id() + session_id());
 		$t = $this->gt("t");
 		// it comes from the login form
@@ -47,6 +44,6 @@ class Application extends lib {
     }
 }
 
-$app = new Application();
+$app = new Login();
 $app->run();  
 
