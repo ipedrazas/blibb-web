@@ -469,7 +469,6 @@
 			function updateProfilePicture(picture){
 				$.post("/actions/updateProfilePicture", { id: picture },
 				   function(data) {
-				     alert("Data Loaded: " + data);
 				     $alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>" + data +"</div>";
 					$('#imagebox').after($alert);
 				   });

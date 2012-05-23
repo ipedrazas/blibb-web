@@ -21,7 +21,7 @@ class Application extends lib {
 			$pest = new Pest(REST_API_URL);
 
 			try {
-			    $result = $pest->post('/user/login',array(
+			    $result = $pest->post('/login',array(
 					'u' => $user,
 					'p' => $pwd
 				));
