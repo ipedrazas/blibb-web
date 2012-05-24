@@ -10,6 +10,8 @@ class Application extends lib {
     	$this->setRedirect();
     	$fullView = $this->gt("v");
 		$bid = $this->gt("b");
+		$current_user = current_user();
+
 		$pest = new Pest(REST_API_URL);
     	$jb = $pest->get('/blibb/' . $bid . '/view/Default');
  		$bli = json_decode($jb);
@@ -33,10 +35,13 @@ class Application extends lib {
 		$cTags = file($fTags); 
 		$taglist = implode($cTags);
 
-		$fComments = __DIR__."/templates/comments.html";
+		if($current_user!==0){
+			$fComments = __DIR__."/templates/comments.html";
+		}else{
+			$fComments = __DIR__."/templates/comments-nologin.html";
+		}
 		$cComments = file($fComments); 
 		$comments = implode($cComments);
-
 
  		$blibbBox = str_replace('<blibb:tags/>', $taglist, $blibbBox);
  		$blibbBox = str_replace('<blibb:comments/>', $comments, $blibbBox);
@@ -45,7 +50,7 @@ class Application extends lib {
  		$date = new DateTime( $bli->date);
  		
 		$owner = false;
-		$current_user = current_user();
+		
 		if($author === $current_user){
 			$owner = true;
 		}

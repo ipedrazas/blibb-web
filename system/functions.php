@@ -36,7 +36,7 @@ function log_in($k){
 
 // Returns the currently logged in user (if any)
 function current_user(){
-  static $current_user;
+  static $current_user = 0;
   if(!$current_user){
     if(isset($_SESSION['K'])){
       $k = $_SESSION['K'];
