@@ -144,7 +144,7 @@ input, textarea{
 			</div>
 			<div class="row">
 				<div class="span8 offset2">
-   	        		<form action="editTemplateCss" enctype="multipart/form-data" method="post" id="nform" >
+   	        		<form action="publishTemplate" enctype="multipart/form-data" method="post" id="nform" >
    	        			<fieldset>
 						    <legend><?php echo $name ?> <small><?php echo $desc ?></small></legend>
 			   	        	<input type="hidden" name="bkey" value="<?php echo $key ?>" /> 
