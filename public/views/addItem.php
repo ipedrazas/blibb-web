@@ -2,10 +2,10 @@
 require_once(__DIR__.'/../inc/header.php');
 ?>
 
-
 <link type="text/css" href="/css/addItem.css" rel="stylesheet" />
 <link rel="stylesheet" href="/css/user.css">
-<link href="/css/fileuploader.css" rel="stylesheet" type="text/css">	
+<link href="/css/fileuploader.css" rel="stylesheet" type="text/css">
+	
 <link type="text/css" href="/css/blitzer/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
 <script type="text/javascript" src="/js/libs/jquery.ui.core.js"></script> 
 <script type="text/javascript" src="/js/libs/jquery.ui.widget.js"></script> 
