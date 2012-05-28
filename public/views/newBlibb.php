@@ -95,48 +95,85 @@
     
 </script>
 	<div class="container">
-		<form action="saveBlibb" method="post" id="nform" >
+		<form action="saveBlibb" method="post" id="nform" class="form-horizontal" >
+			<fieldset>
+				<legend>Create blibb</legend>
 			<input type="hidden" name="btemplate" id="btemplate" /> 
 			<input type="hidden" name="bkey" value="<?php echo $key ?>" /> 
-			<label for="bname">Name:</label>
-			<input name="bname" id="bname" placeholder="New Blibb name" size="70" type="text" value="<?php echo $bname ?>"/><br>
-			<label for="bslug">Slug:</label>
-			<input name="bslug" id="bslug" placeholder="Blibb unique name" size="70" type="text" value="<?php echo $bslug ?>"/><br>
-			<label for="bdesc">Description</label>
-			<textarea name="bdesc" id="bname" placeholder="Enter your Blibb description" class="txtEditor" cols="70" rows="5"><?php echo $bdesc ?></textarea><br>
-			<input type="hidden" name="bimage" value="" id="bimg">
-<div>
-			<label>image:</label>
-			<div id="imageUploader" name="uploadImage">
-				<noscript><p>Please enable JavaScript to use file uploader.</p></noscript>         
-			</div>
-			<div id="im_image" style="display:none"><img id="img_image"  alt="thumbnail" width="260"/></div>
-
-			<label for="listTemplate">Template:</label>
-			<ul class="listTemplate">
-				<?php								
-					echo $t;
-				?>
-				
-			</ul>
-			<br />
-				<label for="bgroup">Allow Collaboration</label>
-				<input type="checkbox" id="bgroup" name="bgroup" value="1" />
-				<div id="groupInvites"><label for="invites"><textarea name="email_invites" placeholder="Please, enter the email adresses separated by space of the people you want to invite to this :blibb"></textarea></label></div>
-			<br />
 			
-			<br />
+			<div class="control-group">
+      			<label class="control-label" for="bname">Name:</label>
+      			<div class="controls">
+        			<input type="text" class="input-xxlarge" name="bname" id="bname" placeholder="New Blibb name" value="<?php echo $bname ?>">
+        			
+      			</div>
+    		</div>
+
+			<div class="control-group">
+      			<label class="control-label" for="bslug">Slug:</label>
+      			<div class="controls">
+        			<input type="text" class="input-xxlarge" name="bslug" id="bslug" placeholder="Blibb unique name" value="<?php echo $bslug ?>">
+        			
+      			</div>
+    		</div>
+
+			<div class="control-group">
+      			<label class="control-label" for="bdesc">Description:</label>
+      			<div class="controls">
+        			<textarea type="text" class="input-xxlarge txtEditor" name="bdesc" id="bname" placeholder="Enter your Blibb description"><?php echo $bdesc ?></textarea>
+        			
+      			</div>
+    		</div>
+
+			<input type="hidden" name="bimage" value="" id="bimg">
+			<div class="control-group">
+      			<label class="control-label">Image:</label>
+      			<div class="controls">
+        			<div id="imageUploader" name="uploadImage">
+						<noscript><p>Please enable JavaScript to use file uploader.</p></noscript>         
+					</div>
+					<div id="im_image" style="display:none"><img id="img_image"  alt="thumbnail" width="260"/></div>
+        			
+      			</div>
+    		</div>
+			
+
+			<div class="control-group">
+      			<label class="control-label" for="listTemplate">Template:</label>
+      			<div class="controls">
+        			<ul class="listTemplate">
+						<?php								
+							echo $t;
+						?>
+				
+					</ul>
+        			
+      			</div>
+    		</div>
+
+
+			<div class="control-group">
+      			<label class="control-label" for="bgroup">Allow Collaboration:</label>
+      			<div class="controls">
+        			<input type="checkbox" id="bgroup" name="bgroup" value="1" />
+					<div id="groupInvites"><label for="invites"><textarea name="email_invites" placeholder="Please, enter the email adresses separated by space of the people you want to invite to this :blibb"></textarea></label></div>
+
+        			
+      			</div>
+    		</div>
+			
+
 			<?php if($msg){
 				echo '<div id="errorMsg" class="msg error" >'.$msg.'</div>';
 			 } ?>
 
-			<ul>
-				<li><a href="newTemplate" class="bNewBlibb">Create a new Template</a></li>
-				<li><a name="cancel" href="#" class="bNewBlibb">Cancel</a></li>
-				<li><a name="create" href="#" class="bNewBlibb">Save Blibb</a></li>
+			<ul class="offset2">
+				<li><a href="newTemplate" class="btn">Create a new Template</a></li>
+				<li><a name="cancel" href="#" class="btn">Cancel</a></li>
+				<li><a name="create" href="#" class="btn btn-primary">Save Blibb</a></li>
 			</ul>
 			
-
+			</fieldset>
 		</form>
 				
 </div>
