@@ -31,6 +31,27 @@ require_once(__DIR__.'/../inc/header.php');
       #bActions{
         text-align: right;
       }
+
+      a {
+        color: #9D261D;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #5C1611;
+        text-decoration: underline;
+      }
+
+      .nav-list .active > a, .nav-list .active > a:hover {
+        color: white;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+        background-color: #9D261D;
+      }
+
+      .nav > li > a:hover {
+        text-decoration: none;
+        background-color: #EEE;
+      }
     </style>
 <script>
 
