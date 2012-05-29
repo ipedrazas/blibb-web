@@ -36,7 +36,9 @@ require_once('functions.php');
 $mongo = new Mongo(); 
  
 define('MONGODB_NAME', 'blibb'); 
-define('REST_API_URL', 'http://localhost:5000'); 
+define('REST_API_URL', 'http://localhost:5000');
+define('UPLOAD_DIR','/home/blibb_web/shared/media')
+
 
 Dbo::addClass('Blb', 'blibbs'); // class, collection
 Dbo::addClass('Template', 'templates');

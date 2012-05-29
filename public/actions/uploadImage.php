@@ -241,7 +241,7 @@ $imgId = $pest->post('/picture',array(
 
 if(strlen($imgId)>0){
 
-    $result['i'] = $uploader->handleUpload(__DIR__.'/../../uploads/images/', true, $imgId);
+    $result['i'] = $uploader->handleUpload(UPLOAD_DIR.'/images/', true, $imgId);
     $result['b'] = $b;
     $result['u'] = current_user();
     $result['id'] = $imgId;

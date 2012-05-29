@@ -52,14 +52,14 @@ require_once(__DIR__.'/../inc/header.php');
     				<div class="control-group offset2">
       					<label class="control-label" for="user">Your username</label>
       					<div class="controls">
-        					<input type="text" class="input-xlarge" id="user">
+        					<input type="text" name="username" class="input-xlarge" id="user">
       					</div>
     				</div>
 
     				<div class="control-group offset2" id="mailBox">
       					<label class="control-label" for="mail">Your email</label>
       					<div class="controls">
-        					<input type="email" class="input-xlarge" id="mail">
+        					<input type="email" name="email" class="input-xlarge" id="mail">
         					<p class="help-block">email@example.com</p>
       					</div>
     				</div>
@@ -67,14 +67,14 @@ require_once(__DIR__.'/../inc/header.php');
     				<div class="control-group offset2">
       					<label class="control-label" for="pwd">Password</label>
       					<div class="controls">
-        					<input type="password" class="input-xlarge" id="pwd">
+        					<input type="password" name="pwd" class="input-xlarge" id="pwd">
       					</div>
     				</div>
 
     				<div class="control-group offset2">
-      					<label class="control-label" for="reg.code">Registration code</label>
+      					<label class="control-label" for="reg.code">Invitation code</label>
       					<div class="controls">
-        					<input type="text" class="input-xlarge" id="regcode">
+        					<input type="text" name="invite" class="input-xlarge" id="invite">
         					<p class="help-block">Enter here your code for our private beta</p>
       					</div>
     				</div>
@@ -90,9 +90,26 @@ require_once(__DIR__.'/../inc/header.php');
 		</div>
 		<script type="text/javascript">
 
+			$('#invite').live("focusout", function(){	
+				var invite = $(this).val();
+				$.get("/actions/checkInvite", { id: invite },
+					   function(data) {
+					   	if(data==='True'){
+							$alert = "<div id=\"userMsg\" class='alert alert-success'><i class=\"icon-ok\"></i></div>";
+							$('#user').after($alert);
+					   	}else{
+							$alert = "<div id=\"userMsg\" class='error'><i class=\"icon-remove\" ></i></div>";
+							$('#user').after($alert);
+					   	}
+					   	$('#userMsg').delay(3000).fadeOut('slow');
+					    
+					});
+			}
+			
 			$('#user').live("onfocusin", function(){	
 				$('#userMsg').hide();
 			});
+
 			$('#user').live("focusout", function(){	
 				var user = $(this).val();
 				if(user.length>2){
@@ -107,7 +124,7 @@ require_once(__DIR__.'/../inc/header.php');
 					   	}
 					   	$('#userMsg').delay(8000).fadeOut('slow');
 					    
-					   });
+					});
 				}
 			}); 
 		</script>

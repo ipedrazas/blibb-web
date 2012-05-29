@@ -177,7 +177,7 @@ $songId = $pest->post('/song/id',array(
             'k' => $key
         ));
 
-$result['i'] = $uploader->handleUpload(__DIR__.'/../../uploads/music/', true, $songId);
+$result['i'] = $uploader->handleUpload(UPLOAD_DIR.'/music/', true, $songId);
 $result['b'] = $b;
 $result['u'] = $k;
 $result['id'] = $songId;

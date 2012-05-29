@@ -7,9 +7,12 @@ class NewUserApplication extends lib {
     public function run() {
 		$current_user = require_login();    	
 
-		$name = $this->getParameter("name","",$_POST);
-		$pwd = $this->getParameter("password","",$_POST);
-		$email = $this->getParameter("email","",$_POST);
+		$name = $this->gt("username");
+		$pwd = $this->gt("pwd");
+		$email = $this->gt("email");
+		$code = $this->gt("invite");
+
+		// 
 		
 		$user = new User();
 		$user->n = $name;
