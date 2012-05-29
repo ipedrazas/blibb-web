@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__.'/../system/config.php');
+require_once(__DIR__.'/../../system/config.php');
 
 
 class ValidateApplication extends lib {
@@ -9,9 +9,8 @@ class ValidateApplication extends lib {
 
     	$cmail = new BMail();
 		$email = $this->gt("id");
-    	$result = $cmail->email_valid($email);
+    	echo $cmail->email_valid($email);
     	
-        $this->render('ajaxResponse',  compact('result'));
     }
 
 }

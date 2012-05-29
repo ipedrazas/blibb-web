@@ -56,7 +56,7 @@ require_once(__DIR__.'/../inc/header.php');
       					</div>
     				</div>
 
-    				<div class="control-group offset2">
+    				<div class="control-group offset2" id="mailBox">
       					<label class="control-label" for="mail">Your email</label>
       					<div class="controls">
         					<input type="email" class="input-xlarge" id="mail">
@@ -83,9 +83,6 @@ require_once(__DIR__.'/../inc/header.php');
 			        	<button type="reset" class="btn offset2">Cancel</button>
 			        	<button type="submit" class="btn btn-primary">Register</button>
 			        </div>
-
-
-
   				</fieldset>
 			</form>
 
@@ -93,8 +90,25 @@ require_once(__DIR__.'/../inc/header.php');
 		</div>
 		<script type="text/javascript">
 
-			$('#regcode').live("focusout", function(){	
-				alert("Byyyyyyeeee!");
+			$('#user').live("onfocusin", function(){	
+				$('#userMsg').hide();
+			});
+			$('#user').live("focusout", function(){	
+				var user = $(this).val();
+				if(user.length>2){
+					$.get("/actions/isAvailable", { user: user },
+					   function(data) {
+					   	if(data==='True'){
+							$alert = "<div id=\"userMsg\" class='alert alert-success'><i class=\"icon-ok\"></i></div>";
+							$('#user').after($alert);
+					   	}else{
+							$alert = "<div id=\"userMsg\" class='error'><i class=\"icon-remove\" ></i></div>";
+							$('#user').after($alert);
+					   	}
+					   	$('#userMsg').delay(8000).fadeOut('slow');
+					    
+					   });
+				}
 			}); 
 		</script>
 <?php

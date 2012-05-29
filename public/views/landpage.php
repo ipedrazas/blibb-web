@@ -84,7 +84,7 @@
 				e.stopPropagation();                 
 				var email = $('input#email').val();				
 				 $.ajax({
-					  url: '/validate',
+					  url: '/actions/validate',
 					    type: "POST",
   						data: {id : email},
 					  	success: function(msg) {
