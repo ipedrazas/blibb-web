@@ -36,7 +36,7 @@ require_once('functions.php');
 $mongo = new Mongo(); 
  
 define('MONGODB_NAME', 'blibb'); 
-define('REST_API_URL', 'http://localhost:5000');
+define('REST_API_URL', 'http://api.blibb.it');
 define('UPLOAD_DIR','/home/blibb_web/shared/media');
 
 
