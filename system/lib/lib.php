@@ -6,7 +6,7 @@ class lib {
 
 
     public function log(){
-    	$audit = new audit();
+    	
     	$common = new common();
     	
         $elements = array();
@@ -26,7 +26,7 @@ class lib {
         }
         # TODO: Replace this insert for a Redis insert
         # we don't want to overload Mongo because the Audit
-		Db::insert('audit',  $elements);
+		// Db::insert('audit',  $elements);
 			
     }
 
