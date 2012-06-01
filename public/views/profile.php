@@ -50,29 +50,7 @@
 							  </div>
 							</div>
 
-							<div class="control-group">
-							  <label class="control-label" for="input04">Account Type</label>
-							  <div class="controls">
-								<label class="radio inline">
-									<span class="badge badge-success" rel="tooltip" title="first tooltip">Free</span>
-									<a class="help-inline btn btn-info" data-toggle="modal" href="#myModal">Upgrade</a>
-								</label>
-
-								<div class="modal hide fade" id="myModal">
-								  <div class="modal-header">
-									<a class="close" data-dismiss="modal">×</a>
-									<h3>Upgrade Account</h3>
-								  </div>
-								  <div class="modal-body">
-									<p>One fine body…</p>
-								  </div>
-								  <div class="modal-footer">
-									<a href="#" class="btn">Close</a>
-									<a href="#" class="btn btn-primary">Save changes</a>
-								  </div>
-								</div>
-							   </div>
-							</div>
+							
 							
 							<div id="imagebox" class="control-group">
 								<label class="control-label" for="inputFile">Picture</label>
@@ -101,22 +79,6 @@
 								  
 								</div>
 							  
-							</div>
-
-							<div class="control-group">
-							<label class="control-label" for="twitterinput">Twitter</label>
-							<div class="controls">
-							  <span class="badge badge-success help-inline">Connected</span>
-							</div>
-						  </div>
-
-						  <div class="control-group">
-							  <label class="control-label" for="facebookInput">Facebook</label>
-							  <div class="controls">
-								<span class="badge badge-error help-inline">Not Connected</span>
-								<a class="help-inline btn btn-info" href="#">Connect!</a>
-								
-							  </div>
 							</div>
 
 							<div class="offset2">
@@ -277,156 +239,7 @@
 					</div>
 				</div>
 
-				<div class="tab-pane" id="security">
-					<div class="well">
-						<form class="form-vertical">
-						  <fieldset>
-							<legend>Security Configuration</legend>
-							<div class"row">
-								<div class="span4">
-									<div class="control-group">
-										<label class="control-label" for="select01"><h2>:blibb numero 1</h2></label>
-										<div class="controls">
-										  <select id="select01">
-											<option>Public</option>
-											<option>Private</option>
-										  </select>
-										  <span class="help-inline">Privacy</span>
-										</div>
-										<div class="controls">
-										  <select id="select01">
-											<option>Permitted</option>
-											<option>Moderated</option>
-											<option>Closed</option>
-										  </select>
-										  <span class="help-inline">Comments</span>
-
-										</div>
-									</div>
-								</div>
-								<div class="span4 offset1">
-									<div class="control-group">
-										<label class="control-label" for="select01"><h2>:blibb numero 2</h2></label>
-										<div class="controls">
-										  <select id="select01">
-											<option>Public</option>
-											<option>Private</option>
-										  </select>
-										  <span class="help-inline">Privacy</span>
-										</div>
-										<div class="controls">
-										  <select id="select01">
-											<option>Permitted</option>
-											<option>Moderated</option>
-											<option>Closed</option>
-										  </select>
-										  <span class="help-inline">Comments</span>
-
-										</div>
-									</div>
-								</div>
-
-								<div class="span4">
-									<div class="control-group">
-										<label class="control-label" for="select01"><h2>:blibb numero 3</h2></label>
-										<div class="controls">
-										  <select id="select01">
-											<option>Public</option>
-											<option>Private</option>
-										  </select>
-										  <span class="help-inline">Privacy</span>
-										</div>
-										<div class="controls">
-										  <select id="select01">
-											<option>Permitted</option>
-											<option>Moderated</option>
-											<option>Closed</option>
-										  </select>
-										  <span class="help-inline">Comments</span>
-
-										</div>
-									</div>
-								</div>
-
-								<div class="span4 offset1">
-									<div class="control-group">
-										<label class="control-label" for="select01"><h2>:blibb numero 4</h2></label>
-										<div class="controls">
-										  <select id="select01">
-											<option>Public</option>
-											<option>Private</option>
-										  </select>
-										  <span class="help-inline">Privacy</span>
-										</div>
-										<div class="controls">
-										  <select id="select01">
-											<option>Permitted</option>
-											<option>Moderated</option>
-											<option>Closed</option>
-										  </select>
-										  <span class="help-inline">Comments</span>
-
-										</div>
-									</div>
-								</div>
-								
-							</div>
-							
-
-						  
-
-							<div class="span3 offset3">
-								<button class="btn btn-danger">Cancel</button>
-								<button type="submit" class="btn btn-success">Save changes</button>
-							</div>
-						  </fieldset>
-						</form>
-					</div>
-				</div>
-
-				<div class="tab-pane" id="payments">
-					<div class="well span9">
-						<form class="form-vertical">
-						  <fieldset>
-							<legend>Content Payment Threashold</legend>
-
-							<input id="range" class="span8" type="range" name="range" max="1" min="0" step="0.01"> 
-							<h2 class="help-inline pull-right" id="money-val"></h2>
-							
-						  </fieldset>
-						</form>
-					</div>
-
-					<div class="span9">
-						<div class="overview">
-							<div class="first"><strong>0</strong> total orders</div>
-							<div><strong>$0.00</strong> your earnings</div>
-							<div><strong>$0.00</strong> gross sales</div>
-							<div class="last"><strong>0</strong> order refunds</div>
-						</div>
-					</div>
-
-						<div class="row">
-							<div class="span5">
-								<div class="dashboard_box">
-									<div class="dashboard_box_title">Box title</div>
-									<div class="dashboard_box_inner">
-										<p>Hello dear user! give us the money! $.$ JAJAJAJA</p>
-									</div>
-								</div>
-							</div>
-							<div class="span5">
-								<div class="dashboard_box">
-									<div class="dashboard_box_title">Box title</div>
-									<div class="dashboard_box_inner">
-										<p>Hello dear user! give us the money! $.$ JAJAJAJA</p>
-									</div>
-								</div>
-							</div>
-						</div>
-				</div>
-			  </div>
-			</div>
+				
 
 		
 		<link href="css/fileuploader.css" rel="stylesheet" type="text/css">
@@ -436,8 +249,6 @@
 			$('#profile').tab('show');
 			$('#groups').tab('show');
 			$('#friends').tab('show');
-			$('#security').tab('show');
-			$('#payments').tab('show');
 		</script>
 
 		<script src="js/bootstrap-modal.js">
