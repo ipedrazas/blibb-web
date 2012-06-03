@@ -40,8 +40,8 @@ require_once(__DIR__.'/../inc/header.php');
 			 <input type="input" name="tags" value="" />
 				<fieldset>
 				<ul>
-					<li><a name="cancel" href="#" class="bNewBlibb">Cancel</a></li>
-					<li><a name="addItem" href="#" class="bNewBlibb">Add Item</a></li>
+					<li><a name="cancel" href="#" class="btn">Cancel</a></li>
+					<li><a name="addItem" href="#" class="btn btn-primary">Add Item</a></li>
 				</ul>
 			</fieldset>		
 		</form>
