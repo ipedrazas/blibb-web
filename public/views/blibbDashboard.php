@@ -92,7 +92,7 @@
 
 			<div class="row">
 				<div class="page-header">
-  					<h1>nombre del blibb - Dashboard</h1>
+  					<h1><?php echo $bli->name ?> - Dashboard</h1>
 				</div>
 			</div>
 	  		
@@ -107,7 +107,7 @@
 			  	<div class="tab-content" style="width: auto;">
 			    	<div class="tab-pane active span10" id="general">
 			    		<h3>Description:</h3>
-			    		<p id="desc"><!-- insert here description tag -->Bkakakabaklkalskalkslaksalksaklsklakslablklsakslaksl jhlkjfghfgdhfj hfdkjhsdkjghdkgjh hjkgfdhgjkdfgh jkfgh jkdfghkj hjkfdhgkdjgh kjhgjkhfgjk kjhdfskjghfgj kdfhgkjfghf kdjfhgkjdfhgf kjfdhgjkfghfdkghf kdfhgkjdfgkdjfghkdf</p>
+			    		<p id="desc"><!-- insert here description tag --><?php echo $bli->description ?></p>
 			    		<a data-toggle="modal" href="#myModal">Change</a>
 			    		
 
@@ -216,8 +216,11 @@
 			    	<!-- Tab: API -->
 			    	<div class="tab-pane span10" id="api">
 
+			    		<h3>Blibb URL</h3>
+			    		<code><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code>
+
 			    		<h3>Dev Key</h3>
-			    		<code>Jk8754jhjdshjJHnbljsf66565jhsjd</code>
+			    		<code><?php echo $bli->dk; ?></code>
 
 			    		<h3>API Methods</h3>
 
