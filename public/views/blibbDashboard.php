@@ -1,19 +1,7 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		
-		<title></title>
-		<meta name="description" content="">
-		<meta name="author" content="">
-		
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/bootstrap-responsive.css">
-		
-		<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+<?php
+	require_once(__DIR__.'/../inc/header.php');
+?>
+
 		<style type="text/css">
 
 			.navbar-inner {
@@ -74,19 +62,6 @@
 			
 		</style>
 		
-	</head>
-	
-	<body>
-
-		<div class="navbar">
-		  <div class="navbar-inner">
-		    <div class="container">
-		    	<a class="brand" href="#">
-				  :blibb
-				</a>
-		    </div>
-		  </div>
-		</div>
 
 		<div class="container">
 
@@ -132,7 +107,7 @@
 			    		<p>
 			    			<div class="thumbnails">
 								<a href="#" class="thumbnail span2">
-									<img src="http://placehold.it/160x120" alt="">
+									<img src="/actions/getImage?i=160&id=<?php echo $bli->img; ?>" alt="">
 								</a>
 				      		</div>
 				      		<a href="#">Change</a>  

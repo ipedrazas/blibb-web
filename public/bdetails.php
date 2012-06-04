@@ -14,6 +14,7 @@ class bDashboard extends lib {
     	$jb = $pest->get('/blibb/' . $bid . '/view/Default');
  		$bli = json_decode($jb);
  		$bli->dk = hash('sha1', $bli->name . $bli->decription);
+ 		$bli->id=$bid;
  		// print_r($bli);
  		$this->render('blibbDashboard', compact(bli));
     }
