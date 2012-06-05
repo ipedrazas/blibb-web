@@ -61,7 +61,7 @@ require_once(__DIR__.'/../inc/header.php');
 						<label for="pssword">Password:</label>
 						<input name="password" id="password" placeholder="Password" size="70" type="password" /><br>
 
-						<input type="submit" value="create">
+						<input type="submit" value="create" class="btn btn-primary">
 					</form>
 				<div id="errorMsg" class="msg error" style="display:none"></div>
 			</section>
