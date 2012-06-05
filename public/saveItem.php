@@ -43,7 +43,7 @@ class SaveItemApp extends lib {
 
 		// print_r($pestParams);
 
-		$pest = new Pest('http://localhost:5000');
+		$pest = new Pest(REST_API_URL);
 		$result = $pest->post('/blitem',$pestParams);
 		
 		$dest = $this->gt("f");

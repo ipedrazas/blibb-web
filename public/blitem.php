@@ -11,7 +11,7 @@ class Application extends lib {
     	$this->setRedirect();
 		$iid = $this->gt("i");
 
-		$pest = new Pest('http://localhost:5000');
+		$pest = new Pest(REST_API_URL);
     	$jb = $pest->get('/blitem/' . $iid );
 
  		$bli = json_decode($jb);
@@ -31,7 +31,6 @@ class Application extends lib {
 		$bli->COMMENTS = $eComments;
 
  		$b = $bli->b;
- 		$pest = new Pest('http://localhost:5000');
     	$bt = $pest->get('/blibb/' . $b . '/template' );
 
     	$btemplate = json_decode($bt);
