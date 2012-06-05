@@ -47,8 +47,8 @@ input, textarea{
 				    </div>
 
 				    <div class="offset1">
-				    	<input type="reset" id="reset" value="Cancel" name="cancel" class="btn btn-danger">
-				    	<input type="submit" id="submit" name="create" value="Save" class="btn">
+				    	<input type="reset" id="reset" value="Cancel" name="cancel" class="btn">
+				    	<input type="submit" id="submit" name="create" value="Save" class="btn btn-primary">
 				    </div>
 
 				    

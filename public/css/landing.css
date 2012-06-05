@@ -93,3 +93,26 @@ label {
 .posAbsolute {
 	position: fixed;
 }
+
+a {
+	color: #9D261D;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #5C1611;
+	text-decoration: underline;
+}
+
+#innernav ul {
+	margin-top: 25px;
+	list-style: none;
+	margin-left: 0;
+}
+
+#innernav ul li {
+	font-family: 'Arvo', Georgia, Times, serif;
+	font-size: 1.5em;
+	padding-left: 0;
+	margin-bottom: 20px;
+}
