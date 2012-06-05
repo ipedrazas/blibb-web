@@ -171,7 +171,7 @@ $key = $_GET['k'];
 $b = $_GET['bid'];
 $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
 
-$pest = new Pest('http://localhost:5000');
+$pest = new Pest(REST_API_URL);
 $songId = $pest->post('/song/id',array(
             'b' => $b,
             'k' => $key
