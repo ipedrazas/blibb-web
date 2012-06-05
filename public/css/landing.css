@@ -1,0 +1,95 @@
+body {
+	background: #eee;
+	border-top: 5px solid #B21006;
+}
+
+header {
+	margin-top: 45px;
+}
+
+h1 {
+	font-family: 'Arvo', Georgia, Times, serif;
+	font-size: 2.5em;
+}
+
+p {
+	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	font-size: 1.5em;
+	line-height: 1.5em;
+	text-align: justify;
+}
+
+form {
+	margin-top: 25px;
+}
+
+.input-prepend .add-on {
+	font-family: 'Arvo', Georgia, Times, serif;
+	background: #B21006;
+	border: 1px solid #333;
+	color: #EEE;
+	height: 2em;
+	width: 2em;
+	font-size: 2em;
+	line-height: 2em;
+	text-shadow: none;
+	-webkit-text-shadow: none;
+	-moz-text-shadow: none;
+}
+
+.input-prepend .btn {
+	font-size: 1.5em;
+	-webkit-border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px 3px 3px 3px;
+	border-radius: 3px 3px 3px 3px;
+}
+
+#email-reg {
+	font-size: 2em;
+	height: 2em;
+	line-height: 2em;
+	border: 1px solid #333;
+}
+
+a span {
+	font-size: 1.5em;
+}
+
+#registerOption {
+	margin-top: 25px;
+}
+
+#loginTab {
+	display: block;
+	background: #B21006;
+	text-align: center;
+	-webkit-border-radius: 0px 0px 3px 3px;
+	-moz-border-radius: 0px 0px 3px 3px;
+	border-radius: 0px 0px 3px 3px;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 1.4em;
+	line-height: 1.4em;
+	height: 1.6em;
+	
+	
+}
+
+#loginForm {
+	background: rgba(178, 16, 6, 1);
+	color: #FFF;
+	-webkit-border-radius: 0px 0px 0px 3px;
+	-moz-border-radius: 0px 0px 0px 3px;
+	border-radius: 0px 0px 0px 3px;
+	
+}
+
+label {
+	color: #FFF;
+	font-size: 1.3em;
+	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+}
+
+.posAbsolute {
+	position: fixed;
+}
