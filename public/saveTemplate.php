@@ -12,7 +12,7 @@ class SaveTemplateApplication extends lib {
 		$key = getKey();
 		if($k===$key){
 			$view = 'getControls';
-			$pest = new Pest('http://localhost:5000');
+			$pest = new Pest(REST_API_URL);
 			$tid = $pest->post('/template', array(
 				'bname' => $name,
 				'bdesc' => $desc,

@@ -23,7 +23,7 @@
 		$c++;
 	}
 
-	$pest = new Pest('http://localhost:5000');
+	$pest = new Pest(REST_API_URL);
 	$result = $pest->get('/ctrl/view/' . $cid);
 
 	$ctrlView = json_decode($result);

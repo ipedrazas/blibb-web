@@ -2,7 +2,7 @@
 	
 	require_once(__DIR__.'/../system/config.php');
 
-	$pest = new Pest('http://localhost:5000');
+	$pest = new Pest(REST_API_URL);
 	$cid = $_POST['c_id'];
 	$tid = $_POST['t_id'];
 
