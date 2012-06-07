@@ -2,7 +2,6 @@
 
 require_once(__DIR__.'/../system/config.php');
 
-
 class Application extends lib {
 
     public function run() {
@@ -13,9 +12,9 @@ class Application extends lib {
 		$current_user = current_user();
 
 		$pest = new Pest(REST_API_URL);
+		$url_api = '/blibb/' . $bid . '/view/Default';
     	$jb = $pest->get('/blibb/' . $bid . '/view/Default');
  		$bli = json_decode($jb);
-
  		// print_r($bli);
 
  		$bname = $bli->name;
@@ -31,7 +30,7 @@ class Application extends lib {
  		$view = $bli->Default[0];
  		$blibbBox = stripcslashes($view->rb);
 
- 		$fTags = __DIR__."/templates/taglist.html";
+		$fTags = __DIR__."/templates/taglist.html";
 		$cTags = file($fTags); 
 		$taglist = implode($cTags);
 
@@ -83,7 +82,7 @@ class Application extends lib {
 						$slug = $field;
 						$obj = $eRs->$field;
 						$song_id = $obj->id->oid;
-						$value =  $song_id; //'<audio controls preload><source src="actions/playMp3?i=' . $song_id . '" /></audio>';
+						$value =  $song_id;
 						$_blitem[$field] = $value;
 					}else if($type=='33'){						
 						$url = $eRs->$field->v;
@@ -94,8 +93,10 @@ class Application extends lib {
 							$tArray['domain'] = 'Processing...';
 							$_blitem['BOOKMARK'] = $tArray;	
 						}
-						
-					}else{
+					}else if ($type=='3d') {
+						$_blitem['TWITTER'] = $eRs->$field->v;
+					}						
+					else{
 						if(isset($eRs->$field->v)){
 							$_blitem[$field] = $eRs->$field->v;
 						}else{
@@ -144,7 +145,7 @@ class Application extends lib {
 		// print_r($this->getMenuBar());
 
 		$this->render($view, compact('content','css', 'owner','bid', 'entries', 'current_user'));
-
+ 		
         
     }
 

@@ -15,28 +15,31 @@ class Login extends lib {
 			$user = stripslashes($user);
 			$pwd = stripslashes($pwd);
 
-			$pest = new Pest(REST_API_URL);
+			if($user && $pwd){
+				$pest = new Pest(REST_API_URL);
 
-			try {
-			    $result = $pest->post('/login',array(
-					'u' => $user,
-					'p' => $pwd
-				));
-				log_in($result);
-				if(!isset($_SESSION['redirect_to'])){
-						$destURL = 'main';
-				}else{
-					$destURL = $_SESSION['redirect_to'];	
-					unset($_SESSION['redirect_to']);
-				}						
-				header("Location: $destURL");
-				exit();
+				try {
+				    $result = $pest->post('/login',array(
+						'u' => $user,
+						'p' => $pwd
+					));
+					log_in($result);
+					if(!isset($_SESSION['redirect_to'])){
+							$destURL = 'main';
+					}else{
+						$destURL = $_SESSION['redirect_to'];	
+						unset($_SESSION['redirect_to']);
+					}						
+					header("Location: $destURL");
+					exit();
 
-			} catch (Pest_NotFound $e) {
-			    // 404
-			    $errorMsg = '<li class="errorLogin">User or Password not found!</li>';
+				} catch (Pest_NotFound $e) {
+				    // 404
+				    $errorMsg = '<li class="errorLogin">User or Password not found!</li>';
+				}
+			}else{
+				$errorMsg = '<li class="errorLogin">User or Password not found!</li>';
 			}
-			
 		}else{
 			$errorMsg = '';
 		}
