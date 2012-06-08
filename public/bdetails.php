@@ -15,11 +15,13 @@ class bDashboard extends lib {
  		$bli = json_decode($jb);
  		$bli->dk = hash('sha1', $bli->name . $bli->decription);
  		$bli->id=$bid;
- 		// print_r($bli);
+
  		$jfields = $pest->get('/blibb/meta/fields/' . $bid );
  		$fields = json_decode($jfields);
  		$bli->fields = $fields;
  		// print_r($fields);
+ 		// print_r($bli);
+ 		
  		$this->render('blibbDashboard', compact(bli));
     }
 }

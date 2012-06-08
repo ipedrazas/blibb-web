@@ -62,6 +62,41 @@
 			
 		</style>
 		
+<link href="css/fileuploader.css" rel="stylesheet" type="text/css">
+<script src="js/fileuploader.js" type="text/javascript"></script>
+<script>
+    $(function() {             
+        createUploader('imageUploader', '<?php echo $bli->id  ?>', '<?php echo $key ?>');
+    }); 
+    function createUploader(element, bid, key){            
+        var uploader = new qq.FileUploader({
+            element: document.getElementById(element),
+            action: 'actions/uploadImage',
+            allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
+             params: {
+                bid: bid,
+                k: key
+            },
+            onComplete: function(id, fileName, responseJSON){
+            	var resp =  responseJSON.id;
+            	$('#bimg').val(resp);
+            	var srcI = "actions/getImage?id=" + resp + "&i=260";
+            	updatePicture(resp);
+            	$("#img_image").attr("src",srcI);
+            	$(".qq-upload-failed-text").hide();
+            },
+        });
+    }
+
+    function updatePicture(picture){
+		$.post("/actions/updateImage", { id: picture, oid: '<?php echo $bli->id ?>', type: 'blibb' },
+		   function(data) {
+		     $alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>" + data +"</div>";
+			$('#imagebox').after($alert);
+		   });
+	}
+    
+</script>
 
 		<div class="container">
 
@@ -107,10 +142,20 @@
 			    		<p>
 			    			<div class="thumbnails">
 								<a href="#" class="thumbnail span2">
-									<img src="/actions/getImage?i=160&id=<?php echo $bli->img; ?>" alt="">
+									<img id="img_image" src="/actions/getImage?i=160&id=<?php echo $bli->img; ?>" alt="">
 								</a>
 				      		</div>
-				      		<a href="#">Change</a>  
+				      		
+				      		<input type="hidden" name="bimage" value="" id="bimg">
+							<div class="control-group">
+				      			<label class="control-label">Change</label>
+				      			<div class="controls">
+				        			<div id="imageUploader" name="uploadImage">
+										<noscript><p>Please enable JavaScript to use file uploader.</p></noscript>         
+									</div>
+									
+				      			</div>
+				    		</div>
 			    		</p>
 
 			    		<!-- info boxes -->
@@ -180,7 +225,9 @@
 								<div class="dashboard_box">
 									<div class="dashboard_box_title">API usage (?)</div>
 									<div class="dashboard_box_inner">
-										toma que toma que toma, arsa arriquitaun
+										<strong>Num of Elements:</strong> <?php echo $bli->num_items; ?>
+										<br>
+										<strong>Get Calls:</strong> <?php echo $bli->num_views; ?>
 									</div>
 								</div>
 							</div>
@@ -203,14 +250,13 @@
 			    		<div class="accordion-group">
               				<div class="accordion-heading">
 				                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#method1">
-				                	Get Item
+				                	Get Items
 				                </a>
               				</div>
               				<div id="method1" class="accordion-body collapse in">
                 				<div class="accordion-inner">
-                  					<code>hola que tal</code>
                   					<h3>Options</h3>
-
+                  					<p>This call will return the objects</p>
                 				</div>
               				</div>
             			</div>
@@ -218,7 +264,7 @@
             			<div class="accordion-group">
               				<div class="accordion-heading">
 				                <a class="accordion-toggle" data-toggle="collapse" href="#method2">
-				                	Post Item
+				                	Create Item
 				                </a>
               				</div>
               				<div id="method2" class="accordion-body collapse in">
@@ -235,7 +281,23 @@
                 				</div>
               				</div>
             			</div>
-
+						<div class="accordion-group">
+              				<div class="accordion-heading">
+				                <a class="accordion-toggle" data-toggle="collapse" href="#method3">
+				                	Get Items by Tag
+				                </a>
+              				</div>
+              				<div id="method3" class="accordion-body collapse in">
+                				<div class="accordion-inner">
+                					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag'; ?></code></h3>
+                  					<h3>Parameters</h3>
+                  					<code>tag</code>
+                  					<p>
+                  						This API call returns all the items with a tag equal specified in the url.
+                  					</p>
+                				</div>
+              				</div>
+            			</div>
 			    	</div>
 
 			    	<!-- Tab: Security-->
