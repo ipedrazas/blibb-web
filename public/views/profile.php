@@ -20,7 +20,6 @@
 				<li class="active"><a href="#profile" data-toggle="tab"><i class="icon-user"></i> Profile</a></li>
 				<li><a href="#friends" data-toggle="tab"><i class="icon-star"></i> Friends</a></li>
 				<li><a href="#security" data-toggle="tab"><i class="icon-lock"></i> Security</a></li>
-				<li><a href="#payments" data-toggle="tab"><i class="icon-shopping-cart"></i> Payments</a></li>
 			  </ul>
 			  <div class="tab-content" style="width: auto;">
 				<div class="tab-pane active" id="profile">
