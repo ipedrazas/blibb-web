@@ -223,8 +223,14 @@
               				</div>
               				<div id="method2" class="accordion-body collapse in">
                 				<div class="accordion-inner">
-                  					<code>hola que tal</code>
-                  					<h3>Options</h3>
+                  					<code><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code>
+                  					<h3>Parameters</h3>
+                  					<code>key</code>
+                  					<code>app_token</code>
+                  					<?php 
+                  						foreach ($bli->fields as $field) {
+                  						   	echo '<code>' . $field . '</code>';
+                  						   }    ?>
 
                 				</div>
               				</div>
