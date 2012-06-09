@@ -273,6 +273,7 @@
                   					<h3>Parameters</h3>
                   					<code>key</code>
                   					<code>app_token</code>
+                  					<code>tags</code>
                   					<?php 
                   						foreach ($bli->fields as $field) {
                   						   	echo '<code>' . $field . '</code>';
