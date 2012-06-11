@@ -139,12 +139,15 @@ class Application extends lib {
 			$view = 'viewBlibb';
 		}
 
-
+		$a11y = $this->gt('a11y');
+		if($a11y==1){
+			$view='a11y';
+		}
 		$content = str_replace('<blibb:menuBar/>', $this->getMenuBar(), $content);
 		$content = str_replace('<blibb:footer/>', $this->getFooter(), $content);
 		// print_r($this->getMenuBar());
 
-		$this->render($view, compact('content','css', 'owner','bid', 'entries', 'current_user'));
+		$this->render($view, compact('content','css', 'owner','bid', 'entries', 'current_user', 'blibb'));
  		
         
     }

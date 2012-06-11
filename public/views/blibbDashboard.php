@@ -59,6 +59,14 @@
 			.accordion-heading {
 				background: #F7F7F7;
 			}
+
+			.parameter{
+				color: blue;
+			}
+			.optionalParameter{
+				color: orange;
+			}
+
 			
 		</style>
 		
@@ -227,7 +235,7 @@
 									<div class="dashboard_box_inner">
 										<strong>Num of Elements:</strong> <?php echo $bli->num_items; ?>
 										<br>
-										<strong>Get Calls:</strong> <?php echo $bli->num_views; ?>
+										<strong>Hits:</strong> <?php echo $bli->num_views; ?>
 									</div>
 								</div>
 							</div>
@@ -240,7 +248,6 @@
 
 			    		<h3>Blibb URL</h3>
 			    		<code><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code>
-
 			    		<h3>Dev Key</h3>
 			    		<code><?php echo $bli->dk; ?></code>
 
@@ -255,8 +262,40 @@
               				</div>
               				<div id="method1" class="accordion-body collapse in">
                 				<div class="accordion-inner">
-                  					<h3>Options</h3>
-                  					<p>This call will return the objects</p>
+                					<h3>Method</he>
+                					<code><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug ."/<span class=\"optionalParameter\">[page]</span>"; ?></code>
+                  					<h3>Parameters</h3>
+                  					<code class="optionalParameter">[optional] page:</code>
+                  					<p>This API call returns a maximum of 20 objects. The result contains the numer of objects available but it's up to the app. to fetch the following pages if nedded.</p>
+                  					<h3>Result</h3>
+                  					<p>
+                  						The json returned has the follwoing structure:
+                  						<ul>
+                  							<li>
+                  								<strong>blibb</strong>
+                  								<ul>
+                  									<li><strong>id:</strong> ID of he Blibb</li>
+                  									<li><strong>name:</strong> name of the Blibb</li>
+                  									<li><strong>description:</strong> description of the Blibb</li>
+                  									<li><strong>owner:</strong> owner of the Blibb</li>
+                  									<li><strong>img_id:</strong> picture id of the image associted to this Blibb</li>
+                  									<li><strong>img_sizes:</strong> array with the different available widths for the image</li>
+                  									<li><strong>tags:</strong> array of tags</li>
+													<li><strong>num_items:</strong> total items contained in this Blibb</li>
+                  									<li><strong>num_views:</strong> number of hits</li>
+                  								</ul>
+                  							</li>
+                  							<li>
+                  								<strong>items:</strong> items returned by this request.
+                  								<ul>
+                  									<?php 
+				                  						foreach ($bli->fields as $field) {
+				                  						   	echo '<li><strong>' . $field . '</strong></li>';
+				                  						   }    ?>
+                  								</ul>
+                  							</li>
+                  						</ul>
+                  					</p>
                 				</div>
               				</div>
             			</div>
@@ -290,7 +329,7 @@
               				</div>
               				<div id="method3" class="accordion-body collapse in">
                 				<div class="accordion-inner">
-                					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag'; ?></code></h3>
+                					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag/<span class="parameter">&lt;tag&gt;</span>' ; ?></code></h3>
                   					<h3>Parameters</h3>
                   					<code>tag</code>
                   					<p>

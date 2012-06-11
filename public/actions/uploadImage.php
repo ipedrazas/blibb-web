@@ -169,6 +169,12 @@ class qqFileUploader {
             $image = new SimpleImage();
             $image->load($filepath);
 
+            // $this->thumbnail_box($image, $uploadDirectory, $uploadDirectory . '260/',  $imageName);
+            // $this->thumbnail_box($image, $uploadDirectory, $uploadDirectory . '220/',  $imageName);
+            // $this->thumbnail_box($image, $uploadDirectory, $uploadDirectory . '160/',  $imageName);
+            // $this->thumbnail_box($image, $uploadDirectory, $uploadDirectory . '60/',  $imageName);
+            
+
             $this->resizeImage($image, '260', $uploadDirectory, $imageName);
             $this->resizeImage($image, '220', $uploadDirectory, $imageName);
             $this->resizeImage($image, '160', $uploadDirectory, $imageName);
@@ -187,11 +193,11 @@ class qqFileUploader {
         
     }
 
-    function thumbnail_box($image, $path, $imagename){
-        $img = imagecreatefromjpeg($path . '260/'. $imagename);
+    function thumbnail_box($image, $path_source, $path_target, $imagename){
+        $img = imagecreatefromjpeg($path_source . $imagename);
         $thumbnail = $image->thumbnail_box($img,160,120);
         imagedestroy($img);
-         $imagePath = $path . '160x120/';
+         $imagePath = $path_target;
         if (!is_dir($imagePath)) {
             mkdir($imagePath ,0755,true);
         }
