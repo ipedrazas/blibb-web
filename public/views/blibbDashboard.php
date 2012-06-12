@@ -263,7 +263,7 @@
               				<div id="method1" class="accordion-body collapse in">
                 				<div class="accordion-inner">
                 					<h3>Method</he>
-                					<code><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug ."/<span class=\"optionalParameter\">[page]</span>"; ?></code>
+                					<code><a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug ."/<span class=\"optionalParameter\">[page]</span>"; ?></a></code>
                   					<h3>Parameters</h3>
                   					<code class="optionalParameter">[optional] page:</code>
                   					<p>This API call returns a maximum of 20 objects. The result contains the numer of objects available but it's up to the app. to fetch the following pages if nedded.</p>
