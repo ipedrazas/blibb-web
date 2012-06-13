@@ -193,11 +193,11 @@ class qqFileUploader {
         
     }
 
-    function thumbnail_box($image, $path_source, $path_target, $imagename){
-        $img = imagecreatefromjpeg($path_source . $imagename);
+     function thumbnail_box($image, $path, $imagename){
+        $img = imagecreatefromjpeg($path . '260/'. $imagename);
         $thumbnail = $image->thumbnail_box($img,160,120);
         imagedestroy($img);
-         $imagePath = $path_target;
+         $imagePath = $path . '160x120/';
         if (!is_dir($imagePath)) {
             mkdir($imagePath ,0755,true);
         }

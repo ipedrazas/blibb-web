@@ -257,7 +257,7 @@
 			    		<div class="accordion-group">
               				<div class="accordion-heading">
 				                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#method1">
-				                	Get Items
+				                	Get Items - Paginated
 				                </a>
               				</div>
               				<div id="method1" class="accordion-body collapse in">
@@ -308,7 +308,7 @@
             			<div class="accordion-group">
               				<div class="accordion-heading">
 				                <a class="accordion-toggle" data-toggle="collapse" href="#method2">
-				                	Create Item
+				                	Add Item
 				                </a>
               				</div>
               				<div id="method2" class="accordion-body collapse in">
@@ -332,6 +332,57 @@
               				<div class="accordion-heading">
 				                <a class="accordion-toggle" data-toggle="collapse" href="#method3">
 				                	Get Items by Tag
+				                </a>
+              				</div>
+              				<div id="method3" class="accordion-body collapse in">
+                				<div class="accordion-inner">
+                					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag/<span class="parameter">&lt;tag&gt;</span>' ; ?></code></h3>
+                  					<h3>Parameters</h3>
+                  					<code>tag</code>
+                  					<p>
+                  						This API call returns all the items with a tag equal specified in the url.
+                  					</p>
+                				</div>
+              				</div>
+            			</div>
+            			<div class="accordion-group">
+              				<div class="accordion-heading">
+				                <a class="accordion-toggle" data-toggle="collapse" href="#method3">
+				                	Add Tag to Item
+				                </a>
+              				</div>
+              				<div id="method3" class="accordion-body collapse in">
+                				<div class="accordion-inner">
+                					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag/<span class="parameter">&lt;tag&gt;</span>' ; ?></code></h3>
+                  					<h3>Parameters</h3>
+                  					<code>tag</code>
+                  					<p>
+                  						This API call returns all the items with a tag equal specified in the url.
+                  					</p>
+                				</div>
+              				</div>
+            			</div>
+            			<div class="accordion-group">
+              				<div class="accordion-heading">
+				                <a class="accordion-toggle" data-toggle="collapse" href="#method3">
+				                	Get Comments
+				                </a>
+              				</div>
+              				<div id="method3" class="accordion-body collapse in">
+                				<div class="accordion-inner">
+                					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag/<span class="parameter">&lt;tag&gt;</span>' ; ?></code></h3>
+                  					<h3>Parameters</h3>
+                  					<code>tag</code>
+                  					<p>
+                  						This API call returns all the items with a tag equal specified in the url.
+                  					</p>
+                				</div>
+              				</div>
+            			</div>
+            			<div class="accordion-group">
+              				<div class="accordion-heading">
+				                <a class="accordion-toggle" data-toggle="collapse" href="#method3">
+				                	Add Comment to Item
 				                </a>
               				</div>
               				<div id="method3" class="accordion-body collapse in">
