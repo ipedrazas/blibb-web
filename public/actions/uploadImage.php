@@ -178,7 +178,7 @@ class qqFileUploader {
             $this->resizeImage($image, '260', $uploadDirectory, $imageName);
             $this->resizeImage($image, '220', $uploadDirectory, $imageName);
             $this->resizeImage($image, '160', $uploadDirectory, $imageName);
-            $this->thumbnail_box($image, $uploadDirectory, $imageName);
+            //$this->thumbnail_box($image, $uploadDirectory, $imageName);
             $this->resizeImage($image, '60', $uploadDirectory, $imageName);
             
             

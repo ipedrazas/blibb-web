@@ -95,13 +95,18 @@ class Application extends lib {
 						}
 					}else if ($type=='3d') {
 						$_blitem['TWITTER'] = $eRs->$field->v;
-					}						
-					else{
 						if(isset($eRs->$field->v)){
-							$_blitem[$field] = $eRs->$field->v;
+							if(isset($eRs->$field->v->name)){
+								$twitter = $eRs->$field->v;
+								$_blitem[$field] = $twitter->name . '<br>' . $twitter->screen_name . '<br>' . $twitter->description . '<br><img src="' . $twitter->profile_image_url . '"><br>' . $twitter->location;
+							}else{
+								$_blitem[$field] = $eRs->$field->v;
+							}
 						}else{
-							$_blitem[$field] = '';
+								$_blitem[$field] = $eRs->$field->v;
 						}
+					}else{
+							$_blitem[$field] = $eRs->$field->v;
 						
 					}						
 				}
