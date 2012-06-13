@@ -86,7 +86,6 @@ require_once(__DIR__.'/../inc/header.php');
         <div class="span10">
       <?php
 
-        echo  $blbb;
         $i = 0;
         $row = 1;
         $endRow = false;

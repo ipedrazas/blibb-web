@@ -5,7 +5,6 @@ require_once(__DIR__.'/../system/config.php');
 class NewUserApplication extends lib {
 
     public function run() {
-		$current_user = require_login();    	
 
 		$name = $this->gt("username");
 		$pwd = $this->gt("pwd");
@@ -13,21 +12,30 @@ class NewUserApplication extends lib {
 		$code = $this->gt("invite");
 
 		// 
-		
-		$user = new User();
-		$user->n = $name;
-		$user->e = $email;
-		$salt = sha1($email . strtotime("now"));
-		$cpw = sha1($pwd . $salt);
-		$user->p = $cpw;
-		$user->s = $salt;
-		$user->a = false;
-		$user->rp = substr(sha1($email . strtotime("now").$email),0,-2);
-		$user->c =  new DateTime('now');
-		Dbo::save($user);
+		$pestParams = array();
+		$pestParams['user'] = $name;
+		$pestParams['pwd'] = $pwd;
+		$pestParams['email'] = $email;
+		$pestParams['code'] = $code;
 
-		$msg = "User $name created"; 
-	    $this->render('showMessage',  compact('msg'));
+		$pest = new Pest(REST_API_URL);
+
+		$jval = $pest->get('/sys/validate/' . $code);
+		$val = json_decode($jval);
+
+		if($val->result){
+			$jresult = $pest->post('/user',$pestParams);
+			$result = json_decode($jresult);
+			
+
+		}else{
+			$msg =  'Code is not valid';
+			$this->render('registry',  compact('msg'));
+		}
+		
+		
+		// print_r($res);
+		// header("Location: login");
     }
 
 }

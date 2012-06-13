@@ -7,7 +7,7 @@ class SaveItemApp extends lib {
 
     public function run() {
 
-    	$user = current_user();
+    	$user = require_login();
 
 		$bid = $this->gt("b");
 		$bkey = $this->gt("k");

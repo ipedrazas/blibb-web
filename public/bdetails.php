@@ -13,7 +13,7 @@ class bDashboard extends lib {
 		$pest = new Pest(REST_API_URL);
     	$jb = $pest->get('/blibb/' . $bid . '/view/Default');
  		$bli = json_decode($jb);
- 		$bli->dk = hash('sha1', $bli->name . $bli->decription);
+ 		$bli->dk = hash('sha1', $bli->name . $bli->description);
  		$bli->id=$bid;
 
  		$jfields = $pest->get('/blibb/meta/fields/' . $bid );
@@ -22,7 +22,7 @@ class bDashboard extends lib {
  		// print_r($fields);
  		// print_r($bli);
  		
- 		$this->render('blibbDashboard', compact(bli));
+ 		$this->render('blibbDashboard', compact('bli'));
     }
 }
 

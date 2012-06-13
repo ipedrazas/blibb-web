@@ -7,11 +7,13 @@ class Application extends lib {
 
     public function run() {
 
+    	
+
 		$bname = $this->gt("bname");
 		$bdesc = $this->gt("bdesc");
 		$bgroup = $this->gt("bgroup");
 		$template = $this->gt("btemplate");
-		$user = current_user();
+		$user = require_login();
 		$key = $this->gt("bkey");
 		$bimage = $this->gt("bimage");
 		$bslug = $this->gt("bslug");

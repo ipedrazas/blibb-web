@@ -5,6 +5,7 @@ require_once(__DIR__.'/../system/config.php');
 class SaveTemplateApplication extends lib {
 
     public function run() {
+    	
 		$current_user = require_login();
 		$name = $this->gt("template_name");
 		$desc = $this->gt("template_desc");

@@ -46,7 +46,7 @@ $key = getKey();
       <div class="navbar-inner">
         <div class="container">
           <a href="/" class="brand">
-            <img src="/img/blibb-logo-30-2white.png" alt="Blibb" title="Blibb" border="0"/> <span class="topTitle">:blibb</span>  
+           <span class="topTitle">:blibb</span>  
           </a>
           <?php
             if(empty($userName)){

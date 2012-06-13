@@ -77,6 +77,11 @@ require_once(__DIR__.'/../inc/header.php');
         					<input type="text" name="invite" class="input-xlarge" id="invite">
         					<p class="help-block">Enter here your code for our private beta</p>
       					</div>
+      					<?php
+							if(isset($msg)){
+								echo "<div id=\"userMsg\" class='alert alert-error'>".$msg."</div>";
+							}
+						?>
     				</div>
 
     				<div class="form-actions">
@@ -85,6 +90,7 @@ require_once(__DIR__.'/../inc/header.php');
 			        </div>
   				</fieldset>
 			</form>
+			
 
 
 		</div>

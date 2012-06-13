@@ -110,7 +110,7 @@
 
 			<div class="row">
 				<div class="page-header">
-  					<h1><?php echo $bli->name ?> - Dashboard</h1>
+  					<h1><a href="blibb?b=<?php echo $bli->id; ?>"><?php echo $bli->name; ?></a> - Dashboard</h1>
 				</div>
 			</div>
 	  		
@@ -247,7 +247,7 @@
 			    	<div class="tab-pane span10" id="api">
 
 			    		<h3>Blibb URL</h3>
-			    		<code><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code>
+			    		<code><a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></a></code>
 			    		<h3>Dev Key</h3>
 			    		<code><?php echo $bli->dk; ?></code>
 
@@ -289,13 +289,18 @@
                   								<strong>items:</strong> items returned by this request.
                   								<ul>
                   									<?php 
+                  										$curl_params = '';
+                  										$i=1;
 				                  						foreach ($bli->fields as $field) {
+				                  							$curl_params .= $field . "=test-" . $i++ . "&";
 				                  						   	echo '<li><strong>' . $field . '</strong></li>';
-				                  						   }    ?>
+				                  						}    
+				                  						$curl_params = substr_replace($curl_params ,"",-1);
+				                  					?>
                   								</ul>
                   							</li>
                   						</ul>
-                  					</p>
+                  					</p>                  					
                 				</div>
               				</div>
             			</div>
@@ -318,6 +323,8 @@
                   						   	echo '<code>' . $field . '</code>';
                   						   }    ?>
 
+                  					<h3>Test</h3>
+                  					<code>curl -d "key=test&app_token=test&<?php echo $curl_params; ?>" <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code>
                 				</div>
               				</div>
             			</div>
