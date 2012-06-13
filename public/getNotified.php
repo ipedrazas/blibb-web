@@ -12,8 +12,8 @@ class Application extends lib {
    	// Add email to DB
    		$ip = $common->getIpAddress();	
 		$browser = $_SERVER['HTTP_USER_AGENT'];
-		date_default_timezone_set('Europe/London');
-		Db::insert('alpheta',  array('e' =>  $email, 'i' => $ip, 'b' => $browser, 'c' => new DateTime('now')));
+		
+		
 
 	 	$subject = 'Blibb Notification List';
 		$file = __DIR__."/../data/mail.html";
@@ -29,6 +29,13 @@ class Application extends lib {
 		$mail->sendMail($email, $email, $subject, $html, $text);
 	
 		$msg = "<h2>Thanks!</h2>Stay tunned, we're planning to start sending invitations pretty soon!";
+		$pest = new Pest(REST_API_URL);
+		$result = $pest->post('/sys/addToBeta',array(
+			'email' => $email,
+			'ip' => $ip,
+			'browser' => $browser
+		));
+
 	    $this->render('showMessage',  compact('msg'));
     }
 

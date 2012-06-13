@@ -7,13 +7,12 @@ class Application extends lib {
 
     public function run() {
 
-    	
+    	$user = require_login();
 
 		$bname = $this->gt("bname");
 		$bdesc = $this->gt("bdesc");
 		$bgroup = $this->gt("bgroup");
 		$template = $this->gt("btemplate");
-		$user = require_login();
 		$key = $this->gt("bkey");
 		$bimage = $this->gt("bimage");
 		$bslug = $this->gt("bslug");
@@ -30,9 +29,18 @@ class Application extends lib {
 		));
 
 		$jsonResult = json_decode($result);
-		$result = $jsonResult->id;
+		print_r($jsonResult);
+		if(isset($jsonResult->id)){
+			// we have a new object, rediect
+			$result = $jsonResult->id;
+			header("Location: addItem?b=$result");
+		}else{
+			$_SESSION['ERROR_MSG'] = $jsonResult->error;
+			header("Location: newBlibb");
+		}
+		
 
-		header("Location: addItem?b=$result");
+		
  		// header("Location: editBlibbCss?b=$result");
     	
     }

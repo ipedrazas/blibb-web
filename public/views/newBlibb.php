@@ -163,9 +163,12 @@
     		</div>
 			
 
-			<?php if($msg){
-				echo '<div id="errorMsg" class="msg error" >'.$msg.'</div>';
-			 } ?>
+			<div id="errorMsg" class="alert alert-error" style="display:none"></div>
+			<?php
+				if(isset($_SESSION['ERROR_MSG'])){					
+					echo '<div id="error" class="alert alert-error">'.$_SESSION['ERROR_MSG'].'</div>';
+				}
+			?>
 
 			<ul class="offset2">
 				<li><a href="newTemplate" class="btn">Create a new Template</a></li>
@@ -178,7 +181,7 @@
 				
 </div>
 
-			
+
 
 <?php
 require_once(__DIR__.'/../inc/footer.php');
