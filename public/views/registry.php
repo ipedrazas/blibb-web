@@ -101,34 +101,34 @@ require_once(__DIR__.'/../inc/header.php');
 				$.get("/actions/checkInvite", { id: invite },
 					   function(data) {
 					   	if(data==='True'){
-							$alert = "<div id=\"userMsg\" class='alert alert-success'><i class=\"icon-ok\"></i></div>";
+							var alert = "<div id=\"userMsg\" class='alert alert-success'><i class=\"icon-ok\"></i></div>";
 							$('#user').after($alert);
 					   	}else{
-							$alert = "<div id=\"userMsg\" class='error'><i class=\"icon-remove\" ></i></div>";
+							var alert = "<div id=\"userMsg\" class='alert alert-error'><i class=\"icon-remove\" ></i></div>";
 							$('#user').after($alert);
 					   	}
 					   	$('#userMsg').delay(3000).fadeOut('slow');
 					    
 					});
-			}
+			});
 			
 			$('#user').live("onfocusin", function(){	
 				$('#userMsg').hide();
 			});
 
-			$('#user').live("focusout", function(){	
+			$('#invite').live("focusout", function(){	
 				var user = $(this).val();
-				if(user.length>2){
+				if(user.length > 2){
 					$.get("/actions/isAvailable", { user: user },
 					   function(data) {
 					   	if(data==='True'){
-							$alert = "<div id=\"userMsg\" class='alert alert-success'><i class=\"icon-ok\"></i></div>";
-							$('#user').after($alert);
+							var alert = "<div id=\"inviteMsg\" class='alert alert-success'><i class=\"icon-ok\"></i></div>";
+							$('#invite').after($alert);
 					   	}else{
-							$alert = "<div id=\"userMsg\" class='error'><i class=\"icon-remove\" ></i></div>";
-							$('#user').after($alert);
+							var alert = "<div id=\"inviteMsg\" class='alert alert-error'><i class=\"icon-remove\" ></i> Sorry, but... User already exists</div>";
+							$('#invite').after($alert);
 					   	}
-					   	$('#userMsg').delay(8000).fadeOut('slow');
+					   	$('#inviteMsg').delay(6000).fadeOut('slow');
 					    
 					});
 				}

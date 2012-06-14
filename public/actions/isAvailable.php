@@ -13,9 +13,10 @@ class UserAvailableApplication extends lib {
     	
     	$users = json_decode($jresp);
     	if(isset($users->email)){
-    		echo 'True';
-    	}else{
+            // if it's set, the user is taken
     		echo 'False';
+    	}else{
+    		echo 'True';
     	}
     }
 

@@ -168,8 +168,8 @@ input, textarea{
 								</div>
 							
 							<div class="">
-						    	<input type="reset" id="reset" value="Cancel" class="btn btn-danger">
-						    	<input type="submit" id="submit" value="Save" class="btn">
+						    	<input type="reset" id="reset" value="Cancel" class="btn">
+						    	<input type="submit" id="submit" value="Save" class="btn btn-primary">
 						    </div>
 					  </fieldset>
    	        		</form>	

@@ -27,7 +27,7 @@ class NewUserApplication extends lib {
 			$jresult = $pest->post('/user',$pestParams);
 			$result = json_decode($jresult);
 			
-
+			header("Location: login");
 		}else{
 			$msg =  'Code is not valid';
 			$this->render('registry',  compact('msg'));
