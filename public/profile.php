@@ -13,26 +13,31 @@ class ProfileApplication extends lib {
 		$user = json_decode($jr);
 
 
-		if($current_user === $user){
+		if($current_user === $user->name){
 			$view = "profile";
 		}else{
 			//readonly
-			$view = "profile";
-			
+			$view = "profileRO";			
 		}
 
 		// print_r($user);
+		// print_r($current_user);
 
+		if(isset($user->error)){
+			header('HTTP/1.0 404 Not Found');
+		}else{
+			// username
+			$username = $user->name;
+			// email
+			$email = $user->email;
+			// picture
+			$pwd = "password";
+			$image = $user->t260;
+
+		    $this->render($view,  compact('username','email','pwd','image'));
+		}
 		
-		// username
-		$username = $nuser;
-		// email
-		$email = $user->email;
-		// picture
-		$pwd = "password";
-		$image = $user->t260;
-
-	    $this->render($view,  compact('username','email','pwd','image'));
+		
     }
 
 }
