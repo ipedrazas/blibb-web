@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__.'/../system/config.php');
+require_once(__DIR__.'/../../system/config.php');
 
 
 class Application extends lib {
@@ -17,11 +17,11 @@ class Application extends lib {
 		$pestParams['item_id'] = $this->gt("item_id");
 
 		$pest = new Pest(REST_API_URL);
-		// $jresult = $pest->post('/comment',$pestParams);
+		$jresult = $pest->post('/comment',$pestParams);
 		
-		// echo $jresult;
+		echo $jresult;
 
-		print_r($pestParams);
+		// print_r($pestParams);
         
     }
 

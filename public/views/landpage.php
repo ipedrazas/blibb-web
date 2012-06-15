@@ -70,7 +70,7 @@
   <!-- JavaScript at the bottom for fast page loading -->
 
 <script>             
-	jQuery().ready(function() {
+	$(document).ready(function(){
 			$('input[type="text"]').focus(function() {
 				$('#error').hide();
 				this.select();
@@ -79,7 +79,7 @@
 			        e.preventDefault();
 			});
 
-			jQuery("#sendButton").click( function(e) {                 
+			$("#sendButton").click( function(e) {                 
 				e.preventDefault();                 
 				e.stopPropagation();                 
 				var email = $('input#email').val();				
@@ -93,7 +93,7 @@
 					   			$('#error').html('Please, enter a valid email address.'); 
 					   			$('#error').show();
 					   	 	}else{
-								jQuery("form").submit();	    	
+								$("form").submit();	    	
 					    	}
 					  }
 					});				

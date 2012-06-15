@@ -347,11 +347,11 @@
             			</div>
             			<div class="accordion-group">
               				<div class="accordion-heading">
-				                <a class="accordion-toggle" data-toggle="collapse" href="#method3">
+				                <a class="accordion-toggle" data-toggle="collapse" href="#method4">
 				                	Add Tag to Item
 				                </a>
               				</div>
-              				<div id="method3" class="accordion-body collapse in">
+              				<div id="method4" class="accordion-body collapse in">
                 				<div class="accordion-inner">
                 					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag/<span class="parameter">&lt;tag&gt;</span>' ; ?></code></h3>
                   					<h3>Parameters</h3>
@@ -364,11 +364,11 @@
             			</div>
             			<div class="accordion-group">
               				<div class="accordion-heading">
-				                <a class="accordion-toggle" data-toggle="collapse" href="#method3">
+				                <a class="accordion-toggle" data-toggle="collapse" href="#method5">
 				                	Get Comments
 				                </a>
               				</div>
-              				<div id="method3" class="accordion-body collapse in">
+              				<div id="method5" class="accordion-body collapse in">
                 				<div class="accordion-inner">
                 					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag/<span class="parameter">&lt;tag&gt;</span>' ; ?></code></h3>
                   					<h3>Parameters</h3>
@@ -381,17 +381,29 @@
             			</div>
             			<div class="accordion-group">
               				<div class="accordion-heading">
-				                <a class="accordion-toggle" data-toggle="collapse" href="#method3">
+				                <a class="accordion-toggle" data-toggle="collapse" href="#method6">
 				                	Add Comment to Item
 				                </a>
               				</div>
-              				<div id="method3" class="accordion-body collapse in">
+              				<div id="method6" class="accordion-body collapse in">
                 				<div class="accordion-inner">
-                					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag/<span class="parameter">&lt;tag&gt;</span>' ; ?></code></h3>
+                					<h3>Method <code>[POST] <?php echo REST_API_URL . "/comment"; ?></code></h3>
                   					<h3>Parameters</h3>
-                  					<code>tag</code>
+                  					<code>k</code>
                   					<p>
-                  						This API call returns all the items with a tag equal specified in the url.
+                  						<ul>
+											<li>
+												<strong>login_key</strong>: this is the key that the /login api call returns.
+											</li>
+											<li>
+												<strong>item_id</strong>: Item id you want to add the comment to.
+											</li>
+											<li>
+												<strong>comment</strong>: comment you want to add.
+											</li>
+
+
+                  						</ul>
                   					</p>
                 				</div>
               				</div>

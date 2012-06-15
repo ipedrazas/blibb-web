@@ -151,8 +151,9 @@ class Application extends lib {
 		$content = str_replace('<blibb:menuBar/>', $this->getMenuBar(), $content);
 		$content = str_replace('<blibb:footer/>', $this->getFooter(), $content);
 		// print_r($this->getMenuBar());
+		$title = $bname;
 
-		$this->render($view, compact('content','css', 'owner','bid', 'entries', 'current_user', 'blibb'));
+		$this->render($view, compact('content','css', 'owner','bid', 'entries', 'current_user', 'blibb', 'title'));
  		
         
     }
