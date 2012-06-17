@@ -27,6 +27,16 @@ class NewUserApplication extends lib {
 			$jresult = $pest->post('/user',$pestParams);
 			$result = json_decode($jresult);
 			
+			// send email
+			$subject = 'Welcome to :blibb';
+			$file = __DIR__."/../data/welcome.html";
+			$contents = file($file); 
+			$html = implode($contents);
+			$text = $html;
+			$from = 'info@blibb.net';
+			$fromName = 'Blibb';
+			$mail->sendMail($email, $email, $subject, $html, $text);
+
 			header("Location: login");
 		}else{
 			$msg =  'Code is not valid';
