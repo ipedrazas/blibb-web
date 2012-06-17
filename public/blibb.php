@@ -57,8 +57,11 @@ class Application extends lib {
 		$bItems = $pest->get('/blitem/'. $bid .'/items');
 		$bItems = str_replace('$oid', "oid", $bItems);
 		$its = json_decode($bItems);
+
+		// print_r($bItems);
+
 		$results = $its->count;
-		$fields = $its->fields;
+		
 
 		// print_r($its);
 
@@ -69,9 +72,10 @@ class Application extends lib {
 				// print_r($eRs);
 				$_blitem = array();
 				$_blitem['id'] =  $eRs->id;
+				$fields = $eRs->fields;
 				
 				foreach ($fields as $field) {
-					$type = $eRs->$field->t;
+					$type = $eRs->$field->type;
 					if($type=='15'){
 						$slug = $field;
 						$obj = $eRs->$field;
@@ -85,7 +89,7 @@ class Application extends lib {
 						$value =  $song_id;
 						$_blitem[$field] = $value;
 					}else if($type=='33'){						
-						$url = $eRs->$field->v;
+						$url = $eRs->$field->value;
 						if(isset($url->url)){
 							$_blitem['BOOKMARK'] = $url;
 						}else{
@@ -96,23 +100,23 @@ class Application extends lib {
 					}else if ($type=='3d') {
 						$_blitem['TWITTER'] = $eRs->$field->v;
 						if(isset($eRs->$field->v)){
-							if(isset($eRs->$field->v->name)){
-								$twitter = $eRs->$field->v;
+							if(isset($eRs->$field->value->name)){
+								$twitter = $eRs->$field->value;
 								$_blitem[$field] = $twitter->name . '<br>' . $twitter->screen_name . '<br>' . $twitter->description . '<br><img src="' . $twitter->profile_image_url . '"><br>' . $twitter->location;
 							}else{
-								$_blitem[$field] = $eRs->$field->v;
+								$_blitem[$field] = $eRs->$field->value;
 							}
 						}else{
-								$_blitem[$field] = $eRs->$field->v;
+								$_blitem[$field] = $eRs->$field->value;
 						}
 					}else{
-							$_blitem[$field] = $eRs->$field->v;
+							$_blitem[$field] = $eRs->$field->value;
 						
 					}						
 				}
 				// print_r($eRs);
 				// Comments
-				$_blitem['COMMENTS'] =  $eRs->cs;
+				$_blitem['COMMENTS'] =  $eRs->comments;
 				$_blitem['key'] = getKey();
 				if (isset($eRs->tags)){
 					$_blitem['TAGS'] = $eRs->tags;	
