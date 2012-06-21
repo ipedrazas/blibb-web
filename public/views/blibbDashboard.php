@@ -118,7 +118,7 @@
 				<ul class="nav nav-tabs">
 			    	<li class="active"><a href="#general" data-toggle="tab"><i class="icon-home"></i> General</a></li>
 			    	<li><a href="#api" data-toggle="tab"><i class="icon-refresh"></i> API</a></li>
-			    	<li><a href="#security" data-toggle="tab"><i class="icon-lock"></i> Security</a></li>
+			    	<li><a href="#integrations" data-toggle="tab"><i class="icon-lock"></i> Integrations</a></li>
 			  	</ul>
 
 			  	<!-- Tab: general-->
@@ -353,11 +353,13 @@
               				</div>
               				<div id="method4" class="accordion-body collapse in">
                 				<div class="accordion-inner">
-                					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag/<span class="parameter">&lt;tag&gt;</span>' ; ?></code></h3>
+                					<h3>Method <code>[POST] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag' ; ?></code></h3>
                   					<h3>Parameters</h3>
                   					<code>tag</code>
+                  					<code>key</code>
+                  					<code>app_token</code>
                   					<p>
-                  						This API call returns all the items with a tag equal specified in the url.
+                  						API call to add a tag to an item. Adding tags to items add them to the parent Blibb. The tag is added only if it does not exist.
                   					</p>
                 				</div>
               				</div>
@@ -370,11 +372,11 @@
               				</div>
               				<div id="method5" class="accordion-body collapse in">
                 				<div class="accordion-inner">
-                					<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag/<span class="parameter">&lt;tag&gt;</span>' ; ?></code></h3>
+                					<h3>Method <code>[GET] <?php echo REST_API_URL . '/comment/<span class="parameter">&lt;parent_id&gt;</span>' ; ?></code></h3>
                   					<h3>Parameters</h3>
-                  					<code>tag</code>
+                  					<code>parent_id</code>
                   					<p>
-                  						This API call returns all the items with a tag equal specified in the url.
+                  						To fetch the commments associated to an item, you have to pass the item_id
                   					</p>
                 				</div>
               				</div>
@@ -389,7 +391,6 @@
                 				<div class="accordion-inner">
                 					<h3>Method <code>[POST] <?php echo REST_API_URL . "/comment"; ?></code></h3>
                   					<h3>Parameters</h3>
-                  					<code>k</code>
                   					<p>
                   						<ul>
 											<li>
@@ -411,8 +412,8 @@
 			    	</div>
 
 			    	<!-- Tab: Security-->
-			    	<div class="tab-pane span10" id="security">
-			    		<h2>Security</h2>
+			    	<div class="tab-pane span10" id="integrations">
+			    		<h2>Integrations</h2>
 			    	</div>
 			    </div>
 			</div>
