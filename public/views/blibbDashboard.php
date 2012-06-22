@@ -414,6 +414,15 @@
 			    	<!-- Tab: Security-->
 			    	<div class="tab-pane span10" id="integrations">
 			    		<h2>Integrations</h2>
+			    		<p>This section is where you can configure the different networks and integrations.</p>
+			    		<h3>Twitter</h3>
+			    		<p><a class="big" href="">Link your twitter account <i class="icon-twitter-sign"></i></a></p>
+			    		<h3>Ducksboard</h3>
+			    		<p>
+			    			In order to push and pull data from your Ducksboard you have to set your API Key.
+			    			<label>Ducksboard API Key:</label>
+			    			<input name="ducks-api" value=""/> <a href="#" class="btn btn-primary">Save Key</a>
+			    		</p>
 			    	</div>
 			    </div>
 			</div>
