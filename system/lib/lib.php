@@ -34,8 +34,18 @@ class lib {
     private function g($param) {
         global $_GET, $_POST, $_COOKIE;
 
-        if (isset($_COOKIE[$param])) return $_COOKIE[$param];
-        if (isset($_POST[$param])) return $_POST[$param];
+        if (isset($_COOKIE[$param])){
+            if(is_array($_COOKIE[$param])) {
+                return implode(",", $_COOKIE[$param]);
+            }
+            return $_COOKIE[$param];
+        }
+        if (isset($_POST[$param])) {
+            if(is_array($_POST[$param])) {
+                return implode(",", $_POST[$param]);
+            }
+            return $_POST[$param];
+        }
         if (isset($_GET[$param])) return $_GET[$param];
         return false;
     }

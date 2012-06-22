@@ -248,11 +248,43 @@
 
 			    		<h3>Blibb URL</h3>
 			    		<code><a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></a></code>
-			    		<h3>Dev Key</h3>
-			    		<code><?php echo $bli->dk; ?></code>
+			    		
+						<h2>Webhook</h2>
+						<div class="controls">
+							<label class="control-label">Action:</label> 
+							<select name="webhook-action" id="webhook-action">
+								<option value="get_entries">Get Blibb</option>
+								<option value="new_entry">New Entry</option>
+								<option value="new_comment">New Comment</option>
+							</select>
+						</div>
+						<div class="controls">
+							<label class="control-label">Fields: (Choose the fields you want to return.)</label>
+							<select multiple="multiple" id="webhook-fields" name="webhook-fields">
+								<option value="blibb.num_views">Number Views</option>
+								<option value="blibb.num_items">Number Items</option>
+								<?php
+									foreach ($bli->fields as $field) {
+										echo '<option>' . $field . '</option>';
+									}
+								?>
+							</select>
+						</div>
+						<div class="controls">
+			    			<label class="control-label">Callback URL:</label> <input class="input-large" type="text" name='webhook-callback' id="webhook-callback" placeholder="http://">
+			    		</div>
+			    		<a href="#" id="addwebhook" class="btn btn-primary">Add Webhook</a>
+			    		<div class="controls" id="reg-webhooks">
+				    		<h3>Registered Webhooks</h3>
+				    		<div id="webhooks_lst">
+					    		<?php
+					    			echo '<div id="nowebhooks">No Webhooks defined yet.</div>';
+					    		?>
+				    		</div>
+			    		</div>
+			    		<h2>API Methods</h2>
 
-			    		<h3>API Methods</h3>
-
+			    		<h3>Collection</h3>
 			    		<!-- API Method code -->
 			    		<div class="accordion-group">
               				<div class="accordion-heading">
@@ -262,8 +294,8 @@
               				</div>
               				<div id="method1" class="accordion-body collapse in">
                 				<div class="accordion-inner">
-                					<h3>Method</he>
-                					<code><a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug ."/<span class=\"optionalParameter\">[page]</span>"; ?></a></code>
+                					<h3>Method <code>[GET] <a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug ."/<span class=\"optionalParameter\">[page]</span>"; ?></a></code></h3>
+                					
                   					<h3>Parameters</h3>
                   					<code class="optionalParameter">[optional] page:</code>
                   					<p>This API call returns a maximum of 20 objects. The result contains the numer of objects available but it's up to the app. to fetch the following pages if nedded.</p>
@@ -313,7 +345,7 @@
               				</div>
               				<div id="method2" class="accordion-body collapse in">
                 				<div class="accordion-inner">
-                  					<code><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code>
+                  					<h3>Method <code><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code></h3>
                   					<h3>Parameters</h3>
                   					<code>key</code>
                   					<code>app_token</code>
@@ -328,6 +360,7 @@
                 				</div>
               				</div>
             			</div>
+            			<h3>Tags</h3>
 						<div class="accordion-group">
               				<div class="accordion-heading">
 				                <a class="accordion-toggle" data-toggle="collapse" href="#method3">
@@ -364,6 +397,7 @@
                 				</div>
               				</div>
             			</div>
+            			<h3>Comments</h3>
             			<div class="accordion-group">
               				<div class="accordion-heading">
 				                <a class="accordion-toggle" data-toggle="collapse" href="#method5">
@@ -447,6 +481,22 @@
 			});
 			
 			$(".collapse").collapse();
+
+			$('#addwebhook').live("click", function(e){	
+				e.preventDefault();	
+				var action = $('#webhook-action').val();
+				var callback = $('#webhook-callback').val();
+				var fields = $('#webhook-fields').val();
+				$.post("/actions/addWebhook", { id: '<?php echo $bli->id ?>', action: action, callback: callback, fields: fields },
+					function(data) {
+						var webhook = "<div class='webhook'>" + action + " - " + callback + " [" + fields + "]</div>" ;
+						var alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>Webhook added succesfully</div>";
+						$('#reg-webhooks').after(alert);
+						$('#nowebhooks').hide();
+						$('#webhooks_lst').append(webhook);
+				});		
+			}); 
+
 
 		</script>
 		
