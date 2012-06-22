@@ -21,6 +21,11 @@ class bDashboard extends lib {
  		$bli->fields = $fields;
  		// print_r($fields);
  		// print_r($bli);
+
+
+ 		$jwhs = $pest->get('/blibb/meta/webhooks/' . $bid );
+ 		$whs = json_decode($jwhs);
+ 		$bli->webhooks = $whs->webhooks;
  		
  		$this->render('blibbDashboard', compact('bli'));
     }
