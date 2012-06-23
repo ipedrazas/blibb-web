@@ -71,7 +71,7 @@ input, textarea{
 				    type: "POST",
 						data: {c_id: id, t_id: tid},
 				  	success: function(msg) {
-				  		$('#fForm').append(msg);
+				  		$('#fForm').html(msg);
 				  }
 				});
 	}); 
