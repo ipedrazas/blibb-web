@@ -18,7 +18,7 @@ class bDashboard extends lib {
 
  		$jfields = $pest->get('/blibb/meta/fields/' . $bid );
  		$fields = json_decode($jfields);
- 		$bli->fields = $fields;
+ 		$bli->fields = $fields->fields;
  		// print_r($fields);
  		// print_r($bli);
 
