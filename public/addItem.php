@@ -18,7 +18,7 @@ class Application extends lib {
 
 		// print_r($blibb);
 		
-		$t = $blibb->t;
+		$t = $blibb->template;
 		$i = $t->i;
 		
 		$k = getKey();

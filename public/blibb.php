@@ -27,7 +27,7 @@ class Application extends lib {
  			$btags = $bli->tags;
  		}
  		
- 		$view = $bli->Default[0];
+ 		$view = $bli->template->v->Default[0];
  		$blibbBox = stripcslashes($view->rb);
 
 		$fTags = __DIR__."/templates/taglist.html";
@@ -73,9 +73,11 @@ class Application extends lib {
 				$_blitem = array();
 				$_blitem['id'] =  $eRs->id;
 				$fields = $eRs->fields;
-				
+								
 				foreach ($fields as $field) {
-					$type = $eRs->$field->type;
+					$type = substr($field, 0, 2);
+					$field = substr($field, 3);
+					
 					if($type=='15'){
 						$slug = $field;
 						$obj = $eRs->$field;
@@ -89,7 +91,7 @@ class Application extends lib {
 						$value =  $song_id;
 						$_blitem[$field] = $value;
 					}else if($type=='33'){						
-						$url = $eRs->$field->value;
+						$url = $eRs->$field;
 						if(isset($url->url)){
 							$_blitem['BOOKMARK'] = $url;
 						}else{
@@ -98,19 +100,15 @@ class Application extends lib {
 							$_blitem['BOOKMARK'] = $tArray;	
 						}
 					}else if ($type=='3d') {
-						$_blitem['TWITTER'] = $eRs->$field->v;
-						if(isset($eRs->$field->v)){
-							if(isset($eRs->$field->value->name)){
-								$twitter = $eRs->$field->value;
+							if(isset($eRs->$field->name)){
+								$twitter = $eRs->$field;
 								$_blitem[$field] = $twitter->name . '<br>' . $twitter->screen_name . '<br>' . $twitter->description . '<br><img src="' . $twitter->profile_image_url . '"><br>' . $twitter->location;
 							}else{
-								$_blitem[$field] = $eRs->$field->value;
+								$_blitem[$field] = $eRs->$field;
 							}
-						}else{
-								$_blitem[$field] = $eRs->$field->value;
-						}
+						
 					}else{
-							$_blitem[$field] = $eRs->$field->value;
+							$_blitem[$field] = $eRs->$field;
 						
 					}						
 				}
