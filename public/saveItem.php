@@ -44,15 +44,22 @@ class SaveItemApp extends lib {
 		// print_r($pestParams);
 
 		$pest = new Pest(REST_API_URL);
-		$result = $pest->post('/blitem',$pestParams);
-		
-		$dest = $this->gt("f");
+		try {
+			$result = $pest->post('/blitem',$pestParams);
+			
+			$dest = $this->gt("f");
 
-		if(!empty($dest)){
-			header("Location: blibb?b=$bid&f=" . $dest);
-		}else{
-			header("Location: blibb?b=$bid");	
-		}    	
+			if(!empty($dest)){
+				header("Location: blibb?b=$bid&f=" . $dest);
+			}else{
+				header("Location: blibb?b=$bid");	
+			}   
+		} catch (Pest_Unauthorized $e) {
+		    // 401
+		    $errorMsg = '<li class="errorLogin">You are not authorised to write in the Blibb!</li>';
+		    $_SESSION['ERROR'] = $errorMsg;
+		    header("Location: addItem?b=$bid");
+		} 	
     }
 
    

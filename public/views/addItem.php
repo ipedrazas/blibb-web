@@ -38,6 +38,12 @@ require_once(__DIR__.'/../inc/header.php');
 			<?php echo $buffer; ?>
 			<label for="tags" >Tags:</label>
 			 <input type="input" name="tags" value="" />
+			 <?php
+			 	if(isset($_SESSION['ERROR'])){
+			 		echo "<div class='alert alert-error'><a class='close' data-dismiss='alert'>×</a>" . $_SESSION['ERROR']. "</div>";
+			 		unset($_SESSION['ERROR']);
+			 	}
+			 ?>
 				<fieldset>
 				<ul>
 					<li><a name="cancel" href="#" class="btn">Cancel</a></li>

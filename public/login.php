@@ -33,6 +33,9 @@ class Login extends lib {
 					header("Location: $destURL");
 					exit();
 
+				} catch (Pest_Unauthorized $e) {
+				    // 401
+				    $errorMsg = '<li class="errorLogin">User or Password not found!</li>';
 				} catch (Pest_NotFound $e) {
 				    // 404
 				    $errorMsg = '<li class="errorLogin">User or Password not found!</li>';
