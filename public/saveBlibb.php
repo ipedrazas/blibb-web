@@ -11,7 +11,8 @@ class Application extends lib {
 
 		$bname = $this->gt("bname");
 		$bdesc = $this->gt("bdesc");
-		$bgroup = $this->gt("bgroup");
+		$read_access = $this->gt("read_access");
+		$write_access = $this->gt("write_access");
 		$template = $this->gt("btemplate");
 		$key = $this->gt("bkey");
 		$bimage = $this->gt("bimage");
@@ -21,7 +22,8 @@ class Application extends lib {
     	$result = $pest->post('/blibb',array(
 			'bname' => $bname,
 			'bdesc' => $bdesc,
-			'bgroup' => $bgroup,
+			'read_access' => $read_access,
+			'write_access' => $write_access,
 			'btemplate' => $template,
 			'bimage' => $bimage,
 			'bkey' => $key,

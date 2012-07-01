@@ -136,29 +136,44 @@
         			
       			</div>
     		</div>
-			
+		
+			<div class="control-group">
+				<label class="control-label" for="inlineCheckboxes">Who can read?</label>
+				<div class="controls">
+					<label class="checkbox inline">
+						<input type="radio" id="inlineCheckbox1" name="read_access" value="1"> Only me
+					</label>
+					<label class="checkbox inline">
+						<input type="radio" id="inlineCheckbox2" name="read_access" value="5"> Group
+					</label>
+					<label class="checkbox inline">
+						<input type="radio" id="inlineCheckbox3" name="read_access" value="11" checked="checked"> Everybody
+					</label>
+				</div>
+			</div>
 
+			<div class="control-group">
+				<label class="control-label" for="inlineCheckboxes">Who can write?</label>
+				<div class="controls">
+					<label class="checkbox inline">
+						<input type="radio" id="inlineCheckbox1" name="write_access" value="1" checked="checked"> Only me
+					</label>
+					<label class="checkbox inline">
+						<input type="radio" id="inlineCheckbox2" name="write_access" value="5"> Group
+					</label>
+					<label class="checkbox inline">
+						<input type="radio" id="inlineCheckbox3" name="write_access" value="11" > Everybody
+					</label>
+				</div>
+			</div>
 			<div class="control-group">
       			<label class="control-label" for="listTemplate">Template:</label>
       			<div class="controls">
         			<ul class="listTemplate">
 						<?php								
 							echo $t;
-						?>
-				
+						?>	
 					</ul>
-        			
-      			</div>
-    		</div>
-
-
-			<div class="control-group">
-      			<label class="control-label" for="bgroup">Allow Collaboration:</label>
-      			<div class="controls">
-        			<input type="checkbox" id="bgroup" name="bgroup" value="1" />
-					<div id="groupInvites"><label for="invites"><textarea name="email_invites" placeholder="Please, enter the email adresses separated by space of the people you want to invite to this :blibb"></textarea></label></div>
-
-        			
       			</div>
     		</div>
 			

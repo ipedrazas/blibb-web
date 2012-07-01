@@ -11,8 +11,8 @@ class DeleteBlibb extends lib {
 		$bid = $this->gt("id");
 		$pest = new Pest(REST_API_URL);
         $pestParams = array();
-        $pestParams['b'] = $bid;
-        $pestParams['k'] = getKey();        
+        $pestParams['blibb_id'] = $bid;
+        $pestParams['login_key'] = getKey();        
 		$ret = $pest->post('/blibb/del',$pestParams);    	
         $dest = '/user/'. $user;        
         header("Location: " . $dest);

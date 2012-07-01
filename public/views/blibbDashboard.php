@@ -349,11 +349,11 @@
 							</div>
 							<div id="method2" class="accordion-body collapse in">
 								<div class="accordion-inner">
-									<h3>Method <code><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code></h3>
+									<h3>Method <code>[POST] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code></h3>
 									<h3>Parameters</h3>
-									<code>key</code>
-									<code>app_token</code>
-									<code>tags</code>
+									<code>loging_key: value of the [LOGIN] API call</code>
+									<code>app_token: <?php echo $bli->dk; ?></code>
+									<code>tags: tags sepparated by commas</code>
 									<?php 
 										foreach ($bli->fields as $field) {
 											echo '<code>' . $field . '</code>';

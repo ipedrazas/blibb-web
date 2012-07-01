@@ -54,6 +54,7 @@ class Application extends lib {
 		$i = 0;
     	if($count>0){
     		foreach ($rs as $blibb) {
+    			// print_r($blibb);
     			if($i==0){
     				$blbb =  $m->render($bbox, $blibb);
     			}else{
@@ -64,6 +65,7 @@ class Application extends lib {
     	}else{
     		$blibbs[] = "There are no blibbs in this space...";
     	}
+    	// print_r($blibbs);
     	$k = getKey();
     	$this->render('html5_Blibb', compact('userspace','owner','blibbs','blbb', 'k'));		
 	}
