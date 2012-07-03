@@ -28,6 +28,7 @@ class NewUserApplication extends lib {
 			$result = json_decode($jresult);
 			
 			// send email
+			$mail = new BMail();
 			$subject = 'Welcome to :blibb';
 			$file = __DIR__."/../data/welcome.html";
 			$contents = file($file); 
