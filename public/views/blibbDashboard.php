@@ -166,6 +166,24 @@
 							</div>
 						</p>
 
+						<h3>Data:</h3>
+						<p>
+							
+							If you want to upload a file to pre-populate a Blibb, please use one of the following options:
+						</p>
+						<form action="" method="post" enctype="multipart/form-data">
+						<ul>
+							<li>
+								Excel Spreadsheet <input type="radio" value="excel" name="file_type"/>
+							</li>
+							<li>
+								Comma separated values <input type="radio" value="excel" name="file_type"/>
+							</li>
+							<li><input type="file" name="file" /></li>
+							<li><input type="submit" value="Upload" /></li>
+						</ul>
+						</form>
+					
 						<!-- info boxes -->
 						<div class="row">
 							<div class="span5">
@@ -247,45 +265,7 @@
 					<div class="tab-pane span10" id="api">
 						<h3>Blibb URL</h3>
 						<code><a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></a></code>
-						<h2>Webhook</h2>
-						<div class="controls">
-							<label class="control-label">Action:</label> 
-							<select name="webhook-action" id="webhook-action">
-								<option value="get_entries">Get Blibb</option>
-								<option value="new_entry">New Entry</option>
-								<option value="new_comment">New Comment</option>
-							</select>
-						</div>
-						<div class="controls">
-							<label class="control-label">Fields: (Choose the fields you want to return.)</label>
-							<select multiple="multiple" id="webhook-fields" name="webhook-fields">
-								<option value="blibb.num_views">Number Views</option>
-								<option value="blibb.num_items">Number Items</option>
-								<?php
-									foreach ($bli->fields as $field) {
-										echo '<option>' . $field . '</option>';
-									}
-								?>
-							</select>
-						</div>
-						<div class="controls">
-							<label class="control-label">Callback URL:</label> <input class="input-large" type="text" name='webhook-callback' id="webhook-callback" placeholder="http://">
-						</div>
-						<a href="#" id="addwebhook" class="btn btn-primary">Add Webhook</a>
-						<div class="controls" id="reg-webhooks">
-							<h3>Registered Webhooks</h3>
-							<div id="webhooks_lst">
-								<?php
-									if(count($bli->webhooks)>0){
-										foreach ($bli->webhooks as $wh) {
-											echo "<div class='webhook'>"  . $wh->action  . " - " . $wh->callback . " [" . $wh->fields . "]</div>" ;
-										}
-									}else{
-										echo '<div id="nowebhooks">No Webhooks defined yet.</div>';
-									}
-								?>
-							</div>
-						</div>
+						
 						<h2>API Methods</h2>
 
 						<h3>Collection</h3>
@@ -453,6 +433,45 @@
 					<div class="tab-pane span10" id="integrations">
 						<h2>Integrations</h2>
 						<p>This section is where you can configure the different networks and integrations.</p>
+						<h2>Webhook</h2>
+						<div class="controls">
+							<label class="control-label">Action:</label> 
+							<select name="webhook-action" id="webhook-action">
+								<option value="get_entries">Get Blibb</option>
+								<option value="new_entry">New Entry</option>
+								<option value="new_comment">New Comment</option>
+							</select>
+						</div>
+						<div class="controls">
+							<label class="control-label">Fields: (Choose the fields you want to return.)</label>
+							<select multiple="multiple" id="webhook-fields" name="webhook-fields">
+								<option value="blibb.num_views">Number Views</option>
+								<option value="blibb.num_items">Number Items</option>
+								<?php
+									foreach ($bli->fields as $field) {
+										echo '<option>' . $field . '</option>';
+									}
+								?>
+							</select>
+						</div>
+						<div class="controls">
+							<label class="control-label">Callback URL:</label> <input class="input-large" type="text" name='webhook-callback' id="webhook-callback" placeholder="http://">
+						</div>
+						<a href="#" id="addwebhook" class="btn btn-primary">Add Webhook</a>
+						<div class="controls" id="reg-webhooks">
+							<h3>Registered Webhooks</h3>
+							<div id="webhooks_lst">
+								<?php
+									if(count($bli->webhooks)>0){
+										foreach ($bli->webhooks as $wh) {
+											echo "<div class='webhook'>"  . $wh->action  . " - " . $wh->callback . " [" . $wh->fields . "]</div>" ;
+										}
+									}else{
+										echo '<div id="nowebhooks">No Webhooks defined yet.</div>';
+									}
+								?>
+							</div>
+						</div>
 						<h3>Twitter</h3>
 						<p><a class="big" href="">Link your twitter account <i class="icon-twitter-sign"></i></a></p>
 						<h3>Ducksboard</h3>
