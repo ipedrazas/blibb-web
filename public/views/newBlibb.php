@@ -167,21 +167,45 @@
 				</div>
 			</div>
 			<div class="control-group">
-      			<label class="control-label" for="listTemplate">Template:</label>
-      			<div class="controls">
-        			<ul class="listTemplate">
+					<label class="control-label" for="listTemplate">Template:</label>
+					<div class="controls">
+					<ul class="listTemplate">
 						<?php								
 							echo $t;
 						?>	
 					</ul>
-      			</div>
-    		</div>
+					</div>
+			</div>
+			<div class="control-group" style="display:none;">
+					<label class="control-label" for="listTemplate">Excel</label>
+					<div class="controls">
+					<iframe name="upload_iframe" src="" style="display:none;"></iframe>
+						<form action="<?php echo REST_API_URL . '/loader/excel' ?>" method="post" id="file_upload" enctype="multipart/form-data" target="upload_iframe">
+						<ul>
+							<li>
+								Excel Spreadsheet
+							</li>
+							<li>
+								Comma separated values <input type="radio" value="excel" name="file_type"/>
+							</li>
+							<li><input type="file" name="file" /></li>
+							<li>
+								<input type="hidden" name="file_type" value="excel" />
+								<input type="hidden" name="login_key" value="<?php echo $key; ?>">
+								<input type="hidden" name="blibb_id"  value="-1">
+								<input type="submit" value="Upload" />
+							</li>
+						</ul>
+						</form>	
+					</div>
+			</div>
 			
 
 			<div id="errorMsg" class="alert alert-error" style="display:none"></div>
 			<?php
 				if(isset($_SESSION['ERROR_MSG'])){					
 					echo '<div id="error" class="alert alert-error">'.$_SESSION['ERROR_MSG'].'</div>';
+					unset($_SESSION['ERROR_MSG']);
 				}
 			?>
 

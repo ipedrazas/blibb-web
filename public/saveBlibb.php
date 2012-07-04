@@ -31,7 +31,7 @@ class Application extends lib {
 		));
 
 		$jsonResult = json_decode($result);
-		print_r($jsonResult);
+		// print_r($jsonResult);
 		if(isset($jsonResult->id)){
 			// we have a new object, rediect
 			$result = $jsonResult->id;
@@ -40,8 +40,6 @@ class Application extends lib {
 			$_SESSION['ERROR_MSG'] = $jsonResult->error;
 			header("Location: newBlibb");
 		}
-		
-
 		
  		// header("Location: editBlibbCss?b=$result");
     	

@@ -89,7 +89,10 @@ require_once(__DIR__.'/../inc/header.php');
         $i = 0;
         $row = 1;
         $endRow = false;
-        echo $blbb;
+        if (isset($blbb)){
+          echo $blbb;
+        }
+        
         foreach($blibbs as $b){          
           echo $b; 
         }

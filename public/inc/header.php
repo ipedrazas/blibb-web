@@ -27,7 +27,7 @@ $key = getKey();
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="/css/font-awesome.css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<link href='/css/fonts.css' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/css/blibb.css">
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
