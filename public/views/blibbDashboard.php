@@ -117,8 +117,9 @@
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#general" data-toggle="tab"><i class="icon-home"></i> General</a></li>
-					<li><a href="#api" data-toggle="tab"><i class="icon-refresh"></i> API</a></li>
-					<li><a href="#integrations" data-toggle="tab"><i class="icon-lock"></i> Integrations</a></li>
+					<li><a href="#api" data-toggle="tab"><i class="icon-random"></i> API</a></li>
+					<li><a href="#data" data-toggle="tab"><i class="icon-list-alt"></i> Data</a></li>
+					<li><a href="#integrations" data-toggle="tab"><i class="icon-refresh"></i> Integrations</a></li>
 				</ul>
 
 				<!-- Tab: general-->
@@ -165,25 +166,6 @@
 								</div>
 							</div>
 						</p>
-
-						<h3>Data:</h3>
-						<p>
-							
-							If you want to upload a file to pre-populate a Blibb, please use one of the following options:
-						</p>
-						<form action="" method="post" enctype="multipart/form-data">
-						<ul>
-							<li>
-								Excel Spreadsheet <input type="radio" value="excel" name="file_type"/>
-							</li>
-							<li>
-								Comma separated values <input type="radio" value="excel" name="file_type"/>
-							</li>
-							<li><input type="file" name="file" /></li>
-							<li><input type="submit" value="Upload" /></li>
-						</ul>
-						</form>
-					
 						<!-- info boxes -->
 						<div class="row">
 							<div class="span5">
@@ -260,7 +242,40 @@
 						</div>
 
 					</div>
+					<!-- Tab: API -->
+					<div class="tab-pane span10" id="data">
 
+						<h3>Data:</h3>
+						<p>	
+							If you want to upload a file to pre-populate a Blibb, please use one of the following options:
+						</p>
+						<iframe name="upload_iframe" src="" style="display:none;"></iframe>
+						<form action="<?php echo REST_API_URL . '/loader/excel' ?>" method="post" id="file_upload" enctype="multipart/form-data" target="upload_iframe">
+						<ul>
+							<li>
+								Excel Spreadsheet <input type="radio" value="excel" name="file_type"/>
+							</li>
+							<li>
+								Comma separated values <input type="radio" value="excel" name="file_type"/>
+							</li>
+							<li><input type="file" name="file" /></li>
+							<li>
+								<input type="hidden" name="login_key" value="<?php echo $key; ?>">
+								<input type="hidden" name="blibb_id" value="<?php echo $bli->id; ?>">
+								<input type="submit" value="Upload" />
+							</li>
+						</ul>
+						</form>	
+
+						<h3>Export</h3>
+						<p>Select the format you want to export your data</p>
+						<ul>
+							<li><a href="#">Sql File</a></li>
+							<li><a href="#">CSV File</a></li>
+							<li><a href="#">Excel File</a></li>
+							<li><a href="#">Json File</a></li>
+						</ul>
+					</div>
 					<!-- Tab: API -->
 					<div class="tab-pane span10" id="api">
 						<h3>Blibb URL</h3>
