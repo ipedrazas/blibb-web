@@ -41,9 +41,9 @@ class lib {
             return $_COOKIE[$param];
         }
         if (isset($_POST[$param])) {
-            if(is_array($_POST[$param])) {
-                return implode(",", $_POST[$param]);
-            }
+            // if(is_array($_POST[$param])) {
+            //     return implode(",", $_POST[$param]);
+            // }
             return $_POST[$param];
         }
         if (isset($_GET[$param])) return $_GET[$param];
@@ -53,7 +53,11 @@ class lib {
     public function gt($param) {
         $val = $this->g($param);
         if ($val === false) return false;
-        return trim($val);
+         if(is_array($val)){
+            return $val;
+         }else{
+            return trim($val);    
+         }        
     }
 
     public function utf8entities($s) {

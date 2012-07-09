@@ -154,7 +154,7 @@ input, textarea{
 									foreach ($r as $key => $value) {									
 											$t = json_decode($value,true);
 											$oid = $t['_id']; 
-											//echo '<li><a class="btn btn-warning" href="#" name="menuEntry"  data-cid="'.$oid['$oid'].'">'.$t['n'].'</a></li>';
+											
 											echo '<li class="active"><a href="#" name="menuEntry" data-cid="'.$oid['$oid'].'">'.$t['n'].'</a></li>';
 
 									};

@@ -12,21 +12,24 @@ class SaveTemplateApplication extends lib {
 		$k = $this->gt("k");
 		$key = getKey();
 		if($k===$key){
-			$view = 'getControls';
+			// $view = 'getControls';
+			$view = 'formBuilder';
 			$pest = new Pest(REST_API_URL);
-			$tid = $pest->post('/template', array(
-				'bname' => $name,
-				'bdesc' => $desc,
+			$jtemplate = $pest->post('/template', array(
+				'name' => $name,
+				'description' => $desc,
 				'thumbnail' => 'draft.png',
-				'bstatus' => 'draft',
-				'bkey' => $key
+				'login_key' => $key
 			));
 			
-			$controls = $pest->get('/ctrls', array());
-			$t = json_decode($controls,true);
-			$r = $t['resultset'];
-			
-		    $this->render($view,  compact('msg', 'r','tid', 'name', 'desc'));
+			$template = json_decode($jtemplate);
+			$tid = $template->result;
+
+			$jcontrols = $pest->get('/controls', array());
+			$temp = json_decode($jcontrols,true);
+			$controls = $temp['controls'];
+			// print_r($controls);
+		    $this->render($view,  compact('msg', 'controls','tid', 'name', 'desc'));
 		}
 		
     }

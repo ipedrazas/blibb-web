@@ -7,9 +7,10 @@ class NewTemplateApplication extends lib {
 
     public function run() {
 		$current_user = require_login();
-    	$view = 'newTemplate';	
+    	$view = 'newTemplate';
     	$k = getKey();
 
+	
 	    $this->render($view,  compact('msg', 'r','k'));
     }
 

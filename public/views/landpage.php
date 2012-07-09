@@ -55,7 +55,7 @@
 			</li>
 		</ul>
 		<div class="clear"></div>
-		<img class="hrfade" src="img/hr-fade.gif">		
+		<img class="hrfade" src="img/hr-fade.gif" alt="separator">		
 	</div>	
 	
   </div>

@@ -29,7 +29,6 @@ input, textarea{
 			<div class="span8 offset2">
 				<form action="saveTemplate" enctype="multipart/form-data" method="post" id="nform" class="well">
 					<input type="hidden" name="k" value="<?php echo $key ?>" /> 
-	        			<input type="hidden" name="s" value="1" /> 
 					<div class="control-group offset1">
 				      
 				      <div class="controls">
