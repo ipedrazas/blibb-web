@@ -112,6 +112,14 @@ require_once(__DIR__.'/../inc/header.php');
                     <li><a href="#">Team</a></li>
                     <li class="divider"></li>
                     <li><a href="#">New Groups</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/listTemplates">Templates</a></li>
+                    <?php 
+                        if($admin){
+                          echo '<li class="divider"></li>';
+                          echo '<li><a href="/listControls">Controls</a></li>';
+                        }
+                    ?>
                   </ul>
             </div>
           </div>

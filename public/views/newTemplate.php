@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__.'/../inc/header.php');
+	require_once(__DIR__.'/../inc/header.php');
 ?>
 <link rel="stylesheet" href="css/user.css">
 <style>

@@ -9,19 +9,41 @@ function getKey(){
     return $_SESSION['K'];
   }
 }
-function getUserName($key){
+
+function getUser($key){
   $redis = new Predis\Client();
-  return $redis->get($key.':name');
+  $juser = $redis->get($key);
+  return json_decode($juser);
+
+
+}
+function getUserName($key){
+  $user = getUser($key);
+  if(isset($user)){
+    return $user->username;  
+  }
+  return '';
+}
+
+function isAdmin($key){
+  $user = getUser($key);
+  if(isset($user->role)){
+    $role =  $user->role;
+    if($role === 'admin'){
+      return true;
+    }  
+  }
+  return false;
 }
 
 function getUserImage($key){
-  $redis = new Predis\Client();
-  return $redis->get($key.':thumbnail');
+  $user = getUser($key);
+  return $user->image;
 }
 
 function getUserId($key){
-  $redis = new Predis\Client();
-  return $redis->get($key.':id');
+  $user = getUser($key);
+  return $user->id;
 }
 // Logs into the user $user
 function log_in($k){

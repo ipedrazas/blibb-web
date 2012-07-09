@@ -11,8 +11,6 @@ class Application extends lib {
 		$userspace = $this->gt("id");
 		
 		if(!empty($userspace)){			
-			// because the way the Apache2/nginx rewrite
-			// works
 			$pos = strpos($userspace,'/user');
 			if($pos===0){
 				$userspace = substr($userspace, 6);
@@ -21,8 +19,6 @@ class Application extends lib {
 			$userspace = current_user();
 		}
 		
-
-
 		$pest = new Pest(REST_API_URL);
     	$jresp = $pest->get('/blibb/' . $userspace);
     	
@@ -67,7 +63,8 @@ class Application extends lib {
     	}
     	// print_r($blibbs);
     	$k = getKey();
-    	$this->render('html5_Blibb', compact('userspace','owner','blibbs','blbb', 'k'));		
+    	$admin = isAdmin($k);
+    	$this->render('html5_Blibb', compact('userspace','owner','blibbs','blbb', 'k', 'admin'));		
 	}
 
 }

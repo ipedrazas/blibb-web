@@ -216,8 +216,6 @@
 		</script>
 
 		
-
-		</script>
 		
 	</body>
 	

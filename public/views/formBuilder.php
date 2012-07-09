@@ -123,7 +123,7 @@
 				c = {};
 				c['order'] = i + 1;
 				c['name'] = $(array[i]).children()[0].innerHTML;
-				c['control'] = $(array[i]).children()[1].children[0].outerHTML;
+				// c['control'] = $(array[i]).children()[1].children[0].outerHTML;
 				c['help'] = $(array[i]).children()[1].children[1].innerHTML;
 				c['cid'] = $(array[i]).attr('data-cid');
 				c['type'] = $(array[i]).children()[1].children[0].id.substring(0, 2);
