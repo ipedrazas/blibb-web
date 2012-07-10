@@ -28,7 +28,7 @@
 						</p><p>
 						<strong>Email:</strong>	<?php echo $email ?>
 						</p><p>
-							<img id="img_image"  alt="thumbnail" src="<?php echo $image ?>" />
+							<img id="img_image"  alt="thumbnail" src="/actions/getImage?i=260&id=<?php echo $image ?>" />
 						</p>
 					</div>					
 				</div> <!-- profile -->			
@@ -37,3 +37,6 @@
 	</div> <!-- profileBox -->
 </div><!-- container -->
 			
+<?php
+require_once(__DIR__.'/../inc/footer.php');
+?>

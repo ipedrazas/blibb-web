@@ -53,7 +53,7 @@
 									</div>
 									<div class="thumbnails help-block">
 										<a href="#" class="thumbnail span2">
-										<div id="im_image" ><img id="img_image"  alt="thumbnail" src="<?php echo $image ?>" /></div>
+										<div id="im_image" ><img id="img_image"  alt="thumbnail" src="/actions/getImage?i=260&id=<?php echo $image ?>" /></div>
 										</a>
 									</div> 
 								</div>
@@ -151,3 +151,6 @@
 	</div> <!-- profileBox -->
 </div><!-- container -->
 		
+<?php
+require_once(__DIR__.'/../inc/footer.php');
+?>

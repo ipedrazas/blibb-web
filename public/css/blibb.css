@@ -61,3 +61,16 @@ ul.menu li a{
   background-color: #b21006;
   color: #FB8F3D;
 }
+
+footer {
+	margin: 30px auto;
+	height: 52px;
+	width: 924px;
+	
+} 
+footer p.beebot{	
+	width: 250px;
+	font-size: 0.8em;
+	margin: 0 auto;
+	text-align: center;
+}

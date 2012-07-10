@@ -6,7 +6,7 @@
 			<div class="page-header">
   				<h1>Controls <small>you can only modify your own controls</small></h1>
 			</div>
-			
+			<a href="newControl" class="btn btn-primary">Add new control</a>
 
 			<table>
 				<thead>

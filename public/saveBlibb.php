@@ -13,7 +13,7 @@ class Application extends lib {
 		$bdesc = $this->gt("bdesc");
 		$read_access = $this->gt("read_access");
 		$write_access = $this->gt("write_access");
-		$template = $this->gt("btemplate");
+		$template = $this->gt("template");
 		$key = $this->gt("bkey");
 		$bimage = $this->gt("bimage");
 		$bslug = $this->gt("bslug");

@@ -7,6 +7,8 @@ class ListControls extends lib {
     public function run() {
 
     	// $current_user = require_login();
+    	$current_user = require_login();
+		$k = getKey();
     	
 		$pest = new Pest(REST_API_URL);
 		$url_api = '/controls';

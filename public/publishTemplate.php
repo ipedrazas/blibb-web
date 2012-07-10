@@ -6,17 +6,18 @@ class PublishTemplateApplication extends lib {
 
     public function run() {
 		$current_user = require_login();
-		$tid = $this->gt("tid");
+		$tid = $this->gt("template_id");
+
+		print_r($tid);
 		$pest = new Pest(REST_API_URL);
 		$r = $pest->post('/template/pub', array(
-			'tid' => $tid,
+			'template_id' => $tid,
 			'view' => 'default',
-			'k' => getKey()
+			'login_key' => getKey()
 		));
-		$view = 'showMessage';
-		
-		$msg = 'Template saved succesfully';
-	    // $this->render($view,  compact('msg'));
+
+		print_r($r);
+
 	    $destURL = "/user/" . $current_user;
 	    header("Location: $destURL");
     }

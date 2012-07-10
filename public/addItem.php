@@ -9,37 +9,37 @@ class Application extends lib {
 		
 		$current_user = require_login();
 		$bid = $this->gt("b");
-		$params = "t.i.w";
+		$params = "t.v.default.wb";
 
 		$pest = new Pest(REST_API_URL);
     	$result = $pest->get('/blibb/' .$bid . '/p/' . $params);
 
 		$blibb = json_decode($result);
 
-		// print_r($blibb);
 		
 		$t = $blibb->template;
-		$i = $t->i;
-		
-		$k = getKey();
-		$v['id'] = $bid;
-		$v['key'] = $k;
+		$i = $t->v->default;
 
-		$m = new Mustache();
+		$k = getKey();
+		// $v['id'] = $bid;
+		// $v['key'] = $k;
+
+		// $m = new Mustache();
 
 		$buffer = '';
 		foreach($i as $f){
-			$w = $f->w;
+			$w = $f->wb;
+			// print_r($w);
 			
-			// Hack because Mustache replaces {{elems}} that are
-			// not in the previous template
-			$w = str_replace("[[", "{{", $w);
-			$w = str_replace("]]", "}}", $w);
-			$res = $m->render($w,$v);
-			$buffer .= $res. "<br>";
+		// 	// Hack because Mustache replaces {{elems}} that are
+		// 	// not in the previous template
+		// 	$w = str_replace("[[", "{{", $w);
+		// 	$w = str_replace("]]", "}}", $w);
+		// 	$res = $m->render($w,$v);
+			$buffer .= $w;
 
 		}
-		// print_r($buffer);
+
 
 		$dest = $this->getParameter("f","",$_GET);
 

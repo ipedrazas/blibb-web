@@ -12,8 +12,8 @@ class Application extends lib {
 		$current_user = current_user();
 
 		$pest = new Pest(REST_API_URL);
-		$url_api = '/blibb/' . $bid . '/view/Default';
-    	$jb = $pest->get('/blibb/' . $bid . '/view/Default');
+		$url_api = '/blibb/' . $bid . '/view/default';
+    	$jb = $pest->get('/blibb/' . $bid . '/view/default');
  		$bli = json_decode($jb);
  		// print_r($bli);
 
@@ -27,7 +27,7 @@ class Application extends lib {
  			$btags = $bli->tags;
  		}
  		
- 		$view = $bli->template->v->Default[0];
+ 		$view = $bli->template->v->default[0];
  		$blibbBox = stripcslashes($view->rb);
 
 		$fTags = __DIR__."/templates/taglist.html";
@@ -45,7 +45,8 @@ class Application extends lib {
  		$blibbBox = str_replace('<blibb:tags/>', $taglist, $blibbBox);
  		$blibbBox = str_replace('<blibb:comments/>', $comments, $blibbBox);
 
- 		$css = '<style>' . $view->sb . chr(10) . $view->si . '</style>';
+ 		// $css = '<style>' . $view->sb . chr(10) . $view->si . '</style>';
+ 		$css = '';
  		$date = new DateTime( $bli->date);
  		
 		$owner = false;
@@ -58,12 +59,12 @@ class Application extends lib {
 		$bItems = str_replace('$oid', "oid", $bItems);
 		$its = json_decode($bItems);
 
-		// print_r($bItems);
+		print_r($bItems);
 
 		$results = $its->count;
 		
 
-		// print_r($its);
+		print_r($its);
 
 		if($results > 0){
 			$rs = $its->items;			

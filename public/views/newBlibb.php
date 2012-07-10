@@ -10,7 +10,43 @@
 ?>
 
 <link rel="stylesheet" href="css/user.css">
+<style type="text/css">
+		dl {
+			float: left;
+			padding: 10px;
+			margin-left: -1px;
+			border: 1px solid #ccc;
+			width: 120px;
+			height: 100px;
+		}
 
+		dl:last-child {
+			border-right: 1px solid #ccc;
+		}
+
+		dl:hover {
+			background: #eee;
+		}
+
+		dt, dd {
+			text-align: center;
+			color: #B21006;
+			width: 120px;
+		}
+		dt {
+			margin-bottom: 10px;
+		}
+
+		dd {
+			font-size: 1.1em;
+			line-height: 1.2em;
+			margin-left: 0px;
+		}
+
+		.clicked {
+			background: #eee;
+		}
+	</style>
 <script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js"></script> 
 <script type="text/javascript">
 
@@ -43,7 +79,7 @@
 	$("#nform").live("submit", function(){	
 		var isOk = false;
 		var name = $("#bname").val();
-		var template = $("#btemplate").val();
+		var template = $("#template").val();
 
 		if (name) {
 			if(template){
@@ -58,6 +94,12 @@
 		}
 		  return isOk;
 	} );	
+
+	$('dl').live("click", function(){	
+			$('dl').removeClass('clicked');
+			$(this).addClass('clicked');
+			$('#template').val($(this).attr('id'));
+		});
 
 
 </script>
@@ -98,7 +140,7 @@
 		<form action="saveBlibb" method="post" id="nform" class="form-horizontal" >
 			<fieldset>
 				<legend>Create blibb</legend>
-			<input type="hidden" name="btemplate" id="btemplate" /> 
+			<input type="hidden" name="template" id="template" /> 
 			<input type="hidden" name="bkey" value="<?php echo $key ?>" /> 
 			
 			<div class="control-group">
@@ -170,6 +212,7 @@
 					<label class="control-label" for="listTemplate">Template:</label>
 					<div class="controls">
 					<ul class="listTemplate">
+
 						<?php								
 							echo $t;
 						?>	

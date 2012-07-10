@@ -16,23 +16,27 @@
 				<ul class="nav nav-pills">
 					<?php
 
-	foreach ($controls as $control) {
-		$button = $control['button'];
-		echo  $button;
-	}
-
-?>					
+						foreach ($controls as $control) {
+							$button = $control['button'];
+							echo '<li class="active control"><a href="#" name="menuEntry" data-cid="'.$control['id'].'" data-control="'.$control['type'].'">'.$control['name'].'</a></li>';
+						}
+					
+					?>					
 				</ul>
 			</div>
 			
 
-			<div class="span6">
-				<form class="form-horizontal" action="publishTemplate">
+			<div class="span6" >
+				<form class="form-horizontal" action="publishTemplate" id="dynForm" method="post">
+					<input type="hidden" name="template_id" value="<?php echo $tid ?>" /> 
 					<fieldset id="form-builder">
 						<legend>Your Form</legend>
 						
 					</fieldset>
-					<input type="button" id="generateForm" class="btn btn-primary" value="Generate">
+					<fieldset id="buttonRack">
+						<input type="button" id="generateForm" class="btn btn-primary" value="Generate">
+						<input type="button" id="publishForm" class="btn btn-primary" value="Publish" style="display:none">
+					</fieldset>
 				</form>
 			</div>
 		</div>
@@ -97,6 +101,7 @@
 			revertDuration: 100
 		});
 
+
 		$( "#form-builder" ).droppable({ accept: ".control" });
 
 		$( "#form-builder" ).bind( "drop", function(event, ui) {
@@ -109,6 +114,24 @@
 			$('#form-builder .editable').blur(function() {
 				var title = $(this).html();
 				title = title.toLowerCase();
+				var input = $(this).parent().children()[1].children[0];
+				input.id = input.id.substring(0,3);
+				input.id += title;
+			});
+
+		});
+
+		$( ".control" ).bind( "click", function(event, ui) {
+			var link = $(this).children();
+			var id = link.attr('data-control');
+			var cid = link.attr('data-cid');
+
+			$('#form-builder').append($('#'+id).html());
+
+			$('#form-builder .editable').blur(function() {
+				var title = $(this).html();
+				title = title.toLowerCase();
+				title = title.replace(/ /g, '-');
 				var input = $(this).parent().children()[1].children[0];
 				input.id = input.id.substring(0,3);
 				input.id += title;
@@ -129,18 +152,20 @@
 				c['type'] = $(array[i]).children()[1].children[0].id.substring(0, 2);
 				control.push(c);
 			}
-			console.log(control);
 			$.ajax({
 				  url: 'actions/setControlsData',
 				    type: "POST",
 						data: {control: control, template: '<?php echo $tid; ?>'},
 				  	success: function(msg) {
-				  		
+				  		$alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>Template generated succesfully!<br> You can publish it to make it available or leave i as Draft.</div>";
+						$('#buttonRack').before($alert);
+						$('#publishForm').show();
 				  }
 				});
 		});
-
-		
+		$( '#publishForm' ).click(function() {
+			$('#dynForm').submit();
+		});
 
 
 	</script>

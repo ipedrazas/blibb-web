@@ -18,7 +18,7 @@ class Application extends lib {
  		$count = $rs->count;
 		$m = new Mustache();
  		$templates = array();
- 		$template_html = '<li><a href="#" name="template" id="{{id}}"><img src="/img/templates/{{thumbnail}}" hspace="10" width="50" height="60">{{name}}</a></li>';
+ 		$template_html = '<dl id="{{id}}"><dt><img src="/img/templates/{{thumbnail}}" hspace="10" width="50" height="60"></dt><dd>{{name}}</dd></dl>';
  		$t = '';
  		if($count>0){
  			$resultset = $rs->resultset;

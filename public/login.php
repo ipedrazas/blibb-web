@@ -46,7 +46,7 @@ class Login extends lib {
 		}else{
 			$errorMsg = '';
 		}
-    	$this->render('login',compact('errorMsg','reqHash'));        
+		$this->render('login',compact('errorMsg','reqHash'));   
     }
 }
 

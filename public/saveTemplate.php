@@ -16,24 +16,22 @@ class SaveTemplateApplication extends lib {
 			$view = 'formBuilder';
 			$pest = new Pest(REST_API_URL);
 			$jtemplate = $pest->post('/template', array(
-				'name' => $name,
-				'description' => $desc,
+				'template_name' => $name,
+				'template_description' => $desc,
 				'thumbnail' => 'draft.png',
 				'login_key' => $key
 			));
 			
 			$template = json_decode($jtemplate);
 			$tid = $template->result;
-
+			// print_r($template);
 			$jcontrols = $pest->get('/controls', array());
 			$temp = json_decode($jcontrols,true);
 			$controls = $temp['controls'];
 			// print_r($controls);
 		    $this->render($view,  compact('msg', 'controls','tid', 'name', 'desc'));
 		}
-		
     }
-
 }
 
 $app = new SaveTemplateApplication();
