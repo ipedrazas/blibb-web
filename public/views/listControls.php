@@ -14,8 +14,9 @@
 				<th>Control Name</th>
 				<th>Type</th>
 				<th>Button</th>
-				<th>Add</th>
-				<th>Display</th>
+				<th>Form</th>
+				<th>Read</th>
+				<th>Write</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -39,9 +40,11 @@
 							<textarea class="input-xlarge" id="02-multi-line-input" rows="5"><?php echo htmlentities($control->ui); ?></textarea>
 						</td>
 						<td>
-							<textarea class="input-xlarge" id="02-multi-line-input" rows="5"><?php echo htmlentities($control->ui); ?></textarea>
+							<textarea class="input-xlarge" id="02-multi-line-input" rows="5"><?php echo htmlentities($control->read); ?></textarea>
 						</td>
-						
+						<td>
+							<textarea class="input-xlarge" id="02-multi-line-input" rows="5"><?php echo htmlentities($control->write); ?></textarea>
+						</td>
 						</tr>
 				
 				<?php } ?>

@@ -9,14 +9,15 @@ class Application extends lib {
 		
 		$current_user = require_login();
 		$bid = $this->gt("b");
-		$params = "t.v.default.wb";
+		$params = "t.v.default";
 
 		$pest = new Pest(REST_API_URL);
     	$result = $pest->get('/blibb/' .$bid . '/p/' . $params);
 
 		$blibb = json_decode($result);
 
-		
+		// print_r($blibb);
+
 		$t = $blibb->template;
 		$i = $t->v->default;
 
@@ -41,7 +42,7 @@ class Application extends lib {
 		}
 
 
-		$dest = $this->getParameter("f","",$_GET);
+		// $dest = $this->getParameter("f","",$_GET);
 
     	$this->render('addItem',compact('current_user','buffer','thumb', 'bid','dest','k'));
         

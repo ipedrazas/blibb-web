@@ -15,7 +15,7 @@ class Application extends lib {
 		$url_api = '/blibb/' . $bid . '/view/default';
     	$jb = $pest->get('/blibb/' . $bid . '/view/default');
  		$bli = json_decode($jb);
- 		// print_r($bli);
+ 		print_r($bli);
 
  		$bname = $bli->name;
  		$bdesc = $bli->description;
@@ -30,6 +30,7 @@ class Application extends lib {
  		$view = $bli->template->v->default[0];
  		$blibbBox = stripcslashes($view->rb);
 
+ 		print_r($blibbBox);
 		$fTags = __DIR__."/templates/taglist.html";
 		$cTags = file($fTags); 
 		$taglist = implode($cTags);
@@ -66,97 +67,97 @@ class Application extends lib {
 
 		print_r($its);
 
-		if($results > 0){
-			$rs = $its->items;			
-			$itemsResult =  array();
-			foreach ($rs as $eRs) {
-				// print_r($eRs);
-				$_blitem = array();
-				$_blitem['id'] =  $eRs->id;
-				$fields = $eRs->fields;
+		// if($results > 0){
+		// 	$rs = $its->items;			
+		// 	$itemsResult =  array();
+		// 	foreach ($rs as $eRs) {
+		// 		// print_r($eRs);
+		// 		$_blitem = array();
+		// 		$_blitem['id'] =  $eRs->id;
+		// 		$fields = $eRs->fields;
 								
-				foreach ($fields as $field) {
-					$type = substr($field, 0, 2);
-					$field = substr($field, 3);
+		// 		foreach ($fields as $field) {
+		// 			$type = substr($field, 0, 2);
+		// 			$field = substr($field, 3);
 					
-					if($type=='15'){
-						$slug = $field;
-						$obj = $eRs->$field;
-						$value =  $obj->oid;
-						$_blitem[$slug] = $value;
-					}
-					else if($type=='1f'){						
-						$slug = $field;
-						$obj = $eRs->$field;
-						$song_id = $obj->id->oid;
-						$value =  $song_id;
-						$_blitem[$field] = $value;
-					}else if($type=='33'){						
-						$url = $eRs->$field;
-						if(isset($url->url)){
-							$_blitem['BOOKMARK'] = $url;
-						}else{
-							$tArray['title'] = 'Processing...';
-							$tArray['domain'] = 'Processing...';
-							$_blitem['BOOKMARK'] = $tArray;	
-						}
-					}else if ($type=='3d') {
-							if(isset($eRs->$field->name)){
-								$twitter = $eRs->$field;
-								$_blitem[$field] = $twitter->name . '<br>' . $twitter->screen_name . '<br>' . $twitter->description . '<br><img src="' . $twitter->profile_image_url . '"><br>' . $twitter->location;
-							}else{
-								$_blitem[$field] = $eRs->$field;
-							}
+		// 			if($type=='15'){
+		// 				$slug = $field;
+		// 				$obj = $eRs->$field;
+		// 				$value =  $obj->oid;
+		// 				$_blitem[$slug] = $value;
+		// 			}
+		// 			else if($type=='1f'){						
+		// 				$slug = $field;
+		// 				$obj = $eRs->$field;
+		// 				$song_id = $obj->id->oid;
+		// 				$value =  $song_id;
+		// 				$_blitem[$field] = $value;
+		// 			}else if($type=='33'){						
+		// 				$url = $eRs->$field;
+		// 				if(isset($url->url)){
+		// 					$_blitem['BOOKMARK'] = $url;
+		// 				}else{
+		// 					$tArray['title'] = 'Processing...';
+		// 					$tArray['domain'] = 'Processing...';
+		// 					$_blitem['BOOKMARK'] = $tArray;	
+		// 				}
+		// 			}else if ($type=='3d') {
+		// 					if(isset($eRs->$field->name)){
+		// 						$twitter = $eRs->$field;
+		// 						$_blitem[$field] = $twitter->name . '<br>' . $twitter->screen_name . '<br>' . $twitter->description . '<br><img src="' . $twitter->profile_image_url . '"><br>' . $twitter->location;
+		// 					}else{
+		// 						$_blitem[$field] = $eRs->$field;
+		// 					}
 						
-					}else{
-							$_blitem[$field] = $eRs->$field;
+		// 			}else{
+		// 					$_blitem[$field] = $eRs->$field;
 						
-					}						
-				}
-				// print_r($eRs);
-				// Comments
-				$_blitem['COMMENTS'] =  $eRs->comments;
-				$_blitem['key'] = getKey();
-				if (isset($eRs->tags)){
-					$_blitem['TAGS'] = $eRs->tags;	
-				}				
-				$itemsResult[] = $_blitem;
-			}
+		// 			}						
+		// 		}
+		// 		// print_r($eRs);
+		// 		// Comments
+		// 		$_blitem['COMMENTS'] =  $eRs->comments;
+		// 		$_blitem['key'] = getKey();
+		// 		if (isset($eRs->tags)){
+		// 			$_blitem['TAGS'] = $eRs->tags;	
+		// 		}				
+		// 		$itemsResult[] = $_blitem;
+		// 	}
 
-			// print_r($itemsResult);
+		// 	// print_r($itemsResult);
 
-			$blibb['name'] = $bname;
-			$blibb['desc'] = $bdesc;
-			$blibb['owner'] = $author;
-			$blibb['created'] = $date->format('d-m-Y H:i:s');
-	    	$blibb['ENTRIES'] = $itemsResult;
-	    	$blibb['css'] = $css;
-	    	$blibb['id'] = $bid;
-	    	$blibb['TAGLIST'] = $btags;
+		// 	$blibb['name'] = $bname;
+		// 	$blibb['desc'] = $bdesc;
+		// 	$blibb['owner'] = $author;
+		// 	$blibb['created'] = $date->format('d-m-Y H:i:s');
+	 //    	$blibb['ENTRIES'] = $itemsResult;
+	 //    	$blibb['css'] = $css;
+	 //    	$blibb['id'] = $bid;
+	 //    	$blibb['TAGLIST'] = $btags;
 
-	    	$m = new Mustache();
-			$content =  $m->render($blibbBox, $blibb);
+	 //    	$m = new Mustache();
+		// 	$content =  $m->render($blibbBox, $blibb);
 
-		}else{
-			$content = "There are no blitems yet";
-		}
+		// }else{
+		// 	$content = "There are no blitems yet";
+		// }
 		
-		if($this->gt('i')==1){
-			$view = 'iBlibb';	
-		}else{
-			$view = 'viewBlibb';
-		}
+		// if($this->gt('i')==1){
+		// 	$view = 'iBlibb';	
+		// }else{
+		// 	$view = 'viewBlibb';
+		// }
 
-		$a11y = $this->gt('a11y');
-		if($a11y==1){
-			$view='a11y';
-		}
-		$content = str_replace('<blibb:menuBar/>', $this->getMenuBar(), $content);
-		$content = str_replace('<blibb:footer/>', $this->getFooter(), $content);
-		// print_r($this->getMenuBar());
-		$title = $bname;
+		// $a11y = $this->gt('a11y');
+		// if($a11y==1){
+		// 	$view='a11y';
+		// }
+		// $content = str_replace('<blibb:menuBar/>', $this->getMenuBar(), $content);
+		// $content = str_replace('<blibb:footer/>', $this->getFooter(), $content);
+		// // print_r($this->getMenuBar());
+		// $title = $bname;
 
-		$this->render($view, compact('content','css', 'owner','bid', 'entries', 'current_user', 'blibb', 'title'));
+		// $this->render($view, compact('content','css', 'owner','bid', 'entries', 'current_user', 'blibb', 'title'));
  		
         
     }

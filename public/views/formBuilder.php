@@ -18,7 +18,7 @@
 
 						foreach ($controls as $control) {
 							$button = $control['button'];
-							echo '<li class="active control"><a href="#" name="menuEntry" data-cid="'.$control['id'].'" data-control="'.$control['type'].'">'.$control['name'].'</a></li>';
+							echo $button;
 						}
 					
 					?>					
@@ -42,57 +42,13 @@
 		</div>
 	</div>
 
-<script type="text/template" id="01">
-		<div class="control-group" data-cid="4fde4adc28d05f37d05edf4f">
-			<p class="control-label editable" contenteditable="true">Text input</p>
-			<div class="controls">
-				<input type="text" class="input-xlarge" id="01-text-input" name="01-{name}">
-				<p class="help-block" contenteditable="true">Help text</p>
-			</div>
-		 </div>
-	</script>	
+<?php
+	foreach ($controls as $control) {
+		$ui = $control['ui'];
+		echo $ui;
+	}
 
-	<script type="text/template" id="02">
-		<div class="control-group" data-cid="4fde4adc28d05f37d05edf50">
-			<p class="control-label editable" contenteditable="true">Multi line input</p>
-			<div class="controls">
-				<textarea class="input-xlarge" id="02-multi-line-input" rows="3"></textarea>
-				<p class="help-block" contenteditable="true">Help text</p>
-			</div>
-		</div>
-	</script>
-
-	<script type="text/template" id="03">
-		<div class="control-group" data-cid="4fde4adc28d05f37d05edf51">
-			<p class="control-label editable" contenteditable="true">Date input</p>
-			<div class="controls">
-				<input type="date" class="input-xlarge" id="03-date-input">
-				<p class="help-block" contenteditable="true">Help text</p>
-			</div>
-		</div>
-	</script>
-
-	<script type="text/template" id="33">
-		<div class="control-group" data-cid="4fde4adc28d05f37d05edf54">
-           	<p class="control-label editable" contenteditable="true">Bookmark control title</p>
-            <div class="controls">
-            	<input type="text" class="input-xlarge" id="33-bookmark-control-title">
-             	<p class="help-block" contenteditable="true">Help text</p>
-            </div>
-         </div>
-	</script>
-
-	<script type="text/template" id="3d">
-		<div class="control-group" data-cid="4fde4adc28d05f37d05edf55">
-           	<p class="control-label editable" contenteditable="true">Twitter control title</p>
-            <div class="controls">
-            	<input type="text" class="input-xlarge" id="3d-twitter-control-title">
-             	<p class="help-block" contenteditable="true">Help text</p>
-            </div>
-         </div>
-	</script>
-
-
+?>
 
 	<script type="text/javascript">
 		$('.control').draggable({
@@ -146,9 +102,8 @@
 				c = {};
 				c['order'] = i + 1;
 				c['name'] = $(array[i]).children()[0].innerHTML;
-				// c['control'] = $(array[i]).children()[1].children[0].outerHTML;
 				c['help'] = $(array[i]).children()[1].children[1].innerHTML;
-				c['cid'] = $(array[i]).attr('data-cid');
+				c['cid'] = $(array[i]).attr('id');
 				c['type'] = $(array[i]).children()[1].children[0].id.substring(0, 2);
 				control.push(c);
 			}

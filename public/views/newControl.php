@@ -51,17 +51,36 @@ input, textarea{
 				    </div>
 					<div class="control-group offset1">
 						<div class="controls">
-							<textarea class="span4" id="description" name="control_button" placeholder="html for the button" rows="5"></textarea>
+							<textarea class="span4" id="control_button" name="control_button" placeholder="html for the button" rows="5"><?php 
+
+										$button = '<li class="active control"><a href="#" name="menuEntry" data-cid="{{control_id}}" data-control="{{control_type}}">{{control_name}}</a></li>';
+										echo htmlentities($button);
+								?>
+							</textarea>
 						</div>
 					</div>
 					<div class="control-group offset1">
 						<div class="controls">
-							<textarea class="span4" id="description" name="control_ui" placeholder="html for the control in the form" rows="5"></textarea>
+							<textarea class="span4" id="control_ui" name="control_ui" placeholder="html for the FORM" rows="5"><?php
+								$ui = '<script type="text/template" id="{{control_type}}"><div class="control-group" id="{{control_id}}"><p class="control-label editable" contenteditable="true">{{control_name}}</p><div class="controls"><input type="text" class="input-xlarge" id="{{control_type}}"><p class="help-block" contenteditable="true">Help text</p></div> </div></script>';
+								echo htmlentities($ui);
+							?></textarea>
 						</div>
 					</div>
 					<div class="control-group offset1">
 						<div class="controls">
-							<textarea class="span4" id="description" name="control_value" placeholder="html for rendering the content of the control" rows="5"></textarea>
+							<textarea class="span4" id="control_write" name="control_write" placeholder="html for the WRITE" rows="5"><?php
+								$write = '<div id="box-{{type}}-{{slug}}"><label for="{{type}}-{{slug}}">{{name}}</label><input type="text" name="{{ype}}-{{slug}}"  /></div>';
+								echo htmlentities($write);
+							?></textarea>
+						</div>
+					</div>
+					<div class="control-group offset1">
+						<div class="controls">
+							<textarea class="span4" id="control_read" name="control_read" placeholder="Html for the READ" rows="5"><?php
+								$read = '<div class="{{type}}-{{slug}}">{{{slug}}}</div>';
+								echo htmlentities($read);
+							?></textarea>
 						</div>
 					</div>
 				    <div class="offset1">
