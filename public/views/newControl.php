@@ -69,7 +69,7 @@ input, textarea{
 					<div class="control-group offset1">
 						<div class="controls">
 							<textarea class="span4" id="control_write" name="control_write" placeholder="html for the WRITE" rows="5"><?php
-								$write = '<div id="box-{{<%type%>}}-{{<%slug%>}}"><label for="{{<%type%>}}-{{<%slug%>}}">{{<%name%>}}</label><input type="text" name="{{<%type%>}}-{{<%slug%>}}"  /></div>';
+								$write = '<div id="box-<%type%>-<%slug%>"><label for="<%type%>-<%slug%>"><%name%></label><input type="text" name="<%type%>-<%slug%>" /></div>';
 								echo htmlentities($write);
 							?></textarea>
 						</div>
@@ -77,7 +77,7 @@ input, textarea{
 					<div class="control-group offset1">
 						<div class="controls">
 							<textarea class="span4" id="control_read" name="control_read" placeholder="Html for the READ" rows="5"><?php
-								$read = '<div class="{{<%type%>}}-{{<%slug%>}}">{{{<%slug%>}}}</div>';
+								$read = '<div class="<%type%>-<%slug%>">{{{<%slug%>}}}</div>';
 								echo htmlentities($read);
 							?></textarea>
 						</div>
