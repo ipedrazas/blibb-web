@@ -26,34 +26,39 @@ class SaveItemApp extends lib {
 		$pestParams['app_token'] = '';
 
 		$pestParams['tags'] = $tags;
-		
-		foreach($keys as $k){		
-			
-			if(strpos($k,'-')===2){ 
-				// $name = substr($k,3);		
-				$val = $_POST[$k];			
-				// Add item only if it has value
-				if(!empty($val)){
-					$pestParams[$k] = $val;	
-				}			
-			}else{
-				echo strpos($k,'-') . '<br>';
+
+		if($bkey === getKey()){
+			foreach($keys as $k){		
+				if(strpos($k,'-')===2){ 
+					$val = $_POST[$k];			
+					if(!empty($val)){
+						$pestParams[$k] = $val;	
+					}			
+				}else{
+					echo strpos($k,'-') . '<br>';
+				}
+				
 			}
-			
+
+			// print_r($pestParams);
+
+			$pest = new Pest(REST_API_URL);
+			try {
+				$result = $pest->post('/blitem',$pestParams);
+				header("Location: blibb?b=$bid");	
+			} catch (Pest_Unauthorized $e) {
+			    // 401
+			    $errorMsg = '<li class="errorLogin">You are not authorised to write in the Blibb!</li>';
+			    $_SESSION['ERROR'] = $errorMsg;
+			    header("Location: addItem?b=$bid");
+			} 
+		}else{
+			$errorMsg = '<li class="errorLogin">You are not authorised to write in the Blibb!</li>';
+			$_SESSION['ERROR'] = $errorMsg;
+			header("Location: addItem?b=$bid");
 		}
-
-		// print_r($pestParams);
-
-		$pest = new Pest(REST_API_URL);
-		try {
-			$result = $pest->post('/blitem',$pestParams);
-			header("Location: blibb?b=$bid");	
-		} catch (Pest_Unauthorized $e) {
-		    // 401
-		    $errorMsg = '<li class="errorLogin">You are not authorised to write in the Blibb!</li>';
-		    $_SESSION['ERROR'] = $errorMsg;
-		    header("Location: addItem?b=$bid");
-		} 	
+		
+			
     }
 
     

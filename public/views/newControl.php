@@ -46,6 +46,7 @@ input, textarea{
 				        	<option value="21">Image</option>
 				        	<option value="31">MP3</option>
 				        	<option value="41">Document</option>
+				        	<option value="69">List</option>
 				        </select>
 				      </div>
 				    </div>

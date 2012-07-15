@@ -68,10 +68,9 @@
 			}
 
 			
-		</style>
-		
-<link href="css/fileuploader.css" rel="stylesheet" type="text/css">
-<script src="js/fileuploader.js" type="text/javascript"></script>
+		</style>	
+<link href="/css/fileuploader.css" rel="stylesheet" type="text/css">
+<script src="/js/fileuploader.js" type="text/javascript"></script>
 <script>
 	$(function() {             
 		createUploader('imageUploader', '<?php echo $bli->id  ?>', '<?php echo $key ?>');
@@ -117,8 +116,9 @@
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#general" data-toggle="tab"><i class="icon-home"></i> General</a></li>
-					<li><a href="#api" data-toggle="tab"><i class="icon-random"></i> API</a></li>
+					<li><a href="#layout" data-toggle="tab"><i class="icon-columns"></i> Template</a></li>
 					<li><a href="#data" data-toggle="tab"><i class="icon-list-alt"></i> Data</a></li>
+					<li><a href="#api" data-toggle="tab"><i class="icon-random"></i> API</a></li>
 					<li><a href="#integrations" data-toggle="tab"><i class="icon-refresh"></i> Integrations</a></li>
 				</ul>
 
@@ -275,6 +275,14 @@
 							<li><a href="#">Excel File</a></li>
 							<li><a href="#">Json File</a></li>
 						</ul>
+					</div>
+					<!-- Tab: Layout -->
+					<div class="tab-pane span10" id="layout">
+						<h3>Template:</h3>
+						Template Mode
+						Box Mode
+						Edit Layout
+						Edit Css
 					</div>
 					<!-- Tab: API -->
 					<div class="tab-pane span10" id="api">
