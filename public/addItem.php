@@ -21,7 +21,7 @@ class Application extends lib {
 		$t = $blibb->template;
 		$i = $t->v->default;
 
-		$k = getKey();
+		// $k = getKey();
 		// $v['id'] = $bid;
 		// $v['key'] = $k;
 

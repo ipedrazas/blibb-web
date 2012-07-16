@@ -10,7 +10,6 @@ class SaveItemApp extends lib {
     	$user = require_login();
 
 		$bid = $this->gt("b");
-		$bkey = $this->gt("k");
 		$tags = $this->gt("tags");
 
 		
@@ -22,12 +21,11 @@ class SaveItemApp extends lib {
 		
 		$pestParams = array();
 		$pestParams['blibb_id'] = $bid;
-		$pestParams['login_key'] = $bkey;
+		$pestParams['login_key'] = getKey();
 		$pestParams['app_token'] = '';
 
 		$pestParams['tags'] = $tags;
 
-		if($bkey === getKey()){
 			foreach($keys as $k){		
 				if(strpos($k,'-')===2){ 
 					$val = $_POST[$k];			
@@ -52,11 +50,6 @@ class SaveItemApp extends lib {
 			    $_SESSION['ERROR'] = $errorMsg;
 			    header("Location: addItem?b=$bid");
 			} 
-		}else{
-			$errorMsg = '<li class="errorLogin">You are not authorised to write in the Blibb!</li>';
-			$_SESSION['ERROR'] = $errorMsg;
-			header("Location: addItem?b=$bid");
-		}
 		
 			
     }

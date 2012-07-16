@@ -9,9 +9,8 @@ class SaveTemplateApplication extends lib {
 		$current_user = require_login();
 		$name = $this->gt("template_name");
 		$desc = $this->gt("template_desc");
-		$k = $this->gt("k");
 		$key = getKey();
-		if($k===$key){
+		
 			// $view = 'getControls';
 			$view = 'formBuilder';
 			$pest = new Pest(REST_API_URL);
@@ -30,7 +29,7 @@ class SaveTemplateApplication extends lib {
 			$controls = $temp['controls'];
 			// print_r($controls);
 		    $this->render($view,  compact('msg', 'controls','tid', 'name', 'desc'));
-		}
+		
     }
 }
 

@@ -4,29 +4,27 @@
 require_once(__DIR__.'/../lib/getid3/getid3.php');
 
 
-function getKey(){
-  if(isset($_SESSION['K'])){
-    return $_SESSION['K'];
+function getUser(){
+  if(isset($_SESSION['USER'])){
+   return $_SESSION['USER'];
   }
 }
 
-function getUser($key){
-  $redis = new Predis\Client();
-  $juser = $redis->get($key);
-  return json_decode($juser);
-
-
-}
-function getUserName($key){
-  $user = getUser($key);
-  if(isset($user)){
-    return $user->username;  
+function getUserName(){
+  $user = getUser();
+  if(isset($user->username)){
+    return $user->username;
   }
   return '';
 }
 
-function isAdmin($key){
-  $user = getUser($key);
+function getKey(){
+  $user = getUser();
+  return $user->key;
+}
+
+function isAdmin(){
+  $user = getUser();
   if(isset($user->role)){
     $role =  $user->role;
     if($role === 'admin'){
@@ -36,23 +34,19 @@ function isAdmin($key){
   return false;
 }
 
-function getUserImage($key){
-  $user = getUser($key);
+function getUserImage(){
+  $user = getUser();
   return $user->image;
 }
 
-function getUserId($key){
-  $user = getUser($key);
+function getUserId(){
+  $user = getUser();
   return $user->id;
 }
 // Logs into the user $user
 function log_in($k){
-    $key = json_decode($k);
-    $_SESSION['K'] = $key->key;
-    $_SESSION['user_id'] = getUserId($k);
-    $_SESSION['user_name'] = getUserName($k);
-    $_SESSION['user_key'] =  getUserImage($k);
-  
+    $user = json_decode($k);
+    $_SESSION['USER'] = $user;
 }
 
 
@@ -60,18 +54,16 @@ function log_in($k){
 function current_user(){
   static $current_user = 0;
   if(!$current_user){
-    if(isset($_SESSION['K'])){
-      $k = $_SESSION['K'];
-      return getUserName($k);
+    if(isset($_SESSION['USER'])){ 
+      return getUserName();
     }
   }
   return $current_user;
 }
 
 function current_user_id(){
-  if(isset($_SESSION['user_id'])){
-      return $_SESSION['user_id'];
-    }
+  $user = getUser();
+  return $user->id;
 }
 
 // Requires a current user

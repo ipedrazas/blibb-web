@@ -6,7 +6,8 @@ require_once(__DIR__.'/../system/config.php');
 class Application extends lib {
 
     public function run() {
-    	
+
+    	// print_r(getUser());
 
 		$userspace = $this->gt("id");
 		
@@ -23,8 +24,10 @@ class Application extends lib {
     	$jresp = $pest->get('/blibb/' . $userspace);
     	
     	$this->setRedirect();
-		$current_user = current_user();
+		$current_user = getUserName();
 		$owner = false;
+
+		print_r($current_user . ' ' . $userspace);
 		if($userspace === $current_user){
 			$owner = true;
 		}
@@ -62,8 +65,8 @@ class Application extends lib {
     		$blibbs[] = "There are no blibbs in this space...";
     	}
     	// print_r($blibbs);
-    	$k = getKey();
-    	$admin = isAdmin($k);
+
+    	$admin = isAdmin();
     	$this->render('html5_Blibb', compact('userspace','owner','blibbs','blbb', 'k', 'admin'));		
 	}
 

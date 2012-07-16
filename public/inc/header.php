@@ -1,7 +1,7 @@
 <?php
 
 $userName  = current_user();
-$key = getKey();
+
 ?>
 
 <!doctype html>

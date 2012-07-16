@@ -23,6 +23,7 @@ class Login extends lib {
 						'u' => $user,
 						'p' => $pwd
 					));
+					print_r($result);
 					log_in($result);
 					if(!isset($_SESSION['redirect_to'])){
 							$destURL = 'main';
