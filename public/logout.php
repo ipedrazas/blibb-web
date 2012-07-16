@@ -6,10 +6,7 @@ class Application extends lib {
 
     public function run() {
 
-		$redis = new Predis\Client();
-
-		$key = getKey();
-		$redis->del($key);
+		
 	    session_unset();
 	    session_destroy();
 	    session_write_close();
