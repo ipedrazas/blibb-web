@@ -16,23 +16,17 @@ class StreamImage extends lib {
 		$pest = new Pest(REST_API_URL);
     	$jresp = $pest->get('/picture/' . $i);
     	$picture = json_decode($jresp);
-
-
-
     	
-    	$path  = $picture->path . '/'. $size . '/';
-    	$img_id = $picture->id;
-    	$format = $picture->format;
 
-		$image = $this->GetFileData($path . $img_id . '.' . $format); 
+		// $image = $this->GetFileData(REST_API_URL . '/picture/'.$i.'/'.$size);//($path . $img_id . '.' . $format); 
 
 		ob_start();
-		$length = strlen($image);
+		// $length = strlen($image);
 		header('Last-Modified: '.date('r'));
 		header('Accept-Ranges: bytes');
-		header('Content-Length: '.$length);
-		header('Content-Type: '. $picture->mime_type);
-		print($image);
+		header('Content-Length: '.$picture->size);
+		header('Content-Type: ' . $picture->mime_type);
+		print(file_get_contents(REST_API_URL . '/picture/'.$i.'/'.$size));
 		ob_end_flush();
 		
     }

@@ -73,7 +73,7 @@
 <script src="/js/fileuploader.js" type="text/javascript"></script>
 <script>
 	$(function() {             
-		createUploader('imageUploader', '<?php echo $bli->id  ?>', '<?php echo $key ?>');
+		createUploader('imageUploader', '<?php echo $bli->id  ?>', '<?php echo getKey(); ?>');
 	}); 
 	function createUploader(element, bid, key){            
 		var uploader = new qq.FileUploader({

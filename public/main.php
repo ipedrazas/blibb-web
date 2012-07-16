@@ -27,7 +27,7 @@ class Application extends lib {
 		$current_user = getUserName();
 		$owner = false;
 
-		print_r($current_user . ' ' . $userspace);
+		// print_r($current_user . ' ' . $userspace);
 		if($userspace === $current_user){
 			$owner = true;
 		}
