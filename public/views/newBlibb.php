@@ -113,7 +113,7 @@
 	        Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
 	        $("#bslug").val(Text);        
 		});             
-        createUploader('imageUploader', '', '<?php echo $key ?>');
+        createUploader('imageUploader', '', '<?php echo getKey(); ?>');
     }); 
     function createUploader(element, bid, key){            
         var uploader = new qq.FileUploader({
