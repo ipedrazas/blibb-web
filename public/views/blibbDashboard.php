@@ -151,7 +151,7 @@
 						<p>
 							<div class="thumbnails">
 								<a href="#" class="thumbnail span2">
-									<img id="img_image" src="/actions/getImage?i=160&id=<?php echo $bli->img; ?>" alt="">
+									<img id="img_image" src="<?php echo REST_API_URL ?>/picture/<?php echo $bli->img; ?>/160" alt="">
 								</a>
 							</div>
 							
