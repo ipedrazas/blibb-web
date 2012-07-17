@@ -17,5 +17,7 @@ require_once(__DIR__.'/../lib/Pest/Pest.php');
 
 require_once('functions.php'); 
 
-define('REST_API_URL', 'http://api.' . $_SERVER['SERVER_NAME']);
-define('UPLOAD_DIR','/home/blibb_web/shared/media');
+$ini_array = parse_ini_file("/var/cache/blibb.ini",true);
+
+define('REST_API_URL', $ini_array['configuration']['api_url']);
+define('UPLOAD_DIR',$ini_array['configuration']['upload_dir']);
