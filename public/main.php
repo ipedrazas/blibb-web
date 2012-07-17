@@ -54,6 +54,7 @@ class Application extends lib {
     	if($count>0){
     		foreach ($rs as $blibb) {
     			// print_r($blibb);
+    			$blibb->REST_API_URL = REST_API_URL;
     			if($i==0){
     				$blbb =  $m->render($bbox, $blibb);
     			}else{
