@@ -127,7 +127,7 @@
             onComplete: function(id, fileName, responseJSON){
             	var resp =  responseJSON.id;
             	$('#bimg').val(resp);
-            	var srcI = "actions/getImage?id=" + resp + "&i=260";
+            	var srcI = "<?php echo REST_API_URL ?>/picture/" + resp + "/260";
             	$("#img_image").attr("src",srcI);
             	$("#im_image").show();
             	$(".qq-upload-failed-text").hide();
