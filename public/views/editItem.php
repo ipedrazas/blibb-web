@@ -31,7 +31,8 @@ require_once(__DIR__.'/../inc/header.php');
  		<h1>Add Item:</h1>
  		<br><br>
  		<form action="saveItem" enctype="multipart/form-data" method="post" id="addItem">
- 		 <input type="hidden" name="b" value="<?php echo $bid ?>">
+ 		 <input type="hidden" name="blibb_id" value="<?php echo $bid ?>">
+ 		 <input type="hidden" name="blitem_id" value="<?php echo $blitem->id ?>">
  		 <input type="hidden" name="k" value="<?php echo getKey(); ?>">
 
 			<?php echo $buffer; ?>
@@ -52,6 +53,16 @@ require_once(__DIR__.'/../inc/header.php');
 		</form>
 	</div>
 
+<script type="text/javascript">
+<?php
+	
+	foreach ($blitem->fields as $field) {
+		$values = explode("-", $field);
+		echo "$('[name=". $field ."]').val('". htmlentities($blitem->$values[1]) ."');";
+	}
+	
+?>
+</script>
 
 
 <?php
