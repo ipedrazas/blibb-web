@@ -14,9 +14,9 @@
 				<th>Control Name</th>
 				<th>Type</th>
 				<th>Button</th>
-				<th>Form</th>
-				<th>Read</th>
-				<th>Write</th>
+				<th>Control FormBuilder</th>
+				<th>Display Read</th>
+				<th>Display Write</th>
 				</tr>
 				</thead>
 				<tbody>

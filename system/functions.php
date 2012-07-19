@@ -20,7 +20,11 @@ function getUserName(){
 
 function getKey(){
   $user = getUser();
-  return $user->key;
+  if(isset($user->key)){
+    return $user->key;
+  }else{
+    return '';
+  }
 }
 
 function isAdmin(){
