@@ -233,9 +233,9 @@
 								<div class="dashboard_box">
 									<div class="dashboard_box_title">API usage (?)</div>
 									<div class="dashboard_box_inner">
-										<strong>Num of Elements:</strong> <?php echo $bli->num_items; ?>
+										<strong>Num of Elements:</strong> <?php echo $num_items; ?>
 										<br>
-										<strong>Hits:</strong> <?php echo $bli->num_views; ?>
+										<strong>Hits:</strong> <?php echo $num_views; ?>
 									</div>
 								</div>
 							</div>
@@ -253,9 +253,9 @@
 						<form action="<?php echo REST_API_URL . '/loader/excel' ?>" method="post" id="file_upload" enctype="multipart/form-data" target="upload_iframe">
 						<ul>
 							<li>
-								Excel Spreadsheet <input type="radio" value="excel" name="file_type"/>
+								Excel Spreadsheet <input type="radio" value="excel" name="file_type" checked="checked"/>
 							</li>
-							<li>
+							<li style="display:none">
 								Comma separated values <input type="radio" value="excel" name="file_type"/>
 							</li>
 							<li><input type="file" name="file" /></li>
@@ -266,7 +266,7 @@
 							</li>
 						</ul>
 						</form>	
-
+						<!-- 
 						<h3>Export</h3>
 						<p>Select the format you want to export your data</p>
 						<ul>
@@ -275,19 +275,19 @@
 							<li><a href="#">Excel File</a></li>
 							<li><a href="#">Json File</a></li>
 						</ul>
+					-->
 					</div>
 					<!-- Tab: Layout -->
 					<div class="tab-pane span10" id="layout">
-						<h3>Template:</h3>
-						Template Mode
-						Box Mode
-						Edit Layout
-						Edit Css
+						<h2>Template:</h2>
+						<h3>Box Mode enabled</h3>
 					</div>
 					<!-- Tab: API -->
 					<div class="tab-pane span10" id="api">
-						<h3>Blibb URL</h3>
+						<h3>Blibb URL </h3>						
+						<a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '.xml'; ?>" target="_blank"><img src="/img/rss.png" width="16" height="16" alt="xml feed" /></a>
 						<code><a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></a></code>
+						
 						
 						<h2>API Methods</h2>
 

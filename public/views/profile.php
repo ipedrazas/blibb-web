@@ -53,7 +53,7 @@
 									</div>
 									<div class="thumbnails help-block">
 										<a href="#" class="thumbnail span2">
-										<div id="im_image" ><img id="img_image"  alt="thumbnail" src="/actions/getImage?i=260&id=<?php echo $image ?>" /></div>
+										<div id="im_image" ><img id="img_image"  alt="thumbnail" src="<?php echo REST_API_URL . "/picture/" . $image . "/260"; ?>" /></div>
 										</a>
 									</div> 
 								</div>
@@ -108,7 +108,7 @@
 			$(document).ready(function(){
 				var val = $("#range").val();
 				$("#money-val").html('$' + val);
-				 createUploader('imageUploader', '<?php echo $key ?>');
+				 createUploader('imageUploader', '<?php echo getKey() ?>');
 			});
 
 			$('#range').change(function() {
@@ -138,7 +138,7 @@
 		            onComplete: function(id, fileName, responseJSON){
 		            	var resp =  responseJSON.id;
 		            	$('#bimg').val(resp);
-		            	var srcI = "actions/getImage?id=" + resp + "&i=260";
+		            	var srcI = "<?php echo REST_API_URL ?>/picture/" + resp + "/260";
 		            	$("#img_image").attr("src",srcI);
 		            	$("#im_image").show();
 		            	$(".qq-upload-failed-text").hide();

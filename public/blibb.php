@@ -20,6 +20,7 @@ class Application extends lib {
  		$bname = $bli->name;
  		$bdesc = $bli->description;
  		$author = $bli->owner;
+ 		$date = $bli->date;
  		
  		$btags = array();
  		
@@ -48,8 +49,7 @@ class Application extends lib {
 
  		// $css = '<style>' . $view->sb . chr(10) . $view->si . '</style>';
  		$css = '';
- 		$date = new DateTime( $bli->date);
- 		
+		
 		$owner = false;
 		
 		if($author === $current_user){
@@ -117,11 +117,13 @@ class Application extends lib {
 				}
 				// print_r($eRs);
 				// Comments
-				$_blitem['COMMENTS'] =  $eRs->comments;
-				$_blitem['key'] = getKey();
+				if(isset($eRs->comments)){
+					$_blitem['COMMENTS'] =  $eRs->comments;	
+				}
 				if (isset($eRs->tags)){
 					$_blitem['TAGS'] = $eRs->tags;	
-				}				
+				}
+				$_blitem['key'] = getKey();				
 				$itemsResult[] = $_blitem;
 			}
 
@@ -130,7 +132,7 @@ class Application extends lib {
 			$blibb['name'] = $bname;
 			$blibb['desc'] = $bdesc;
 			$blibb['owner'] = $author;
-			$blibb['created'] = $date->format('d-m-Y H:i:s');
+			$blibb['created'] = $date;
 	    	$blibb['ENTRIES'] = $itemsResult;
 	    	$blibb['css'] = $css;
 	    	$blibb['id'] = $bid;
