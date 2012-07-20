@@ -12,8 +12,8 @@ class Application extends lib {
 		$current_user = current_user();
 
 		$pest = new Pest(REST_API_URL);
-		$url_api = '/blibb/' . $bid . '/view/default';
-    	$jb = $pest->get('/blibb/' . $bid . '/view/default');
+		$url_api = '/blibb/' . $bid . '/view';
+    	$jb = $pest->get($url_api);
  		$bli = json_decode($jb);
  		// print_r($bli);
 
