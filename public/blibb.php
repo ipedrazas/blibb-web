@@ -7,7 +7,7 @@ class Application extends lib {
     public function run() {
 
     	$this->setRedirect();
-    	$fullView = $this->gt("v");
+ 		$view_mode = $this->gt("v", false);
 		$bid = $this->gt("b");
 		$current_user = current_user();
 
@@ -27,8 +27,18 @@ class Application extends lib {
  		if(isset($bli->tags)){
  			$btags = $bli->tags;
  		}
+
+ 		if($view_mode){
+ 			if(isset($bli->template->v->$view_mode)){
+ 				$tview = $bli->template->v->$view_mode;
+ 			$view = $tview[0];	
+ 			}else{
+ 				$view = $bli->template->v->default[0];	
+ 			}
+ 		}else{
+ 			$view = $bli->template->v->default[0];
+ 		}
  		
- 		$view = $bli->template->v->default[0];
  		$blibbBox = stripcslashes($view->rb);
 
  		// print_r($blibbBox);
@@ -145,11 +155,9 @@ class Application extends lib {
 			$content = "There are no blitems yet";
 		}
 		
-		if($this->gt('i')==1){
-			$view = 'iBlibb';	
-		}else{
-			$view = 'viewBlibb';
-		}
+		
+		$view = 'viewBlibb';
+		
 
 		$a11y = $this->gt('a11y');
 		if($a11y==1){
