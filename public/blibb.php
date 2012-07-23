@@ -33,7 +33,7 @@ class Application extends lib {
  				$tview = $bli->template->v->$view_mode;
  			$view = $tview[0];	
  			}else{
- 				$view = $bli->template->v->default[0];	
+ 				$view = $bli->template->v->default[0]; 	
  			}
  		}else{
  			$view = $bli->template->v->default[0];
