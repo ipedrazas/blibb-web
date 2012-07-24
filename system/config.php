@@ -17,7 +17,7 @@ require_once(__DIR__.'/../lib/Pest/Pest.php');
 
 require_once('functions.php'); 
 
-$ini_array = parse_ini_file("/var/cache/blibb.ini",true);
+$ini_array = parse_ini_file("/var/blibb/blibb.ini",true);
 
-define('REST_API_URL', $ini_array['configuration']['api_url']);
-define('UPLOAD_DIR',$ini_array['configuration']['upload_dir']);
+define('REST_API_URL', $ini_array['api_url']);
+define('UPLOAD_DIR',$ini_array['upload_dir']);
