@@ -1,7 +1,5 @@
 (function($) {
 
-	//Parte que estaba o tenías ya funcionando.
-	//Sustituye esto por lo que tienes que funciona
 	$('.control').draggable({
 		opacity: 0.35,
 		revert: true,
@@ -17,13 +15,15 @@
 
 		$(this).append($('#'+id).html());
 
-		$('#form-builder .editable').blur(function() {
-			var title = $(this).html();
+		$('#form-builder .control-group .controls input').change(function() {
+			var title = $(this).val();
 			title = title.toLowerCase();
 			title = title.replace(/ /g, '-');
-			var input = $(this).parent().children()[1].children[0];
-			input.id = input.id.substring(0,3);
-			input.id += title;
+			var input = $(this);
+			input.attr('id', input.attr('id').substring(0,3) + '-' +title);
+			var parent = $(this).parent().parent().find('.control-label');
+			parent.html($(this).val());
+			$(this).val('');
 		});
 
 	});
@@ -35,13 +35,15 @@
 
 		$('#form-builder').append($('#'+id).html());
 
-		$('#form-builder .editable').blur(function() {
-			var title = $(this).html();
+		$('#form-builder .control-group .controls input').change(function() {
+			var title = $(this).val();
 			title = title.toLowerCase();
 			title = title.replace(/ /g, '-');
-			var input = $(this).parent().children()[1].children[0];
-			input.id = input.id.substring(0,3);
-			input.id += title;
+			var input = $(this);
+			input.attr('id', input.attr('id').substring(0,3) + '-' +title);
+			var parent = $(this).parent().parent().find('.control-label');
+			parent.html($(this).val());
+			$(this).val('');
 		});
 
 	});
@@ -49,7 +51,7 @@
 
 	//Nueva parte para el control de lista
 
-	$('.help-inline a i.icon-plus').live('click', function(event, ui) {
+	$('.help-inline a i.icon-plus').on('click', function(event, ui) {
 		var parent = $(this).parent().parent().parent();
 		var input = parent.find('input');
 		var value = input.val();
@@ -61,7 +63,7 @@
 		
 	});
 
-	$('.help-inline a .icon-minus').live('click', function(event, ui) {
+	$('.help-inline a .icon-minus').on('click', function(event, ui) {
 		var parent = $(this).parent().parent().parent();
 		parent.remove();
 	});
@@ -74,8 +76,6 @@
 		for (var i = 0, max = array.length; i < max; i++) {
 			c = {};
 			c.order = i + 1;
-			//Compruebo que el data-cid es el de lista para tratarlo de manera diferente
-			//data-cid inventado, que conste en acta, igual que el id
 			if ($(array[i]).attr('data-cid') === 'control-list') {
 				c.name = $(array[i]).find('p.control-label').html();
 				c.help = $(array[i]).find('.controls').find('p.help-block').html();
@@ -98,15 +98,18 @@
 		}
 		console.log(control);
 		$.ajax({
-				  url: 'actions/setControlsData',
-				    type: "POST",
-						data: {control: control, template: template_id},
-				  	success: function(msg) {
-				  		$alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>Template generated succesfully!<br> You can publish it to make it available or leave i as Draft.</div>";
-						$('#buttonRack').before($alert);
-						$('#publishForm').show();
-				  }
-				});
+			url: 'actions/setControlsData',
+			type: "POST",
+			data: {
+				control: control,
+				template: template_id
+			},
+			success: function(msg) {
+				$alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>Template generated succesfully!<br> You can publish it to make it available or leave i as Draft.</div>";
+				$('#buttonRack').before($alert);
+				$('#publishForm').show();
+			}
+		});
 		
 	});
 
@@ -123,16 +126,20 @@
 				control.push(c);
 			}
 			$.ajax({
-				  url: 'actions/setControlsData',
-				    type: "POST",
-						data: {control: control, template: '<?php echo $tid; ?>'},
-				  	success: function(msg) {
-				  		$alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>Template generated succesfully!<br> You can publish it to make it available or leave i as Draft.</div>";
-						$('#buttonRack').before($alert);
-						$('#publishForm').show();
-				  }
-				});
+				url: 'actions/setControlsData',
+				type: "POST",
+				data: {
+					control: control,
+					template: '<?php echo $tid; ?>'
+				},
+				success: function(msg) {
+					$alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>Template generated succesfully!<br> You can publish it to make it available or leave i as Draft.</div>";
+					$('#buttonRack').before($alert);
+					$('#publishForm').show();
+				}
+			});
 		});
+
 		$( '#publishForm' ).click(function() {
 			$('#dynForm').submit();
 		});

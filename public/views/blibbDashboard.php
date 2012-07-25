@@ -280,7 +280,24 @@
 					<!-- Tab: Layout -->
 					<div class="tab-pane span10" id="layout">
 						<h2>Template:</h2>
-						<h3>Box Mode enabled</h3>
+						<form class="form-horizontal">
+						  <fieldset>
+						    
+						    <div class="control-group">
+					            <label class="control-label">Template model</label>
+					            <div class="controls">
+					              <label class="radio">
+					                <input type="radio" name="template-model" id="template-model1" value="box">
+					                <i class="icon-th-large"></i> Boxes
+					              </label>
+					              <label class="radio">
+					                <input type="radio" name="template-model" id="template-model2" value="table">
+					                <i class="icon-th"></i> Table
+					              </label>
+					            </div>
+					          </div>
+						  </fieldset>
+						</form>
 					</div>
 					<!-- Tab: API -->
 					<div class="tab-pane span10" id="api">
@@ -293,13 +310,14 @@
 
 						<h3>Collection</h3>
 						<!-- API Method code -->
+					<div class="accordion" id="accordion-api">
 						<div class="accordion-group">
 							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#method1">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-api" data-target="#method1" href="#method1">
 									Get Items - Paginated
 								</a>
 							</div>
-							<div id="method1" class="accordion-body collapse in">
+							<div id="method1" class="accordion-body collapse">
 								<div class="accordion-inner">
 									<h3>Method <code>[GET] <a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug ."/<span class=\"optionalParameter\">[page]</span>"; ?></a></code></h3>
 									
@@ -346,11 +364,11 @@
 						<!-- -->
 						<div class="accordion-group">
 							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" href="#method2">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-api" href="#method2">
 									Add Item
 								</a>
 							</div>
-							<div id="method2" class="accordion-body collapse in">
+							<div id="method2" class="accordion-body collapse">
 								<div class="accordion-inner">
 									<h3>Method <code>[POST] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code></h3>
 									<h3>Parameters</h3>
@@ -370,11 +388,11 @@
 						<h3>Tags</h3>
 						<div class="accordion-group">
 							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" href="#method3">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-api" href="#method3">
 									Get Items by Tag
 								</a>
 							</div>
-							<div id="method3" class="accordion-body collapse in">
+							<div id="method3" class="accordion-body collapse">
 								<div class="accordion-inner">
 									<h3>Method <code>[GET] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag/<span class="parameter">&lt;tag&gt;</span>' ; ?></code></h3>
 									<h3>Parameters</h3>
@@ -387,11 +405,11 @@
 						</div>
 						<div class="accordion-group">
 							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" href="#method4">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-api" href="#method4">
 									Add Tag to Item
 								</a>
 							</div>
-							<div id="method4" class="accordion-body collapse in">
+							<div id="method4" class="accordion-body collapse">
 								<div class="accordion-inner">
 									<h3>Method <code>[POST] <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '/tag' ; ?></code></h3>
 									<h3>Parameters</h3>
@@ -407,11 +425,11 @@
 						<h3>Comments</h3>
 						<div class="accordion-group">
 							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" href="#method5">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-api" href="#method5">
 									Get Comments
 								</a>
 							</div>
-							<div id="method5" class="accordion-body collapse in">
+							<div id="method5" class="accordion-body collapse">
 								<div class="accordion-inner">
 									<h3>Method <code>[GET] <?php echo REST_API_URL . '/comment/<span class="parameter">&lt;parent_id&gt;</span>' ; ?></code></h3>
 									<h3>Parameters</h3>
@@ -424,11 +442,11 @@
 						</div>
 						<div class="accordion-group">
 							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" href="#method6">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-api" href="#method6">
 									Add Comment to Item
 								</a>
 							</div>
-							<div id="method6" class="accordion-body collapse in">
+							<div id="method6" class="accordion-body collapse">
 								<div class="accordion-inner">
 									<h3>Method <code>[POST] <?php echo REST_API_URL . "/comment"; ?></code></h3>
 									<h3>Parameters</h3>
@@ -450,6 +468,7 @@
 								</div>
 							</div>
 						</div>
+					</div>
 					</div>
 
 					<!-- Tab: Security-->
@@ -526,7 +545,10 @@
 				show: false
 			});
 			
-			$(".collapse").collapse();
+			$(".collapse").collapse({
+				parent: true,
+				toggle: true
+			});
 
 			$('#addwebhook').live("click", function(e){	
 				e.preventDefault();	
