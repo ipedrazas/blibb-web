@@ -11,6 +11,10 @@
 		.item-list {
 			margin-bottom: 5px;
 		}
+
+		.control-group {
+			border-bottom: 1px solid #E5E5E5;
+		}
 	</style>
 
 	<div class="container">
