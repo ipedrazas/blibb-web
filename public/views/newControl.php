@@ -41,12 +41,14 @@ input, textarea{
 				        	<option value="02">Multi line</option>
 				        	<option value="03">Date</option>
 				        	<option value="04">List</option>
+				        	<option value="09">Number</option>
 				        	<option value="61">Twitter</option>
 				        	<option value="51">URL</option>
 				        	<option value="21">Image</option>
 				        	<option value="31">MP3</option>
 				        	<option value="41">Document</option>
 				        	<option value="69">List</option>
+				        	<option value="70">Formula</option>
 				        </select>
 				      </div>
 				    </div>
