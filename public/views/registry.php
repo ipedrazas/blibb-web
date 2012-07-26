@@ -50,7 +50,7 @@ require_once(__DIR__.'/../inc/header.php');
     				<legend>Registration Form</legend>
 
     				<div class="control-group offset2">
-      					<label class="control-label" for="user">Your username</label>
+      					<label class="control-label" for="user">Choose your username</label>
       					<div class="controls">
         					<input type="text" name="username" class="input-xlarge" id="user">
       					</div>
