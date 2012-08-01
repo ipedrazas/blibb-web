@@ -116,7 +116,7 @@
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#general" data-toggle="tab"><i class="icon-home"></i> General</a></li>
-					<li><a href="#layout" data-toggle="tab"><i class="icon-columns"></i> Template</a></li>
+					<li><a href="#items" data-toggle="tab"><i class="icon-th-list"></i> Items</a></li>
 					<li><a href="#data" data-toggle="tab"><i class="icon-list-alt"></i> Data</a></li>
 					<li><a href="#api" data-toggle="tab"><i class="icon-random"></i> API</a></li>
 					<li><a href="#integrations" data-toggle="tab"><i class="icon-refresh"></i> Integrations</a></li>
@@ -277,28 +277,44 @@
 						</ul>
 					-->
 					</div>
-					<!-- Tab: Layout -->
-					<div class="tab-pane span10" id="layout">
-						<h2>Template:</h2>
-						<form class="form-horizontal">
-						  <fieldset>
-						    
-						    <div class="control-group">
-					            <label class="control-label">Template model</label>
-					            <div class="controls">
-					              <label class="radio">
-					                <input type="radio" name="template-model" id="template-model1" value="box">
-					                <i class="icon-th-large"></i> Boxes
-					              </label>
-					              <label class="radio">
-					                <input type="radio" name="template-model" id="template-model2" value="table">
-					                <i class="icon-th"></i> Table
-					              </label>
-					            </div>
-					          </div>
-						  </fieldset>
-						</form>
+
+					<!-- Tab: items -->
+					<div class="tab-pane span10" id="items">
+						<h2>Items:</h2>
+
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>item</th>
+									<th>status</th>
+									<th>actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>slug</td>
+									<td>Draft</td>
+									<td><a href="#"><i class="icon-pencil"></i> Edit </a><a href="#"> <i class="icon-trash"></i> Delete</a></td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>kjkdjskds</td>
+									<td>Publish</td>
+									<td><a href="#"><i class="icon-pencil"></i> Edit </a><a href="#"> <i class="icon-trash"></i> Delete</a></td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>nombre</td>
+									<td>Publish</td>
+									<td><a href="#"><i class="icon-pencil"></i> Edit </a><a href="#"> <i class="icon-trash"></i> Delete</a></td>
+								</tr>
+							</tbody>
+						</table>
+						
 					</div>
+
 					<!-- Tab: API -->
 					<div class="tab-pane span10" id="api">
 						<h3>Blibb URL </h3>						

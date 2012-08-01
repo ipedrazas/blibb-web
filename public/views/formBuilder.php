@@ -12,8 +12,24 @@
 			margin-bottom: 5px;
 		}
 
-		.control-group {
+		legend + .control-group {
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+
+		.form-horizontal .control-group {
 			border-bottom: 1px solid #E5E5E5;
+			padding-bottom: 20px;
+			padding-top: 20px;
+			margin-bottom: 0;
+		}
+
+		.form-horizontal .control-group:hover {
+			background-color: #d9edf7;
+		}
+
+		#buttonRack {
+			margin-top: 16px;
 		}
 	</style>
 
@@ -57,6 +73,8 @@
 ?>
 
 
+<script type="text/javascript" src="/js/bootstrap-tooltip.js"></script>
+<script type="text/javascript" src="/js/bootstrap-popover.js"></script>
 <script type="text/javascript" src="/js/actions.js"></script>
 	
 <?php

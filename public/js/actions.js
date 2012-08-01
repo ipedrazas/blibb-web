@@ -8,23 +8,14 @@
 
 	$( "#form-builder" ).droppable({ accept: ".control" });
 
-	$( "#form-builder" ).bind( "drop", function(event, ui) {
+	$( "#form-builder" ).bind('drop', function(event, ui) {
 		var link = ui.draggable.children();
 		var id = link.attr('data-control');
 		var cid = link.attr('data-cid');
 
 		$(this).append($('#'+id).html());
 
-		$('#form-builder .control-group .controls input').change(function() {
-			var title = $(this).val();
-			title = title.toLowerCase();
-			title = title.replace(/ /g, '-');
-			var input = $(this);
-			input.attr('id', input.attr('id').substring(0,3) + '-' +title);
-			var parent = $(this).parent().parent().find('.control-label');
-			parent.html($(this).val());
-			$(this).val('');
-		});
+		
 
 	});
 
@@ -35,16 +26,11 @@
 
 		$('#form-builder').append($('#'+id).html());
 
-		$('#form-builder .control-group .controls input').change(function() {
-			var title = $(this).val();
-			title = title.toLowerCase();
-			title = title.replace(/ /g, '-');
-			var input = $(this);
-			input.attr('id', input.attr('id').substring(0,3) + '-' +title);
-			var parent = $(this).parent().parent().find('.control-label');
-			parent.html($(this).val());
-			$(this).val('');
+		$("form").delegate(".component", "mousedown", function(md){
+			md.preventDefault();
 		});
+			
+		
 
 	});
 
