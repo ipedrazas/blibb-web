@@ -117,7 +117,7 @@
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#general" data-toggle="tab"><i class="icon-home"></i> General</a></li>
 					<li><a href="#layout" data-toggle="tab"><i class="icon-columns"></i> Template</a></li>
-					<li><a href="#items" data-toggle="tab"><i class="icon-columns"></i> Items</a></li>
+					<li><a href="#items" data-toggle="tab"><i class="icon-th-list"></i> Items</a></li>
 					<li><a href="#data" data-toggle="tab"><i class="icon-list-alt"></i> Data</a></li>
 					<li><a href="#api" data-toggle="tab"><i class="icon-random"></i> API</a></li>
 					<li><a href="#integrations" data-toggle="tab"><i class="icon-refresh"></i> Integrations</a></li>
@@ -300,22 +300,44 @@
 						  </fieldset>
 						</form>
 					</div>
-					<!-- Tab: Items -->
+
+					<!-- Tab: items -->
 					<div class="tab-pane span10" id="items">
 						<h2>Items:</h2>
 
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<?php
+										$fields = $items[0]->fields;
+										 foreach ($fields as $tfield) {
+										 	$field = explode("-", $tfield);
+										 	echo '<th>' . $field[1] . '</th>';
+										 }
+									?>
+								</tr>
+							</thead>
+							<tbody>
 
-						<?php
-							foreach ($items as $item) {
-								$fields = $item->fields;
-								 foreach ($fields as $tfield) {
-								 	$field = explode("-", $tfield);
-								 	echo $item->$field[1] . " ";
+							<?php
+
+								foreach ($items as $item) {
+									echo '<tr>';
+										$fields = $item->fields;
+										 foreach ($fields as $tfield) {
+										 	$field = explode("-", $tfield);
+										 	echo '<td>' . $item->$field[1] . '</td>';
+										}
+									echo '<td><a href="editItem?id='.$item->id.'"><i class="icon-pencil"></i> Edit </a><a href="deleteItem?id='.$item->id.'"> <i class="icon-trash"></i> Delete</a></td>';
+									echo '<tr>';
 								}
-								echo '<br>';
-							}
-						?>
+							?>
+
+							</tbody>
+						</table>
+
 					</div>
+
 					<!-- Tab: API -->
 					<div class="tab-pane span10" id="api">
 						<h3>Blibb URL </h3>
