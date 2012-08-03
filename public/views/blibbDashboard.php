@@ -67,15 +67,15 @@
 				color: orange;
 			}
 
-			
-		</style>	
+
+		</style>
 <link href="/css/fileuploader.css" rel="stylesheet" type="text/css">
 <script src="/js/fileuploader.js" type="text/javascript"></script>
 <script>
-	$(function() {             
+	$(function() {
 		createUploader('imageUploader', '<?php echo $bli->id  ?>', '<?php echo getKey(); ?>');
-	}); 
-	function createUploader(element, bid, key){            
+	});
+	function createUploader(element, bid, key){
 		var uploader = new qq.FileUploader({
 			element: document.getElementById(element),
 			action: 'actions/uploadImage',
@@ -102,7 +102,7 @@
 			$('#imagebox').after($alert);
 		   });
 	}
-	
+
 </script>
 
 		<div class="container">
@@ -112,11 +112,12 @@
 					<h1><a href="blibb?b=<?php echo $bli->id; ?>"><?php echo $bli->name; ?></a> - Dashboard</h1>
 				</div>
 			</div>
-			
+
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#general" data-toggle="tab"><i class="icon-home"></i> General</a></li>
 					<li><a href="#layout" data-toggle="tab"><i class="icon-columns"></i> Template</a></li>
+					<li><a href="#items" data-toggle="tab"><i class="icon-columns"></i> Items</a></li>
 					<li><a href="#data" data-toggle="tab"><i class="icon-list-alt"></i> Data</a></li>
 					<li><a href="#api" data-toggle="tab"><i class="icon-random"></i> API</a></li>
 					<li><a href="#integrations" data-toggle="tab"><i class="icon-refresh"></i> Integrations</a></li>
@@ -128,7 +129,7 @@
 						<h3>Description:</h3>
 						<p id="desc"><!-- insert here description tag --><?php echo $bli->description ?></p>
 						<a data-toggle="modal" href="#myModal">Change</a>
-						
+
 
 						<!-- Modal -->
 						<div class="modal hide fade" id="myModal">
@@ -139,7 +140,7 @@
 							<div class="modal-body">
 								<p><strong>Write here your new description</strong></p>
 								<textarea name="newdesc" id="newdesc" class="span6" rows="7"><!-- insert here description tag --></textarea>
-								
+
 							</div>
 							<div class="modal-footer">
 								<a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -154,15 +155,15 @@
 									<img id="img_image" src="<?php echo REST_API_URL ?>/picture/<?php echo $bli->img; ?>/160" alt="">
 								</a>
 							</div>
-							
+
 							<input type="hidden" name="bimage" value="" id="bimg">
 							<div class="control-group">
 								<label class="control-label">Change</label>
 								<div class="controls">
 									<div id="imageUploader" name="uploadImage">
-										<noscript><p>Please enable JavaScript to use file uploader.</p></noscript>         
+										<noscript><p>Please enable JavaScript to use file uploader.</p></noscript>
 									</div>
-									
+
 								</div>
 							</div>
 						</p>
@@ -246,7 +247,7 @@
 					<div class="tab-pane span10" id="data">
 
 						<h3>Data:</h3>
-						<p>	
+						<p>
 							If you want to upload a file to pre-populate a Blibb, please use one of the following options:
 						</p>
 						<iframe name="upload_iframe" src="" style="display:none;"></iframe>
@@ -260,13 +261,13 @@
 							</li>
 							<li><input type="file" name="file" /></li>
 							<li>
-								<input type="hidden" name="login_key" value="<?php echo $key; ?>">
+								<input type="hidden" name="login_key" value="<?php echo getKey(); ?>">
 								<input type="hidden" name="blibb_id" value="<?php echo $bli->id; ?>">
 								<input type="submit" value="Upload" />
 							</li>
 						</ul>
-						</form>	
-						<!-- 
+						</form>
+						<!--
 						<h3>Export</h3>
 						<p>Select the format you want to export your data</p>
 						<ul>
@@ -282,7 +283,7 @@
 						<h2>Template:</h2>
 						<form class="form-horizontal">
 						  <fieldset>
-						    
+
 						    <div class="control-group">
 					            <label class="control-label">Template model</label>
 					            <div class="controls">
@@ -299,13 +300,29 @@
 						  </fieldset>
 						</form>
 					</div>
+					<!-- Tab: Items -->
+					<div class="tab-pane span10" id="items">
+						<h2>Items:</h2>
+
+
+						<?php
+							foreach ($items as $item) {
+								$fields = $item->fields;
+								 foreach ($fields as $tfield) {
+								 	$field = explode("-", $tfield);
+								 	echo $item->$field[1] . " ";
+								}
+								echo '<br>';
+							}
+						?>
+					</div>
 					<!-- Tab: API -->
 					<div class="tab-pane span10" id="api">
-						<h3>Blibb URL </h3>						
+						<h3>Blibb URL </h3>
 						<a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug . '.xml'; ?>" target="_blank"><img src="/img/rss.png" width="16" height="16" alt="xml feed" /></a>
 						<code><a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></a></code>
-						
-						
+
+
 						<h2>API Methods</h2>
 
 						<h3>Collection</h3>
@@ -320,7 +337,7 @@
 							<div id="method1" class="accordion-body collapse">
 								<div class="accordion-inner">
 									<h3>Method <code>[GET] <a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug ."/<span class=\"optionalParameter\">[page]</span>"; ?></a></code></h3>
-									
+
 									<h3>Parameters</h3>
 									<code class="optionalParameter">[optional] page:</code>
 									<p>This API call returns a maximum of 20 objects. The result contains the numer of objects available but it's up to the app. to fetch the following pages if nedded.</p>
@@ -345,19 +362,19 @@
 											<li>
 												<strong>items:</strong> items returned by this request.
 												<ul>
-													<?php 
+													<?php
 														$curl_params = '';
 														$i=1;
 														foreach ($bli->fields as $field) {
 															$curl_params .= $field . "=test-" . $i++ . "&";
 															echo '<li><strong>' . $field . '</strong></li>';
-														}    
+														}
 														$curl_params = substr_replace($curl_params ,"",-1);
 													?>
 												</ul>
 											</li>
 										</ul>
-									</p>                  					
+									</p>
 								</div>
 							</div>
 						</div>
@@ -375,7 +392,7 @@
 									<code>loging_key: value of the [LOGIN] API call</code>
 									<code>app_token: <?php echo $bli->dk; ?></code>
 									<code>tags: tags sepparated by commas</code>
-									<?php 
+									<?php
 										foreach ($bli->fields as $field) {
 											echo '<code>' . $field . '</code>';
 										   }    ?>
@@ -477,7 +494,7 @@
 						<p>This section is where you can configure the different networks and integrations.</p>
 						<h2>Webhook</h2>
 						<div class="controls">
-							<label class="control-label">Action:</label> 
+							<label class="control-label">Action:</label>
 							<select name="webhook-action" id="webhook-action">
 								<option value="get_entries">Get Blibb</option>
 								<option value="new_entry">New Entry</option>
@@ -526,10 +543,10 @@
 				</div>
 			</div>
 
-				
+
 		</div>
-			
-		
+
+
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap-tab.js"></script>
 		<script type="text/javascript" src="js/bootstrap-collapse.js"></script>
@@ -544,14 +561,14 @@
 			$('#myModal').modal({
 				show: false
 			});
-			
+
 			$(".collapse").collapse({
 				parent: true,
 				toggle: true
 			});
 
-			$('#addwebhook').live("click", function(e){	
-				e.preventDefault();	
+			$('#addwebhook').live("click", function(e){
+				e.preventDefault();
 				var action = $('#webhook-action').val();
 				var callback = $('#webhook-callback').val();
 				var fields = $('#webhook-fields').val();
@@ -562,12 +579,12 @@
 						$('#reg-webhooks').after(alert);
 						$('#nowebhooks').hide();
 						$('#webhooks_lst').append(webhook);
-				});		
-			}); 
+				});
+			});
 
 
 		</script>
-		
+
 
 <?php
 require_once(__DIR__.'/../inc/footer.php');

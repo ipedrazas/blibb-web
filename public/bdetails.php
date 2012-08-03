@@ -6,7 +6,7 @@ require_once(__DIR__.'/../system/config.php');
 class bDashboard extends lib {
 
     public function run() {
-    	$current_user = require_login(); 
+    	$current_user = require_login();
     	$this->setRedirect();
 		$bid = $this->gt("b");
 
@@ -29,10 +29,15 @@ class bDashboard extends lib {
  		$num_views = $bli->stats[0]->num_views;
  		$num_writes = $bli->stats[1]->num_writes;
  		$num_items = $bli->stats[2]->num_items;
- 		
- 		$this->render('blibbDashboard', compact('bli', 'num_items', 'num_writes', 'num_views'));
+
+        $bItems = $pest->get('/blitem/'. $bid .'/items');
+        $bItems = str_replace('$oid', "oid", $bItems);
+        $jitems = json_decode($bItems);
+        $items = $jitems->items;
+
+ 		$this->render('blibbDashboard', compact('bli', 'num_items', 'num_writes', 'num_views', 'items'));
     }
 }
 
 $app = new bDashboard();
-$app->run();  
+$app->run();
