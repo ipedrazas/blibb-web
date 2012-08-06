@@ -11,7 +11,7 @@ class NewUserApplication extends lib {
 		$email = $this->gt("email");
 		$code = $this->gt("invite");
 
-		// 
+		//
 		$pestParams = array();
 		$pestParams['user'] = $name;
 		$pestParams['pwd'] = $pwd;
@@ -26,12 +26,14 @@ class NewUserApplication extends lib {
 		if($val->result){
 			$jresult = $pest->post('/user',$pestParams);
 			$result = json_decode($jresult);
-			
+
+			// print_r($result);
+
 			// send email
 			$mail = new BMail();
 			$subject = 'Welcome to :blibb';
 			$file = __DIR__."/../data/welcome.html";
-			$contents = file($file); 
+			$contents = file($file);
 			$html = implode($contents);
 			$text = $html;
 			$from = 'info@blibb.net';
@@ -43,8 +45,8 @@ class NewUserApplication extends lib {
 			$msg =  'Code is not valid';
 			$this->render('registry',  compact('msg'));
 		}
-		
-		
+
+
 		// print_r($res);
 		// header("Location: login");
     }
@@ -52,4 +54,4 @@ class NewUserApplication extends lib {
 }
 
 $app = new NewUserApplication();
-$app->run();  
+$app->run();
