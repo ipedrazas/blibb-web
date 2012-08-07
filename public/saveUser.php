@@ -27,30 +27,31 @@ class NewUserApplication extends lib {
 			$jresult = $pest->post('/user',$pestParams);
 			$result = json_decode($jresult);
 
-			// print_r($result);
+			if(isset($result->error)){
+				$msg = $result->error;
+				$this->render('registry',  compact('msg'));
+			}else{
+				// print_r($result);
+				// send email
+				$mail = new BMail();
+				$subject = 'Welcome to :blibb';
+				$file = __DIR__."/../data/welcome.html";
+				$contents = file($file);
+				$html = implode($contents);
+				$text = $html;
+				$from = 'info@blibb.net';
+				$fromName = 'Blibb';
+				$mail->sendMail($email, $email, $subject, $html, $text);
 
-			// send email
-			$mail = new BMail();
-			$subject = 'Welcome to :blibb';
-			$file = __DIR__."/../data/welcome.html";
-			$contents = file($file);
-			$html = implode($contents);
-			$text = $html;
-			$from = 'info@blibb.net';
-			$fromName = 'Blibb';
-			$mail->sendMail($email, $email, $subject, $html, $text);
-
-			header("Location: login");
+				header("Location: login");
+			}
 		}else{
 			$msg =  'Code is not valid';
 			$this->render('registry',  compact('msg'));
 		}
-
-
 		// print_r($res);
 		// header("Location: login");
     }
-
 }
 
 $app = new NewUserApplication();
