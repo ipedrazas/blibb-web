@@ -1,24 +1,21 @@
 <div class="span3 thumbnail blibb-overview">
-	<a href="/blibb?b={{id}}"><img src="{{REST_API_URL}}/picture/{{img}}/220" alt=""></a>
-	<h2>{{name}}</h2>
-	<p>{{description}}</p>
-	<p><a href="/profile?id={{owner}}">{{owner}}</a></p>
-	<p><i class="icon-tags"></i> {{#TAGLIST}} <a href="#">{{.}}</a> | {{/TAGLIST}}</p>
-	<div class="btn-group">
-		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-	    	<i class="icon-cogs"></i> Actions
-	    	<span class="caret"></span>
-	  	</a>
-	  	<ul class="dropdown-menu">
-	    	<li><a href="/addItem?b={{id}}"><i class="icon-pencil"></i> Add Item</a></li>
-	    	<li><a href="/actions/deleteBlibb?id={{id}}"><i class="icon-trash"></i>Delete</a></li>
-	    	<li><a href="#"><i class="icon-tag"></i> Add Tag</a></li>
-	    	<li><a href="#"><i class="icon-comments"></i> Add Comments</a></li>
-	    	<li><a href="#"><i class="icon-external-link"></i> Export</a></li>
-	    	<li><a href="/bdetails?b={{id}}"><i class="icon-cog"></i> Settings</a></li>
-	    	<li><a href="#"><i class="icon-twitter-sign"></i> Send to Twitter</a></li>
-	    	<li><a href="#"><i class="icon-facebook-sign"></i> Send to Facebook</a></li>
-	  	</ul>
-	</div>
-	<p class="pull-right"><i class="icon-heart-empty"> 1</i> <i class="icon-user"> 22</i> <i class="icon-comments"> 0</i> <i class="icon-random"></i></p>
+    <a href="/blibb?b={{id}}"><img src="{{REST_API_URL}}/picture/{{img}}/220" alt=""></a>
+    <h2>{{name}}</h2>
+    <p>{{description}}</p>
+    <p><a href="/profile?id={{owner}}">{{owner}}</a></p>
+    <p><i class="icon-tags"></i> {{#TAGLIST}} <a href="#">{{.}}</a> | {{/TAGLIST}}</p>
+    <div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="icon-cogs"></i> Actions
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="/addItem?b={{id}}"><i class="icon-pencil"></i> Add Item</a></li>
+            <li><a href="/actions/deleteBlibb?id={{id}}"><i class="icon-trash"></i>Delete</a></li>
+            <li><a href="/actions/fork?id={{id}}"><i class="icon-random"></i> Fork</a></li>
+            <li><a href="#"><i class="icon-external-link"></i> Export</a></li>
+            <li><a href="/bdetails?b={{id}}"><i class="icon-cog"></i> Settings</a></li>
+        </ul>
+    </div>
+    <p class="pull-right"><i class="icon-heart-empty"> 1</i> <i class="icon-user"> 22</i> <i class="icon-comments"> 0</i> <i class="icon-random"></i></p>
 </div>
