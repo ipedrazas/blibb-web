@@ -35,6 +35,7 @@ class bDashboard extends lib {
         $jitems = json_decode($bItems);
         $items = $jitems->items;
 
+        // print_r($items);
  		$this->render('blibbDashboard', compact('bli', 'num_items', 'num_writes', 'num_views', 'items'));
     }
 }

@@ -243,7 +243,7 @@
 						</div>
 
 					</div>
-					<!-- Tab: API -->
+					<!-- Tab: Data -->
 					<div class="tab-pane span10" id="data">
 
 						<h3>Data:</h3>
@@ -326,7 +326,7 @@
 										$fields = $item->fields;
 										 foreach ($fields as $tfield) {
 										 	$field = explode("-", $tfield);
-										 	echo '<td>' . $item->$field[1] . '</td>';
+										 	echo '<td>' . renderByType($item->$field[1], $field[0]) . '</td>';
 										}
 									echo '<td><a href="editItem?id='.$item->id.'"><i class="icon-pencil"></i> Edit </a><a href="deleteItem?id='.$item->id.'"> <i class="icon-trash"></i> Delete</a></td>';
 									echo '<tr>';

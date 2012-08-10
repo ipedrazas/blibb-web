@@ -33,7 +33,7 @@ function isAdmin(){
     $role =  $user->role;
     if($role === 'admin'){
       return true;
-    }  
+    }
   }
   return false;
 }
@@ -58,7 +58,7 @@ function log_in($k){
 function current_user(){
   static $current_user = 0;
   if(!$current_user){
-    if(isset($_SESSION['USER'])){ 
+    if(isset($_SESSION['USER'])){
       return getUserName();
     }
   }
@@ -94,7 +94,7 @@ function require_login(){
     $tags['band'] = !empty($ThisFileInfo['id3v2']['comments']['band'][0]) ? $ThisFileInfo['id3v2']['comments']['band'][0] : 'Unknown';
     $tags['time'] = !empty($ThisFileInfo['playtime_string']) ? $ThisFileInfo['playtime_string'] : 'Unknown';
     $tags['mime_type'] = !empty($ThisFileInfo['mime_type']) ? $ThisFileInfo['mime_type'] : 'Unknown';
-    
+
 
     return $tags;
   }
@@ -154,9 +154,22 @@ function slugify ($text)
   if (empty($text)) {
     return 'n-a';
   }
- 
+
   return $text;
 }
 
+
+function renderByType($elem, $type){
+  if($type=='3d'){
+    if(isset($elem->name)){
+      $res = $elem->name;
+      if(isset($elem->screen_name)){
+        $res .=  ', @' . $elem->screen_name;
+      }
+      return $res;
+    }
+  }
+  return $elem;
+}
 
 ?>
