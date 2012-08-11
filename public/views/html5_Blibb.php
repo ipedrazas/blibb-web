@@ -1,6 +1,8 @@
 <?php
 require_once(__DIR__.'/../inc/header.php');
 
+$user = getUser();
+
 ?>
 
 
@@ -100,52 +102,36 @@ require_once(__DIR__.'/../inc/header.php');
        ?>
 </div>
           <div class="span2">
-            <div class="well" style="padding: 8px 0;">
-                  <ul class="nav nav-list">
-
-                    <li class="active"><a href="#">Personal</a></li>
-                    <li><a href="#">Groups</a></li>
-                    <li><a href="#">Basic</a></li>
-
-                    <li><a href="#">Running</a></li>
-                    <li><a href="#">Docs</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">New Groups</a></li>
-                    <li class="divider"></li>
-                    <li><a href="/listTemplates">Templates</a></li>
-                    <?php
-                        if($admin){
-                          echo '<li class="divider"></li>';
-                          echo '<li><a href="/listControls">Controls</a></li>';
-                        }
-                    ?>
-                  </ul>
+                <div class="well" style="padding: 8px 0;">
+                    <h2><?php echo $user->username ?></h2>
+                    <div id="im_image" ><img id="img_image"  alt="thumbnail" src="<?php echo REST_API_URL . "/picture/" . $user->image . "/160"; ?>" /></div>
+                    <a href="#">Follow</a>
+                </div>
             </div><!-- end span2 -->
             <div class="span2">
-            <div class="well" style="padding: 8px 0;">
-                  <ul class="nav nav-list">
+              <div class="well" style="padding: 8px 0;">
+                    <ul class="nav nav-list">
 
-                    <li class="active"><a href="#">Personal</a></li>
-                    <li><a href="#">Groups</a></li>
-                    <li><a href="#">Basic</a></li>
+                      <li class="active"><a href="#">Personal</a></li>
+                      <li><a href="#">Groups</a></li>
+                      <li><a href="#">Basic</a></li>
 
-                    <li><a href="#">Running</a></li>
-                    <li><a href="#">Docs</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">New Groups</a></li>
-                    <li class="divider"></li>
-                    <li><a href="/listTemplates">Templates</a></li>
-                    <?php
-                        if($admin){
-                          echo '<li class="divider"></li>';
-                          echo '<li><a href="/listControls">Controls</a></li>';
-                        }
-                    ?>
-                  </ul>
-            </div><!-- end span2 -->
-          </div>
+                      <li><a href="#">Running</a></li>
+                      <li><a href="#">Docs</a></li>
+                      <li><a href="#">Team</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">New Groups</a></li>
+                      <li class="divider"></li>
+                      <li><a href="/listTemplates">Templates</a></li>
+                      <?php
+                          if($admin){
+                            echo '<li class="divider"></li>';
+                            echo '<li><a href="/listControls">Controls</a></li>';
+                          }
+                      ?>
+                    </ul>
+              </div>
+          </div><!-- end span2 -->
 
     </div>
 
