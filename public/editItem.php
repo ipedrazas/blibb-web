@@ -6,56 +6,43 @@ require_once(__DIR__.'/../system/config.php');
 class EditItem extends lib {
 
     public function run() {
-		
-		$current_user = require_login();
-		$bid = $this->gt("b");
-		$blitem_id = $this->gt("i");
 
+		$current_user = require_login();
+		$iid = $this->gt("id");
 		$params = "t.v.default";
 
 		$pest = new Pest(REST_API_URL);
-    	$result = $pest->get('/blibb/' .$bid . '/p/' . $params);
 
+		$jitem = $pest->get('/blitem/' . $iid . '?flat=1');
+		$item = json_decode($jitem);
+
+		$items = $item->i;
+		$tags = $item->tg;
+		$elements = array();
+		foreach ($items as $e) {
+			$elements[$e->t . '-' . $e->s] = $e->v;
+		}
+
+		$bid = $item->b;
+    	$result = $pest->get('/blibb/' .$bid . '/p/' . $params);
 		$blibb = json_decode($result);
 
-		$jblitem = $pest->get('/blitem/' . $blitem_id);
-		$blitem = json_decode($jblitem);
-
+		// print_r($item);
 		// print_r($blibb);
-		// print_r($blitem);
 
 		$t = $blibb->template;
 		$i = $t->v->default;
-
-		// $k = getKey();
-		// $v['id'] = $bid;
-		// $v['key'] = $k;
-
-		// $m = new Mustache();
 
 		$buffer = '';
 		foreach($i as $f){
 			$w = $f->wb;
 			// print_r($w);
-			
-		// 	// Hack because Mustache replaces {{elems}} that are
-		// 	// not in the previous template
-		// 	$w = str_replace("[[", "{{", $w);
-		// 	$w = str_replace("]]", "}}", $w);
-		// 	$res = $m->render($w,$v);
 			$buffer .= $w;
-
 		}
-
-
-		// $dest = $this->getParameter("f","",$_GET);
-
-    	$this->render('editItem',compact('current_user','buffer','thumb', 'bid','dest','blitem'));
-        
+    	$this->render('editItem',compact('current_user', 'buffer', 'bid', 'iid' ,'elements', 'tags'));
     }
-
 }
 
 $app = new EditItem();
-$app->run();  
+$app->run();
 

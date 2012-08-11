@@ -289,11 +289,11 @@
 					            <div class="controls">
 					              <label class="radio">
 					                <input type="radio" name="template-model" id="template-model1" value="box">
-					                <i class="icon-th-large"></i> Boxes
+					                <a href="/blibb?b=<?php echo $bli->id ?>"><i class="icon-th-large"></i> Boxes</a>
 					              </label>
 					              <label class="radio">
 					                <input type="radio" name="template-model" id="template-model2" value="table">
-					                <i class="icon-th"></i> Table
+					                 <a href="/blibb?b=<?php echo $bli->id ?>&v=table"><i class="icon-th"></i> Table</a>
 					              </label>
 					            </div>
 					          </div>
@@ -304,6 +304,7 @@
 					<!-- Tab: items -->
 					<div class="tab-pane span10" id="items">
 						<h2>Items:</h2>
+						<a href="/addItem?b=<?php echo $bli->id ?>" class="btn btn-primary">Add new Item</a>
 
 						<table class="table table-striped">
 							<thead>
