@@ -324,7 +324,6 @@
 
 								foreach ($items as $item) {
 									echo '<tr>';
-										$fields = $item->fields;
 										 foreach ($fields as $tfield) {
 										 	$field = explode("-", $tfield);
 										 	echo '<td>' . renderByType($item->$field[1], $field[0]) . '</td>';

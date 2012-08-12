@@ -17,7 +17,10 @@ class EditItem extends lib {
 		$item = json_decode($jitem);
 
 		$items = $item->i;
-		$tags = $item->tg;
+		$tags = array();
+		if(isset($item->tg)){
+			$tags = $item->tg;
+		}
 		$elements = array();
 		foreach ($items as $e) {
 			$elements[$e->t . '-' . $e->s] = $e->v;

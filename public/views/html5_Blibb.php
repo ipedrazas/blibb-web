@@ -101,13 +101,16 @@ $user = getUser();
 
        ?>
 </div>
+        <?php if(isset($user)){ ?>
           <div class="span2">
                 <div class="well" style="padding: 8px 0;">
+
                     <h2><?php echo $user->username ?></h2>
                     <div id="im_image" ><img id="img_image"  alt="thumbnail" src="<?php echo REST_API_URL . "/picture/" . $user->image . "/160"; ?>" /></div>
                     <a href="#">Follow</a>
                 </div>
             </div><!-- end span2 -->
+        <?php } ?>
             <div class="span2">
               <div class="well" style="padding: 8px 0;">
                     <ul class="nav nav-list">
