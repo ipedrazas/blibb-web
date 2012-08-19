@@ -4,6 +4,8 @@
 		<title><?php echo $title ?></title>
 		<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 <style type="text/css">
+
+
 .entryBox{
 	width: 300px;
 }
@@ -69,6 +71,14 @@
 .tags a:hover{background:#555;}
 
 .tags a:hover:before{border-color:transparent #555 transparent transparent;}
+
+.commentsBox{
+	margin: auto;
+
+}
+.comments{
+	display: none;
+}
 </style>
 	</head>
 	<body>

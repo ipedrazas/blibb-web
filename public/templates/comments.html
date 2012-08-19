@@ -1,30 +1,35 @@
-<h3>Comments</h3>
-<br>
-<div id="comments_stream">
-	{{#COMMENTS}}
-		<div class="post-comment">
-			<div class="thumbnail span1 pull-right"><img src="/actions/getImageProfile?u={{user}}" alt="{{user}}'s image"></div>
-			<h3><a href="/profile?p={{user}}">{{user}}</a> <small>{{date}}</small></h3>
-			{{comment}}
+
+<div class="commentsBox" id="cb_{{id}}">
+	<h4 name="comments" id="c{{id}}"><i class="icon-comments"></i> Comments</h4>
+	<div class="comments" id="c_{{id}}">
+		<div id="comments_stream">
+			{{#COMMENTS}}
+				<div class="post-comment">
+					<div class="thumbnail span1 pull-right"><img src="/actions/getImageProfile?u={{user}}" alt="{{user}}'s image"></div>
+					<h3><a href="/profile?p={{user}}">{{user}}</a> <small>{{date}}</small></h3>
+					{{comment}}
+				</div>
+			{{/COMMENTS}}
 		</div>
-	{{/COMMENTS}}
-</div>
-<div>
-	<h3>Write your comment</h3>
-	<textarea  class="span5" name="comment" rows="4" id="c_text{{id}}"></textarea>
-	<input type="submit" name="postComment" id="postComment{{id}}" value="Send" class="btn btn-primary pull-right">
+		<div id=wc_{{id}}>
+			<textarea  class="span5" name="comment" rows="4" id="c_text{{id}}"></textarea>
+			<input type="submit" name="postComment" id="postComment{{id}}" value="Add Comment" class="btn btn-primary pull-right">
+		</div>
+	</div>
 </div>
 <script type="text/javascript">
-	
-		$("#postComment{{id}}").live("click", function(e){	              
-			e.preventDefault();                 
-			e.stopPropagation();                 
-			var comment = $('#c_text{{id}}').val();	
+		$( '#c{{id}}' ).click(function() {
+			$('#c_{{id}}').toggle();
+		});
+		$("#postComment{{id}}").live("click", function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			var comment = $('#c_text{{id}}').val();
 			$.post("/actions/addComment", { comment: comment, item_id: '{{id}}'  },
 				function(data) {
 				$alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>" + data +"</div>";
 				$('#imagebox').before($alert);
-			});				
+			});
 		});
-	
+
 </script>

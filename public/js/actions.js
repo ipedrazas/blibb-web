@@ -83,7 +83,6 @@
 
 			control.push(c);
 		}
-		console.log(control);
 		$.ajax({
 			url: 'actions/setControlsData',
 			type: "POST",
@@ -100,5 +99,8 @@
 
 	});
 
+	$( '#publishForm' ).click(function() {
+		$('#dynForm').submit();
+	});
 
 })(jQuery);
