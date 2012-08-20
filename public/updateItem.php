@@ -43,7 +43,6 @@ class UpdateItemApp extends lib {
 
             $pest = new Pest(REST_API_URL);
             try {
-                print_r($pestParams);
                 $result = $pest->put('/blitem',$pestParams);
                 if(!isset($_SESSION['redirect_to'])){
                         $destURL = 'main';
