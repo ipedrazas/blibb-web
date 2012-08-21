@@ -40,7 +40,13 @@ function isAdmin(){
 
 function getUserImage(){
   $user = getUser();
-  return $user->image;
+  return $user->image_url;
+}
+
+function setUserImage($image){
+  $user = getUser();
+  $user->image_url = $image;
+   $_SESSION['USER'] = $user;
 }
 
 function getUserId(){

@@ -1,6 +1,8 @@
 <?php
 	require_once(__DIR__.'/../inc/header.php');
 
+	$k = getKey();
+	$user_id = getUserId($k);
 ?>
 
 <style>
@@ -13,7 +15,7 @@
 </style>
 	<link rel="stylesheet" href="/css/profile.css">
 	<div class="container">
-	<div id="profileBox">			
+	<div id="profileBox">
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#profile" data-toggle="tab"><i class="icon-user"></i> Profile</a></li>
@@ -21,7 +23,7 @@
 			  <div class="tab-content" style="width: auto;">
 				<div class="tab-pane active" id="profile">
 					<div class="well">
-						<form class="form-horizontal" action="#" method="post">
+
 						  <fieldset>
 							<legend>Profile info</legend>
 							<div class="control-group">
@@ -39,52 +41,43 @@
 							<div class="control-group">
 							  <label class="control-label" for="input03">Password</label>
 							  <div class="controls">
-								<input type="password" class="input-xlarge" id="input03" value="<?php echo $pwd ?>">								
+								<input type="password" class="input-xlarge" id="input03" value="<?php echo $pwd ?>">
 							  </div>
 							</div>
 							<div id="imagebox" class="control-group">
-								<label class="control-label" for="inputFile">Picture</label>
-								<div class="controls">
-									<div>
-										<input type="hidden" name="bimage" value="" id="bimg">
-										<div id="imageUploader" name="uploadImage">
-											<noscript><p>Please enable JavaScript to use file uploader.</p></noscript>         
-										</div>
-									</div>
-									<div class="thumbnails help-block">
-										<a href="#" class="thumbnail span2">
-										<div id="im_image" ><img id="img_image"  alt="thumbnail" src="<?php echo REST_API_URL . "/picture/" . $image . "/260"; ?>" /></div>
-										</a>
-									</div> 
+								<?php
+									if(getUserImage()){
+								?>
+
+								<img src="<?php echo getUserImage(); ?>" alt="<?php echo $username ?> profile's picture" width="245" id="profile_picture"/>
+								<?php } ?>
+								<a href="#" id="update_profile_pict">Change Image</a>
+								<div id="update_profile_pict_form" style="display:none">
+									<form enctype="multipart/form-data" id="profile_image_form">
+										<input name="file" type="file" />
+										<input type="button" id="image_btn" value="Upload" />
+									</form>
+									<progress style="display:none"></progress>
+									<div id="result"></div>
 								</div>
-							</div>							 
+							</div>
 							<div class="control-group">
 								<label class="control-label" for="select01">Measure Units</label>
 								<div class="controls">
 								  <select id="select01">
 									<option>Imperial</option>
 									<option>International System</option>
-								  </select>								  
-								</div>							  
+								  </select>
+								</div>
 							</div>
 							<div class="offset2">
 								<button class="btn btn-danger">Cancel</button>
 								<button type="submit" class="btn btn-success">Save changes</button>
 							</div>
 						  </fieldset>
-						</form>
 					</div>
-					
 				</div> <!-- profile -->
-
-			
 			</div>
-
-				
-
-		
-		<link href="css/fileuploader.css" rel="stylesheet" type="text/css">
-		<script src="js/fileuploader.js" type="text/javascript"></script>
 
 		<script src="js/bootstrap-tab.js">
 			$('#profile').tab('show');
@@ -104,53 +97,54 @@
 		</script>
 
 		<script type="text/javascript">
-			
-			$(document).ready(function(){
-				var val = $("#range").val();
-				$("#money-val").html('$' + val);
-				 createUploader('imageUploader', '<?php echo getKey() ?>');
-			});
 
-			$('#range').change(function() {
-				var val = $("#range").val();
-				val = parseFloat(val);
-				val = val.toFixed(2);
-				$("#money-val").html('$' + val);
-			});
+		$('#update_profile_pict').click(function(event){
+			event.preventDefault();
+			$('#update_profile_pict_form').show();
+		});
 
-			function updateProfilePicture(picture){
-				$.post("/actions/updateImage", { id: picture, oid: '', type: 'user'  },
-				   function(data) {
-				     $alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>" + data +"</div>";
-					$('#imagebox').after($alert);
-				   });
-			}
-
-			function createUploader(element, bid, key){            
-		        var uploader = new qq.FileUploader({
-		            element: document.getElementById(element),
-		            action: 'actions/uploadImage',
-		            allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
-		             params: {
-		                bid: bid,
-		                k: key
+		$('#image_btn').click(function(){
+		        $('progress').show();
+		        var formData = new FormData($('#profile_image_form')[0]);
+		        formData.append('login_key', '<?php echo getKey() ?>');
+		        $.ajax({
+		            url: '<?php echo REST_API_URL ?>/image/upload',
+		            type: 'POST',
+		            xhr: function() {
+		                myXhr = $.ajaxSettings.xhr();
+		                return myXhr;
 		            },
-		            onComplete: function(id, fileName, responseJSON){
-		            	var resp =  responseJSON.id;
-		            	$('#bimg').val(resp);
-		            	var srcI = "<?php echo REST_API_URL ?>/picture/" + resp + "/260";
-		            	$("#img_image").attr("src",srcI);
-		            	$("#im_image").show();
-		            	$(".qq-upload-failed-text").hide();
-		            	updateProfilePicture(resp);
-		            },
+		            success: completeHandler,
+		            error: errorHandler,
+		            data: formData,
+		            cache: false,
+		            contentType: false,
+		            processData: false
 		        });
+		    });
+		    function completeHandler(e){
+		        $('progress').hide();
+		        $('#profile_picture').attr('src', e.upload);
+		        // update user profile
+ 				$.post('<?php echo REST_API_URL ?>/user/image', { user_id: '<?php echo $user_id ?>', image_url: e.upload  },
+				   function(data) {
+				    	$alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>User Profile has been updated</div>";
+						$('#imagebox').after($alert);
+						// TODO:
+						// Update image_url in php session
+				   });
 		    }
-			</script> 
+
+		    function errorHandler(e){
+		        $('progress').hide();
+		        var alert = "<div class='alert alert-error'><a class='close' data-dismiss='alert'>×</a>There was an error uploading your picture!</div>";
+		        $('#imagebox').after(alert);
+		    }
+			</script>
 
 	</div> <!-- profileBox -->
 </div><!-- container -->
-		
+
 <?php
 require_once(__DIR__.'/../inc/footer.php');
 ?>

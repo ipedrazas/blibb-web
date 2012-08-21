@@ -358,7 +358,7 @@
 							</div>
 							<div id="method1" class="accordion-body collapse">
 								<div class="accordion-inner">
-									<h3>Method <code>[GET] <a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug ."/<span class=\"optionalParameter\">[page]</span>"; ?></a></code></h3>
+									<h3>Method <code>[GET] <a href="<?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?>" target="_blank"><?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug ."<span class=\"optionalParameter\">[?page=2,3..90]</span>"; ?></a></code></h3>
 
 									<h3>Parameters</h3>
 									<code class="optionalParameter">[optional] page:</code>
@@ -420,7 +420,9 @@
 										   }    ?>
 
 									<h3>Test</h3>
-									<code>curl -d "key=test&app_token=test&<?php echo $curl_params; ?>" <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code>
+									<code>
+										login_key = curl -d "u=[username]&p=[password]" <?php echo REST_API_URL ?>/login<br/>
+										curl -d "login_key=[login_key]&app_token=&<?php echo $curl_params; ?>" <?php echo REST_API_URL . "/" . $bli->owner . "/" . $bli->slug; ?></code>
 								</div>
 							</div>
 						</div>
