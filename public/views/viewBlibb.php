@@ -11,6 +11,8 @@
 <style type="text/css">
 .entryBox{
 	width: 300px;
+	clear: both;
+	margin-top: 30px;
 }
 .tags{
 	margin:0;
@@ -75,12 +77,25 @@
 
 .tags a:hover:before{border-color:transparent #555 transparent transparent;}
 
-.commentsBox{
+.commentsbox{
+	clear: both;
 	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
 
 }
 .comments{
 	display: none;
+}
+h4{
+	clear: both;
+}
+#imgprofile{
+	float: right;
+}
+.write_comment{
+		margin: 15px;
 }
 </style>
 	</head>

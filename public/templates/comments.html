@@ -1,17 +1,17 @@
 
-<div class="commentsBox" id="cb_{{id}}">
+<div class="commentsbox" id="cb_{{id}}">
 	<h4 name="comments" id="c{{id}}"><i class="icon-comments"></i> Comments</h4>
 	<div class="comments" id="c_{{id}}">
 		<div id="comments_stream">
 			{{#COMMENTS}}
 				<div class="post-comment">
-					<div class="thumbnail span1 pull-right"><img src="/actions/getImageProfile?u={{user}}" alt="{{user}}'s image"></div>
-					<h3><a href="/profile?p={{user}}">{{user}}</a> <small>{{date}}</small></h3>
+					<h4><a href="/profile?p={{user}}">{{user}}</a> <small>{{date}}</small></h4>
+					<div class="thumbnail span1 pull-right" id="imgprofile"><img src="/actions/getImageProfile?u={{user}}" alt="{{user}}'s image"></div>
 					{{comment}}
 				</div>
 			{{/COMMENTS}}
 		</div>
-		<div id=wc_{{id}}>
+		<div id=wc_{{id}} class="write_comment">
 			<textarea  class="span5" name="comment" rows="4" id="c_text{{id}}"></textarea>
 			<input type="submit" name="postComment" id="postComment{{id}}" value="Add Comment" class="btn btn-primary pull-right">
 		</div>
