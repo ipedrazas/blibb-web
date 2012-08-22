@@ -45,12 +45,7 @@
 							  </div>
 							</div>
 							<div id="imagebox" class="control-group">
-								<?php
-									if(getUserImage()){
-								?>
-
-								<img src="<?php echo getUserImage(); ?>" alt="<?php echo $username ?> profile's picture" width="245" id="profile_picture"/>
-								<?php } ?>
+								<img src="<?php echo $image ?>" alt="<?php echo $username ?> profile's picture" width="245" id="profile_picture"/>
 								<a href="#" id="update_profile_pict">Change Image</a>
 								<div id="update_profile_pict_form" style="display:none">
 									<form enctype="multipart/form-data" id="profile_image_form">

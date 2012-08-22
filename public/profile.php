@@ -16,7 +16,7 @@ class ProfileApplication extends lib {
 			$view = "profile";
 		}else{
 			//readonly
-			$view = "profileRO";			
+			$view = "profileRO";
 		}
 
 		// // print_r($user);
@@ -31,15 +31,18 @@ class ProfileApplication extends lib {
 			$email = $user->email;
 			// picture
 			$pwd = "password";
-			$image = $user->image;
+			if(!isset($user->image_url)){
+				$user->image = "http://static.blibb.it/default.png";
+			}
+			$image = $user->image_url;
 
 		    $this->render($view,  compact('username','email','pwd','image'));
 		}
-		
-		
+
+
     }
 
 }
 
 $app = new ProfileApplication();
-$app->run();  
+$app->run();
