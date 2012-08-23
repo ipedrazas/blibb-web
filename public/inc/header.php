@@ -22,10 +22,10 @@ $userName  = current_user();
   <meta name="author" content="">
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  
-<link rel="stylesheet" href="/css/bootstrap.css">
-<link rel="stylesheet" href="/css/bootstrap-responsive.css">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="/css/font-awesome.css">
 <link href='/css/fonts.css' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/css/blibb.css">
@@ -33,12 +33,12 @@ $userName  = current_user();
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
   <!-- All JavaScript at the bottom, except for Modernizr / Respond.
        Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
-       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ 
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
-<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="/js/jquery-1.8.0.min.js"><\/script>')</script>
 
-<script src="/js/libs/modernizr-2.0.6.min.js"></script>
-<script src="/js/libs/bootstrap.js"></script>
+<script src="/js/modernizr.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -46,16 +46,16 @@ $userName  = current_user();
       <div class="navbar-inner">
         <div class="container">
           <a href="/" class="brand">
-           <span class="topTitle">:blibb</span>  
+           <span class="topTitle">:blibb</span>
           </a>
           <?php
             if(empty($userName)){
-           ?>    
-            <ul class="menu">        
+           ?>
+            <ul class="menu">
               <li><a href="/login">Sign In</a></li>
               <li><a href="/signup">Sign up</a></li>
             </ul>
-          <?php }else{ ?>         
+          <?php }else{ ?>
             <ul class="nav" style="float: right; margin-right: 105px">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $userName ?><b class="caret"></b></a>
@@ -73,10 +73,10 @@ $userName  = current_user();
 
 <?php if(!empty($userName)) { ?>
     <script>
-      $('#logout').live("click", function(){ 
-        event.preventDefault();    
+      $('#logout').live("click", function(){
+        event.preventDefault();
         $("#logoff").submit();
-      }); 
+      });
 
       $('.dropdown-toggle').dropdown();
 

@@ -31,9 +31,7 @@ class ProfileApplication extends lib {
 			$email = $user->email;
 			// picture
 			$pwd = "password";
-			if(!isset($user->image_url)){
-				$user->image = "http://static.blibb.it/default.png";
-			}
+
 			$image = $user->image_url;
 
 		    $this->render($view,  compact('username','email','pwd','image'));

@@ -32,7 +32,7 @@ html, body {
 ul.menu{
 	float: right;
 	top: 0;
-	padding-top: 10px;
+
 	height: 40px;
 }
 
@@ -54,23 +54,22 @@ ul.menu li a{
 .nav > li > a.dropdown-toggle:link, .nav > li > a.dropdown-toggle:visited {
 	text-decoration: none;
 	color: #FFF;
-	font-weight: bold;
-}
-.nav > li > a.dropdown-toggle:hover {
-  text-decoration: none;
-  background-color: #b21006;
-  color: #FB8F3D;
 }
 
 footer {
 	margin: 30px auto;
 	height: 52px;
 	width: 924px;
-	
-} 
-footer p.beebot{	
+
+}
+footer .beebot{
 	width: 250px;
 	font-size: 0.8em;
 	margin: 0 auto;
 	text-align: center;
+}
+
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
+	border-top-color: white;
+	border-bottom-color: white;
 }
