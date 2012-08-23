@@ -5,8 +5,8 @@
 		<div id="comments_stream">
 			{{#COMMENTS}}
 				<div class="post-comment">
-					<h4><a href="/profile?p={{user}}">{{user}}</a> <small>{{date}}</small></h4>
-					<div class="thumbnail span1 pull-right" id="imgprofile"><img src="/actions/getImageProfile?u={{user}}" alt="{{user}}'s image"></div>
+					<h4><a href="/profile?p={{user.username}}">{{user.username}}</a> <small>{{date}}</small></h4>
+					<div class="thumbnail span1 pull-right" id="imgprofile"><img src="{{user.image_url}}" alt="{{user.username}}'s image"></div>
 					{{comment}}
 				</div>
 			{{/COMMENTS}}

@@ -34,8 +34,9 @@ class Application extends lib {
 		}else{
             $juser = $pest->get('/user/' . $userspace);
             $user = json_decode($juser);
+            $user = $user->user;
         }
-
+        // print_r($user->username);
     	$result = json_decode($jresp);
     	$rs = $result->results;
 

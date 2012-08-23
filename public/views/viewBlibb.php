@@ -3,10 +3,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title><?php echo $title ?></title>
-		<link rel="stylesheet" href="/css/bootstrap.css">
-		<link rel="stylesheet" href="/css/bootstrap-responsive.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
 		<link rel="stylesheet" href="/css/font-awesome.css">
-		<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+		<script>window.jQuery || document.write('<script src="/js/jquery-1.8.0.min.js"><\/script>')</script>
 
 <style type="text/css">
 .entryBox{

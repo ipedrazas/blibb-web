@@ -1,8 +1,6 @@
 <?php
 require_once(__DIR__.'/../inc/header.php');
 
-$user = getUser();
-
 ?>
 
 
@@ -99,7 +97,7 @@ $user = getUser();
         <?php if(isset($user)){ ?>
           <div class="span2">
                 <div class="well" style="padding: 8px 0;">
-                    <div id="im_image" ><img id="img_image"  alt="thumbnail" src="<?php echo getUserImage(); ?>" /></div>
+                    <div id="im_image" ><img id="img_image"  alt="thumbnail" src="<?php echo $user->image_url; ?>" /></div>
                     <a href="/actions/follow?id=<?php echo $user->id ?>">Follow</a>
                 </div>
             </div><!-- end span2 -->
