@@ -73,16 +73,11 @@ $user = getUser();
 <div class="container">
 
    <div class="page-header">
-    <h1 span="8"><?php echo $userspace ?> Blibbs</h1>
-    <?php
-        if($owner){ ?>
+    <h1 span="8"><?php echo $user->username ?> Blibbs</h1>
           <div id="bActions">
             <a href="/newBlibb" class="btn btn-primary">Create a new Blibb</a>
             <a href="/newTemplate" class="btn btn-primary">Create a new Template</a>
           </div>
-
-       <?php } ?>
-
       </div>
       <div class="row">
         <div class="span10">
@@ -104,10 +99,8 @@ $user = getUser();
         <?php if(isset($user)){ ?>
           <div class="span2">
                 <div class="well" style="padding: 8px 0;">
-
-                    <h2><?php echo $user->username ?></h2>
                     <div id="im_image" ><img id="img_image"  alt="thumbnail" src="<?php echo getUserImage(); ?>" /></div>
-                    <a href="#">Follow</a>
+                    <a href="/actions/follow?id=<?php echo $user->id ?>">Follow</a>
                 </div>
             </div><!-- end span2 -->
         <?php } ?>

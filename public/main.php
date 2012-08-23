@@ -10,8 +10,8 @@ class Application extends lib {
     	// print_r(getUser());
 
 		$userspace = $this->gt("id");
-		
-		if(!empty($userspace)){			
+
+		if(!empty($userspace)){
 			$pos = strpos($userspace,'/user');
 			if($pos===0){
 				$userspace = substr($userspace, 6);
@@ -19,10 +19,10 @@ class Application extends lib {
 		}else{
 			$userspace = current_user();
 		}
-		
+
 		$pest = new Pest(REST_API_URL);
     	$jresp = $pest->get('/blibb/' . $userspace);
-    	
+
     	$this->setRedirect();
 		$current_user = getUserName();
 		$owner = false;
@@ -30,7 +30,11 @@ class Application extends lib {
 		// print_r($current_user . ' ' . $userspace);
 		if($userspace === $current_user){
 			$owner = true;
-		}
+            $user = getUser();
+		}else{
+            $juser = $pest->get('/user/' . $userspace);
+            $user = json_decode($juser);
+        }
 
     	$result = json_decode($jresp);
     	$rs = $result->results;
@@ -43,11 +47,11 @@ class Application extends lib {
 
 
 		$file = __DIR__."/templates/blibb-bigbox.html";
-		$contents = file($file); 
+		$contents = file($file);
 		$bbox = implode($contents);
 
 		$file2 = __DIR__."/templates/blibb-smallbox.html";
-		$contents2 = file($file2); 
+		$contents2 = file($file2);
 		$bbox_1 = implode($contents2);
 
 		$i = 0;
@@ -68,7 +72,7 @@ class Application extends lib {
     	// print_r($blibbs);
 
     	$admin = isAdmin();
-    	$this->render('html5_Blibb', compact('userspace','owner','blibbs','blbb', 'k', 'admin'));		
+    	$this->render('html5_Blibb', compact('user','owner','blibbs','blbb', 'k', 'admin'));
 	}
 
 }
@@ -76,5 +80,5 @@ class Application extends lib {
 
 
 $app = new Application();
-$app->run();  
+$app->run();
 
