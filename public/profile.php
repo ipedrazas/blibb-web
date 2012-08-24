@@ -9,9 +9,9 @@ class ProfileApplication extends lib {
 		$nuser = $this->gt("p");
 
 		$pest = new Pest(REST_API_URL);
-		$jr = $pest->get('/user/name/' . $nuser);
+		$jr = $pest->get('/user/' . $nuser);
 		$user = json_decode($jr);
-
+		$user = $user->user;
 		if($current_user === $user->username){
 			$view = "profile";
 		}else{
