@@ -7,7 +7,7 @@
 
 <style>
 #profileBox{
-	margin-top:100px;
+	margin-top:10px;
 }
 .qq-upload-fail{
 	display: none;
@@ -27,9 +27,14 @@
 						  <fieldset>
 							<legend>Profile info</legend>
 							<div class="control-group">
-								<label class="control-label" for="input01">Name</label>
+								<label class="control-label" for="input01">Full Name</label>
 								<div class="controls">
-									<input type="text" class="input-xlarge" id="input01" value="<?php echo $username ?>">
+									<?php
+										if(isset($fullname)){ ?>
+									<input type="text" class="input-xlarge" id="input01" value="<?php echo $fullname ?>">
+									<?php }else{ ?>
+										<input type="text" class="input-xlarge" id="input01" placeholder="Enter your full name">
+									<?php } ?>
 								</div>
 							</div>
 							<div class="control-group">
@@ -39,14 +44,17 @@
 								</div>
 							</div>
 							<div class="control-group">
-							  <label class="control-label" for="input03">Password</label>
-							  <div class="controls">
-								<input type="password" class="input-xlarge" id="input03" value="<?php echo $pwd ?>">
-							  </div>
+								<a href="#" id="update_profile_pwd">Change your Password</a>
+								<div id="update_pwd_f" style="display:none">
+									<label class="control-label" for="input03">Password</label>
+									<div class="controls">
+										<input type="password" class="input-xlarge" id="input03" value="<?php echo $pwd ?>">
+									</div>
+								</div>
 							</div>
 							<div id="imagebox" class="control-group">
+
 								<img src="<?php echo $image ?>" alt="<?php echo $username ?> profile's picture" width="245" id="profile_picture"/>
-								<a href="#" id="update_profile_pict">Change Image</a>
 								<div id="update_profile_pict_form" style="display:none">
 									<form enctype="multipart/form-data" id="profile_image_form">
 										<input name="file" type="file" />
@@ -55,6 +63,8 @@
 									<progress style="display:none"></progress>
 									<div id="result"></div>
 								</div>
+								<br>
+								<a href="#" id="update_profile_pict">Change Image</a>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="select01">Measure Units</label>
@@ -95,7 +105,12 @@
 
 		$('#update_profile_pict').click(function(event){
 			event.preventDefault();
-			$('#update_profile_pict_form').show();
+			$('#update_profile_pict_form').toggle();
+		});
+
+		$('#update_profile_pwd').click(function(event){
+			event.preventDefault();
+			$('#update_pwd_f').toggle();
 		});
 
 		$('#image_btn').click(function(){
