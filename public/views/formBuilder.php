@@ -3,7 +3,7 @@
 	require_once(__DIR__.'/../inc/header.php');
 
 ?>
-	<script type="text/javascript" src="/js/jquery-ui-1.8.21.custom.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.8.23.custom.min.js"></script>
 	<style type="text/css">
 		#form-builder {
 			min-height: 400px;
@@ -43,17 +43,17 @@
 							$button = $control['button'];
 							echo $button;
 						}
-					?>	
+					?>
 				</ul>
 			</div>
-			
+
 
 			<div class="span6" >
 				<form class="form-horizontal" action="publishTemplate" id="dynForm" method="post">
-					<input type="hidden" name="template_id" value="<?php echo $tid ?>" /> 
+					<input type="hidden" name="template_id" value="<?php echo $tid ?>" />
 					<fieldset id="form-builder">
 						<legend>Your Form</legend>
-						
+
 					</fieldset>
 					<fieldset id="buttonRack">
 						<input type="button" id="generateForm" class="btn btn-primary" value="Generate" data-tid="<?php echo $tid; ?>">
@@ -76,7 +76,7 @@
 <script type="text/javascript" src="/js/bootstrap-tooltip.js"></script>
 <script type="text/javascript" src="/js/bootstrap-popover.js"></script>
 <script type="text/javascript" src="/js/actions.js"></script>
-	
+
 <?php
 require_once(__DIR__.'/../inc/footer.php');
 ?>
