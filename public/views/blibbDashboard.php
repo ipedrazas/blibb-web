@@ -67,7 +67,10 @@
 				color: orange;
 			}
 
-
+			.html-edit{
+				width: 750px;
+				height: 450px;
+			}
 		</style>
 <link href="/css/fileuploader.css" rel="stylesheet" type="text/css">
 <script src="/js/fileuploader.js" type="text/javascript"></script>
@@ -175,34 +178,6 @@
 									<div class="dashboard_box_inner">
 										<ul class="thumbnails">
 											<li class="span1">
-												<a href="#" class="thumbnail span1">
-													<img src="http://placehold.it/160x160" alt="">
-												</a>
-											</li>
-											<li class="span1">
-												<a href="#" class="thumbnail span1">
-													<img src="http://placehold.it/160x160" alt="">
-												</a>
-											</li>
-											<li class="span1">
-												<a href="#" class="thumbnail span1">
-													<img src="http://placehold.it/160x160" alt="">
-												</a>
-											</li>
-											<li class="span1">
-												<a href="#" class="thumbnail span1">
-													<img src="http://placehold.it/160x160" alt="">
-												</a>
-											</li>
-											<li class="span1">
-												<a href="#" class="thumbnail span1">
-													<img src="http://placehold.it/160x160" alt="">
-												</a>
-											</li>
-											<li class="span1">
-												<a href="#" class="thumbnail span1">
-													<img src="http://placehold.it/160x160" alt="">
-												</a>
 											</li>
 										</ul>
 									</div>
@@ -213,19 +188,6 @@
 									<div class="dashboard_box_title">Latest comments</div>
 									<div class="dashboard_box_inner">
 										<div class="post-comment">
-											<div class="btn pull-right">
-												Go to item
-											</div>
-											<h4>Usuario <small>12:00 15-2-2012</small></h4>
-											<p>Donec kjfkdfjls kjhgkf kjfhgdfjkgh kjdhfsgkjds gkhkd fghkj kfdhgkd hkhdsfkgj dkjhdksjfhg ksdg</p>
-										</div>
-										<div class="post-comment">
-											<div class="btn pull-right">
-												Go to item
-											</div>
-											<h4>Usuario <small>12:00 15-2-2012</small></h4>
-											<p>Donec</p>
-
 										</div>
 									</div>
 								</div>
@@ -283,7 +245,6 @@
 						<h2>Template:</h2>
 						<form class="form-horizontal">
 						  <fieldset>
-
 						    <div class="control-group">
 					            <label class="control-label">Template model</label>
 					            <div class="controls">
@@ -299,6 +260,18 @@
 					          </div>
 						  </fieldset>
 						</form>
+						<?php foreach ($views as $viewname => $view) { ?>
+
+						<a href="#" name="editTemplate">Edit View <?php echo $viewname ?></a>
+						<div id="templateEditor">
+							<form>
+								<textarea name="view-html" id="html-<?php echo $viewname ?>" class="html-edit"><?php echo $view ?></textarea><br>
+								<a href="#" name="update_view" data-view="<?php echo $viewname ?>" class="btn btn-primary">Update</a><a href="#" name="preview" class="btn btn-warning">Preview</a>
+							</form>
+
+						</div>
+						<?php } ?>
+						<a href="#" name="addView" class="btn btn-primary">Add View</a>
 					</div>
 
 					<!-- Tab: items -->
@@ -571,10 +544,10 @@
 		</div>
 
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap-tab.js"></script>
 		<script type="text/javascript" src="js/bootstrap-collapse.js"></script>
 		<script type="text/javascript" src="js/bootstrap-modal.js"></script>
+		<script src="/js/beautify-html.js" type="text/javascript"></script>
 
 
 		<script type="text/javascript">
@@ -606,6 +579,28 @@
 				});
 			});
 
+			$(document).ready(function() {
+				var ugly = $('.html-edit').val();
+				$('.html-edit').val(style_html(ugly));
+
+			});
+
+			$('a[name=update_view]').live("click", function(e){
+				e.preventDefault();
+				var view = $(this).attr('data-view');
+				var textareaId = "#htm-" + view;
+				var viewHtml = $(textareaName).val();
+				console.log(viewHtml);
+				// $.post("/actions/updateView", { id: '<?php echo $bli->id ?>', viewName: view, viewHtml: viewHtml  },
+				// 	function(data) {
+				// 		var webhook = "<div class='webhook'>" + action + " - " + callback + " [" + fields + "]</div>" ;
+				// 		var alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>Webhook added succesfully</div>";
+				// 		$('#reg-webhooks').after(alert);
+				// 		$('#nowebhooks').hide();
+				// 		$('#webhooks_lst').append(webhook);
+				// });
+
+			}
 
 		</script>
 

@@ -16,7 +16,7 @@ class PublishTemplateApplication extends lib {
 			'login_key' => getKey()
 		));
 
-		print_r($r);
+		// print_r($r);
 
 	    $destURL = "/user/" . $current_user;
 	    header("Location: $destURL");
@@ -25,4 +25,4 @@ class PublishTemplateApplication extends lib {
 }
 
 $app = new PublishTemplateApplication();
-$app->run();  
+$app->run();

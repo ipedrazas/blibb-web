@@ -74,7 +74,7 @@ require_once(__DIR__.'/../inc/header.php');
     <h1 span="8"><?php echo $user->username ?> Blibbs</h1>
           <div id="bActions">
             <a href="/newBlibb" class="btn btn-primary">Create a new Blibb</a>
-            <a href="/newTemplate" class="btn btn-primary">Create a new Template</a>
+            <a href="/saveTemplate" class="btn btn-primary">Create a new Template</a>
           </div>
       </div>
       <div class="row">

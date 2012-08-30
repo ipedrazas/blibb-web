@@ -71,8 +71,7 @@
     $( '#generateForm' ).click(function() {
         var control = [];
         var array = $('#form-builder .control-group');
-        var template_id = $(this).attr('data-tid');
-
+        var template_id = $('#template_name').html();
         for (var i = 0, max = array.length; i < max; i++) {
             c = {};
             c.order = i + 1;
@@ -104,7 +103,11 @@
                 control: control,
                 template: template_id
             },
-            success: function(msg) {
+            success: function(jmsg) {
+                var msg = JSON.parse(jmsg);
+                console.log(msg);
+                $('input[name=template_id]').val(msg.result);
+                // console.log($('#template_id').val());
                 $alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>Template generated succesfully!<br> You can publish it to make it available or leave i as Draft.</div>";
                 $('#buttonRack').before($alert);
                 $('#publishForm').show();

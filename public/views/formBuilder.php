@@ -50,9 +50,9 @@
 
 			<div class="span6" >
 				<form class="form-horizontal" action="publishTemplate" id="dynForm" method="post">
-					<input type="hidden" name="template_id" value="<?php echo $tid ?>" />
+					<input type="hidden" name="template_id" value=""/>
 					<fieldset id="form-builder">
-						<legend>Your Form</legend>
+						<h2 class="editable" contenteditable="true" id="template_name">Your Template</h2>
 
 					</fieldset>
 					<fieldset id="buttonRack">
