@@ -1,19 +1,24 @@
 
-<div class="commentsbox" id="cb_{{id}}">
+<div class="commentsbox" id="cb_{{id}}" style="padding: 10px;">
 	<h4 name="comments" id="c{{id}}"><i class="icon-comments"></i> Comments</h4>
 	<div class="comments" id="c_{{id}}">
 		<div id="comments_stream">
 			{{#COMMENTS}}
 				<div class="post-comment">
-					<h4><a href="/profile?p={{user.username}}">{{user.username}}</a> <small>{{date}}</small></h4>
-					<div class="thumbnail span1 pull-right" id="imgprofile"><img src="{{user.image_url}}" alt="{{user.username}}'s image"></div>
-					{{comment}}
+					<h4>
+						<a href="/profile?p={{user.username}}">{{user.username}}</a> <small>{{date}}</small>
+						<div class="thumbnail span1 pull-right" id="imgprofile"><img src="{{user.image_url}}" alt="{{user.username}}'s image" width="60"></div>
+					</h4>
+
+
+						{{comment}}
+
 				</div>
 			{{/COMMENTS}}
 		</div>
-		<div id=wc_{{id}} class="write_comment">
+		<div id=wc_{{id}} class="write_comment" style="padding-top: 20px;">
 			<textarea  class="span5" name="comment" rows="4" id="c_text{{id}}"></textarea>
-			<input type="submit" name="postComment" id="postComment{{id}}" value="Add Comment" class="btn btn-primary pull-right">
+			<input type="submit" name="postComment" id="postComment{{id}}" value="Add Comment" class="btn btn-primary">
 		</div>
 	</div>
 </div>
