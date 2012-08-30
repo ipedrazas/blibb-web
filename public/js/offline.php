@@ -5,10 +5,9 @@
     echo("// Offline");
 
     $bid = $_GET['b'];
-    $fields = $_GET['fields'];
 
     $pest = new Pest(REST_API_URL);
-    $url_api = '/blibb/object/' . $bid . '?fields=' . $fields ;
+    $url_api = '/blibb/object/' . $bid . '?fields=t.i,n,s,u,at' ;
     $jb = $pest->get($url_api);
     $bli = json_decode($jb);
     print_r($bli);
