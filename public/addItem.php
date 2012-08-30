@@ -21,12 +21,8 @@ class Application extends lib {
 		$t = $blibb->template;
 		$i = $t->v->default;
 
-		$buffer = '';
-		foreach($i as $f){
-			$w = $f->wb;
-			// print_r($w);
-			$buffer .= $w;
-		}
+		$buffer = $i->wb;
+
     	$this->render('addItem',compact('current_user','buffer','thumb', 'bid','dest','k'));
     }
 }

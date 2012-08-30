@@ -21,29 +21,28 @@ class Application extends lib {
  		$bdesc = $bli->description;
  		$author = $bli->owner;
  		$date = $bli->date;
- 		
+
  		$btags = array();
- 		
+
  		if(isset($bli->tags)){
  			$btags = $bli->tags;
  		}
 
  		if($view_mode){
  			if(isset($bli->template->v->$view_mode)){
- 				$tview = $bli->template->v->$view_mode;
- 			$view = $tview[0];	
+ 				$view = $bli->template->v->$view_mode;
  			}else{
- 				$view = $bli->template->v->default[0]; 	
+ 				$view = $bli->template->v->default;
  			}
  		}else{
- 			$view = $bli->template->v->default[0];
+ 			$view = $bli->template->v->default;
  		}
- 		
+
  		$blibbBox = stripcslashes($view->rb);
 
  		// print_r($blibbBox);
 		$fTags = __DIR__."/templates/taglist.html";
-		$cTags = file($fTags); 
+		$cTags = file($fTags);
 		$taglist = implode($cTags);
 
 		if($current_user!==0){
@@ -51,7 +50,7 @@ class Application extends lib {
 		}else{
 			$fComments = __DIR__."/templates/comments-nologin.html";
 		}
-		$cComments = file($fComments); 
+		$cComments = file($fComments);
 		$comments = implode($cComments);
 
  		$blibbBox = str_replace('<blibb:tags/>', $taglist, $blibbBox);
@@ -59,9 +58,9 @@ class Application extends lib {
 
  		// $css = '<style>' . $view->sb . chr(10) . $view->si . '</style>';
  		$css = '';
-		
+
 		$owner = false;
-		
+
 		if($author === $current_user){
 			$owner = true;
 		}
@@ -73,44 +72,44 @@ class Application extends lib {
 		// print_r($bItems);
 
 		$results = $its->count;
-		
+
 
 		// print_r($its);
 
 		if($results > 0){
-			$rs = $its->items;			
+			$rs = $its->items;
 			$itemsResult =  array();
 			foreach ($rs as $eRs) {
 				// print_r($eRs);
 				$_blitem = array();
 				$_blitem['id'] =  $eRs->id;
 				$fields = $eRs->fields;
-								
+
 				foreach ($fields as $field) {
 					$f = explode("-", $field);
 					$type = $f[0];
 					$field = $f[1];
-					
+
 					if($type=='15'){
 						$slug = $field;
 						$obj = $eRs->$field;
 						$value =  $obj->oid;
 						$_blitem[$slug] = $value;
 					}
-					else if($type=='1f'){						
+					else if($type=='1f'){
 						$slug = $field;
 						$obj = $eRs->$field;
 						$song_id = $obj->id->oid;
 						$value =  $song_id;
 						$_blitem[$field] = $value;
-					}else if($type=='33'){						
+					}else if($type=='33'){
 						$url = $eRs->$field;
 						if(isset($url->url)){
 							$_blitem['BOOKMARK'] = $url;
 						}else{
 							$tArray['title'] = 'Processing...';
 							$tArray['domain'] = 'Processing...';
-							$_blitem['BOOKMARK'] = $tArray;	
+							$_blitem['BOOKMARK'] = $tArray;
 						}
 					}else if ($type=='3d') {
 							if(isset($eRs->$field->name)){
@@ -119,21 +118,21 @@ class Application extends lib {
 							}else{
 								$_blitem[$field] = $eRs->$field;
 							}
-						
+
 					}else{
 							$_blitem[$field] = $eRs->$field;
-						
-					}						
+
+					}
 				}
 				// print_r($eRs);
 				// Comments
 				if(isset($eRs->comments)){
-					$_blitem['COMMENTS'] =  $eRs->comments;	
+					$_blitem['COMMENTS'] =  $eRs->comments;
 				}
 				if (isset($eRs->tags)){
-					$_blitem['TAGS'] = $eRs->tags;	
+					$_blitem['TAGS'] = $eRs->tags;
 				}
-				$_blitem['key'] = getKey();				
+				$_blitem['key'] = getKey();
 				$itemsResult[] = $_blitem;
 			}
 
@@ -154,10 +153,10 @@ class Application extends lib {
 		}else{
 			$content = "There are no blitems yet";
 		}
-		
-		
+
+
 		$view = 'viewBlibb';
-		
+
 
 		$a11y = $this->gt('a11y');
 		if($a11y==1){
@@ -169,8 +168,8 @@ class Application extends lib {
 		$title = $bname;
 
 		$this->render($view, compact('content','css', 'owner','bid', 'entries', 'current_user', 'blibb', 'title'));
- 		
-        
+
+
     }
 
     private function getFooter(){
@@ -178,10 +177,10 @@ class Application extends lib {
 <script>window.jQuery || document.write("<script src=\"js/libs/jquery-1.7.1.min.js\"><\/script>")</script>
 <script src="/js/libs/bootstrap.js"></script>
 <script>
-	$("#logout").live("click", function(){ 
-		event.preventDefault();    
+	$("#logout").live("click", function(){
+		event.preventDefault();
 		$("#logoff").submit();
-	}); 
+	});
 	$(".dropdown-toggle").dropdown();
 </script>
 <form action="logout" method="post" id="logoff"></form>
@@ -196,7 +195,7 @@ class Application extends lib {
 			<link rel="stylesheet" href="/css/blibb.css">
 			<style>
 
-			header {	
+			header {
 				height: 50px;
 				width: 100%;
 				margin: 0 auto;
@@ -227,15 +226,15 @@ class Application extends lib {
 			.topbar a:hover {
 				text-decoration: none;
 			}
-			a.dropdown-toggle:link{	
+			a.dropdown-toggle:link{
 				color: white;
 				font-weight: bolder;
 			}
-			a.dropdown-toggle:visited{	
+			a.dropdown-toggle:visited{
 				color: white;
 				font-weight: bolder;
 			}
-			 
+
 
 			.nav > li > a.dropdown-toggle:hover {
 			  text-decoration: none;
@@ -251,16 +250,16 @@ class Application extends lib {
 			<header class="topbar">
 				<div class="container">
 			          <a href="/" class="brand">
-			            <img src="/img/blibb-logo-30-2white.png" alt="Blibb" title="Blibb" border="0"/> <span class="topTitle">:blibb</span>  
+			            <img src="/img/blibb-logo-30-2white.png" alt="Blibb" title="Blibb" border="0"/> <span class="topTitle">:blibb</span>
 			          </a>';
-          
+
             if(empty($userName)){
-            	$res .=  '<ul class="menu">        
+            	$res .=  '<ul class="menu">
 	              <li><a href="/login">Sign In</a></li>
 	              <li><a href="/signup">Sign up</a></li>
 	            </ul>
 	            ';
-          	}else{ 
+          	}else{
           		$res .= '<ul class="nav" style="float: right; margin-right: 105px">
 		              <li class="dropdown">
 		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">'. $userName .'<b class="caret"></b></a>
@@ -283,5 +282,5 @@ class Application extends lib {
 }
 
 $app = new Application();
-$app->run();  
+$app->run();
 

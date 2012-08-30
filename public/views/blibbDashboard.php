@@ -260,6 +260,7 @@
 					          </div>
 						  </fieldset>
 						</form>
+						<h3>Views</h3>
 						<?php foreach ($views as $viewname => $view) { ?>
 
 						<a href="#" name="editTemplate">Edit View <?php echo $viewname ?></a>
@@ -580,27 +581,27 @@
 			});
 
 			$(document).ready(function() {
-				var ugly = $('.html-edit').val();
-				$('.html-edit').val(style_html(ugly));
+
+ 					$('textarea').each(function() {
+ 						this.value = style_html(this.value);
+ 					});
+
+
 
 			});
 
 			$('a[name=update_view]').live("click", function(e){
 				e.preventDefault();
 				var view = $(this).attr('data-view');
-				var textareaId = "#htm-" + view;
-				var viewHtml = $(textareaName).val();
-				console.log(viewHtml);
-				// $.post("/actions/updateView", { id: '<?php echo $bli->id ?>', viewName: view, viewHtml: viewHtml  },
-				// 	function(data) {
-				// 		var webhook = "<div class='webhook'>" + action + " - " + callback + " [" + fields + "]</div>" ;
-				// 		var alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>Webhook added succesfully</div>";
-				// 		$('#reg-webhooks').after(alert);
-				// 		$('#nowebhooks').hide();
-				// 		$('#webhooks_lst').append(webhook);
-				// });
+				var textareaId = "#html-" + view;
+				var viewHtml = $(textareaId).val();
+				$.post("/actions/updateView", { blibb_id: '<?php echo $bli->id ?>', viewName: view, viewHtml: viewHtml  },
+					function(data) {
+						var alert = "<div class='alert alert-success'><a class='close' data-dismiss='alert'>×</a>View modified succesfully</div>";
+						$(this).after(alert);
+				});
 
-			}
+			});
 
 		</script>
 

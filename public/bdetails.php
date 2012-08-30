@@ -36,8 +36,10 @@ class bDashboard extends lib {
         $items = $jitems->items;
 
         $views = array();
-        foreach ($bli->template->v as $name => $value) {
-            $views[$name] = $value[0]->rb;
+
+        foreach ($bli->template->v as $view=>$viewdata) {
+            $views[$view] = $viewdata->rb;
+            // print_r($view);
         }
 
         // print_r($items);
