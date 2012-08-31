@@ -1,12 +1,22 @@
-<h3>Comments</h3>
-<br>
-{{#COMMENTS}}
-	<div class="post-comment">
-		<div class="thumbnail span1 pull-right"><img src="/actions/getImageProfile?u={{user}}" alt="{{user}}'s image"></div>
-		<h3><a href="/profile?p={{user}}">{{user}}</a> <small>{{date}}</small></h3>
-		{{comment}}
-	</div>
-{{/COMMENTS}}
-<div>
-	<h4><a href="/login">Login to comment</a></h4>
+<div class="commentsbox" id="cb_{{id}}" style="padding: 10px;">
+    <h4 name="comments" id="c{{id}}"><i class="icon-comments"></i> Comments</h4>
+    <div class="comments" id="c_{{id}}">
+        <div id="comments_stream">
+            {{#COMMENTS}}
+                <div class="post-comment">
+                    <h4>
+                        <a href="/profile?p={{user.username}}">{{user.username}}</a> <small>{{date}}</small>
+                        <div class="thumbnail span1 pull-right" id="imgprofile"><img src="{{user.image_url}}" alt="{{user.username}}'s image" width="60"></div>
+                    </h4>
+                        {{comment}}
+                </div>
+            {{/COMMENTS}}
+        </div>
+       <a href="/login">Login to comment</a>
+    </div>
 </div>
+<script type="text/javascript">
+        $( '#c{{id}}' ).click(function() {
+            $('#c_{{id}}').toggle();
+        });
+</script>

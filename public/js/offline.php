@@ -7,29 +7,33 @@
     $bid = $_GET['b'];
 
     $pest = new Pest(REST_API_URL);
-    $url_api = '/blibb/object/' . $bid . '?fields=t.i,n,s,u,at' ;
+    $url_api = '/blibb/object/' . $bid . '?fields=t.i,n,s,u,at,t.v.default.ri' ;
     $jb = $pest->get($url_api);
     $bli = json_decode($jb);
-    print_r($bli);
+    // print_r($bli);
 
     $url = REST_API_URL . '/' . $bli->owner . '/' . $bli->slug;
     echo "\n\nvar API_URL = \"" . $url . "\"\n\n";
-
+    $template = $bli->template;
     echo "var Item = function(){\n";
-    foreach ($bli->template->i as $control) {
-        echo chr(127) . "\tthis." . $control->s . 'document.querySelector(\'#' . $control->tx . '-' . $control->s . "').value\n";
+    foreach ($template->i as $control) {
+        echo  "\tthis." . $control->s . " = document.querySelector('input[name=\"" . $control->tx . "-" . $control->s . "\"]').value;\n";
     }
     echo "};\n\n";
 
     echo "\n\nfunction sendDataToServer(item) {\n";
 
     // parameters:
-    $params= "app_token:" . $bli->app_token . ", ";
+    $params= "app_token: '" . $bli->app_token . "', ";
+    $ctrls = array();
     foreach ($bli->template->i as $control) {
-        $params .=  $control->tx . '-' . $control->s . ': item.' . $control->s . ', ';
+        $params .=  "'" . $control->tx . '-' . $control->s . "': item." . $control->s . ", ";
+        $ctrls[$control->s] = "\" + item." . $control->s . " + \"";
     }
+    $ctrls['class'] = "\\\"item \"+ status + \"\\\"";
     $params .= " tags: item.tags ";
-
+    $m = new Mustache();
+    $content =  $m->render($template->v->default->ri, $ctrls);
 ?>
 //called on submit if device is online from processData()
     $.post(API_URL, { <?php echo $params ?>},
@@ -48,7 +52,9 @@ function renderItem(item){
     }else{
         status = "offline";
     }
-    ihtml = "<div class=\"item "+ status+"\"><h1>" + item.title + '</h1>' + item.date + " <br>" + item.bug + "</div>";
+    var ihtml = "<?php echo $content ?>";
+
+    // var ihtml = "<div class=\"item "+ status+"\"><h1>" + item.title + '</h1>' + item.date + " <br>" + item.bug + "</div>";
     $("#results").append(ihtml);
 }
 
@@ -157,6 +163,7 @@ function loaded() {
     window.addEventListener('offline', notifyUserIsOffline, false);
 
     document.querySelector('#submit').addEventListener('click', processData, false);
+    $( "#datepicker" ).datepicker();
 }
 
 window.addEventListener('load', loaded, true);

@@ -98,11 +98,25 @@ h4{
 		margin: 15px;
 }
 </style>
+
+<link type="text/css" href="/css/blitzer/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+<script src="/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/js/libs/jquery.ui.core.js"></script>
+<script type="text/javascript" src="/js/libs/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/js/libs/jquery.ui.datepicker.js"></script>
+ <script type="text/javascript" src="/js/offline?b=<?php echo $bid ?>" ></script>
 	</head>
 	<body>
 		<?php
 			echo $content;
+			echo $wb;
 		?>
+		 <a href="#" id="submit" class="btn btn-primary">Add Item</a>
+	<footer>
+		 <p>Locally stored items: <span id="local-count">0</span></p>
+        <p>You are working: <span id="status" class="offline">Offline</span></p>
+    </footer>
 	</body>
+
 </html>
 
