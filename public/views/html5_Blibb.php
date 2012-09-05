@@ -123,6 +123,9 @@ require_once(__DIR__.'/../inc/header.php');
                             echo '<li><a href="/listControls">Controls</a></li>';
                           }
                       ?>
+                       <li class="divider"></li>
+                       <li><a href="/images?u=<?php echo $user->username ?>">Images</a></li>
+
                     </ul>
               </div>
           </div><!-- end span2 -->

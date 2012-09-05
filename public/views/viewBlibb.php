@@ -111,6 +111,7 @@ h4{
 			echo $content;
 			echo $wb;
 		?>
+		<div id="results"></div>
 		 <a href="#" id="submit" class="btn btn-primary">Add Item</a>
 	<footer>
 		 <p>Locally stored items: <span id="local-count">0</span></p>

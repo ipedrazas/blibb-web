@@ -9,7 +9,7 @@ class ListImages extends lib {
 
 
     	$this->setRedirect();
-		
+
 		if(isset($_GET['u'])){
 			$username = $this->gt("u");
 		}else{
@@ -20,11 +20,11 @@ class ListImages extends lib {
     	$jpict_ids = $pest->get('/user/pictures/' . $username );
  		$pict_ids = json_decode($jpict_ids);
 
-        $this->render('images', compact(pict_ids));
+        $this->render('images', compact('pict_ids'));
     }
 
 }
 
 $app = new ListImages();
 
-$app->run();  
+$app->run();

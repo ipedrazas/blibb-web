@@ -35,7 +35,7 @@
     $m = new Mustache();
     $content =  $m->render($template->v->default->ri, $ctrls);
 ?>
-//called on submit if device is online from processData()
+
     $.post(API_URL, { <?php echo $params ?>},
             function(data) {
                 console.log(data);
@@ -75,20 +75,16 @@ function processData() {
     console.log(item);
     if (navigator.onLine) {
         sendDataToServer(item);
-    }
-    else {
-        var dataString = JSON.stringify(item);
-        saveDataLocally(dataString);
+    }else{
+        saveDataLocally(item);
     }
 }
 
 
-//called on submit if device is offline from processData()
-function saveDataLocally(dataString) {
-
+function saveDataLocally(item) {
+    var dataString = JSON.stringify(item);
     var timeStamp = new Date();
     timeStamp.getTime();
-
     try {
         localStorage.setItem(timeStamp, dataString);
     } catch (e) {
@@ -97,16 +93,12 @@ function saveDataLocally(dataString) {
             console.log('Quota exceeded!');
         }
     }
-
-    console.log(dataString);
-
     var length = window.localStorage.length;
     document.querySelector('#local-count').innerHTML = length;
+    renderItem(item);
 }
 
 
-//called if device goes online or when app is first loaded and device is online
-//only sends data to server if locally stored data exists
 function sendLocalDataToServer() {
 
     var status = document.querySelector('#status');
@@ -115,11 +107,8 @@ function sendLocalDataToServer() {
 
     var i = 0,
         dataString = '';
-
     while (i <= window.localStorage.length - 1) {
-
         dataString = localStorage.key(i);
-
         if (dataString) {
             var json_item = localStorage.getItem(dataString);
             sendDataToServer(JSON.parse(json_item));
@@ -132,33 +121,26 @@ function sendLocalDataToServer() {
 }
 
 
-//called when device goes offline
 function notifyUserIsOffline() {
     var status = document.querySelector('#status');
     status.className = 'offline';
     status.innerHTML = 'Offline';
 }
 
-//called when DOM has fully loaded
 function loaded() {
-    //update local storage count
     var length = window.localStorage.length;
     document.querySelector('#local-count').innerHTML = length;
 
-    //if online
     if (navigator.onLine) {
-        //update connection status
         var status = document.querySelector('#status');
         status.className = 'online';
         status.innerHTML = 'Online';
-        getItems();
-        //if local data exists, send try post to server
+        // getItems();
         if (length !== 0) {
             sendLocalDataToServer();
         }
     }
 
-    //listen for connection changes
     window.addEventListener('online', sendLocalDataToServer, false);
     window.addEventListener('offline', notifyUserIsOffline, false);
 
