@@ -99,7 +99,7 @@ h4{
 }
 </style>
 
-<link rel="stylesheet" href="/css/notes.css">
+
 <link type="text/css" href="/css/blitzer/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
 <script src="/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="/js/libs/jquery.ui.core.js"></script>
@@ -111,18 +111,28 @@ h4{
 		<?php
 			echo $content;
 		?>
-		 <a href="#" id="submit" class="btn btn-primary">Add Item</a>
-		<div id="addBox">
-			<?php
-				echo $wb;
-			?>
-		</div>
-		<div id="results"></div>
+		<div class="container">
+			<a href="#" name="addItemCtl"><i class="icon-edit"></i> Add</a>
+			<div id="addBox" style="display:none">
+				<?php
+					echo $wb;
+				?>
+				<a href="#" id="submit" class="btn btn-primary">Add Item</a>
+			</div>
+			<div id="results"></div>
 
-	<footer>
-		 <p>Locally stored items: <span id="local-count">0</span></p>
-        <p>You are working: <span id="status" class="offline">Offline</span></p>
-    </footer>
+			<footer>
+				 <p>Locally stored items: <span id="local-count">0</span></p>
+		        <p>You are working: <span id="status" class="offline">Offline</span></p>
+		    </footer>
+    	</div>
+    <script type="text/javascript">
+    	$('a[name=addItemCtl]').live("click", function(e){
+    		e.preventDefault();
+			$('#addBox').toggle();
+		});
+
+    </script>
 	</body>
 
 </html>

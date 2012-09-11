@@ -16,8 +16,10 @@
     echo "\n\nvar API_URL = \"" . $url . "\"\n\n";
     $template = $bli->template;
     echo "var Item = function(){\n";
+    // echo "\t elements = document.querySelectorAll('[data-bid]');\n";
     foreach ($template->i as $control) {
-        echo  "\tthis." . $control->s . " = document.querySelector('input[name=\"" . $control->s . "\"]').value;\n";
+        echo  "\tthis." . $control->s . " = $(\"[data-bid='c-" . $control->s . "']\").val();\n";
+        // echo  "\tthis." . $control->s . " = ". $control->s . ".val();\n";
     }
     echo "};\n\n";
 
@@ -148,3 +150,4 @@ function loaded() {
 }
 
 window.addEventListener('load', loaded, true);
+
