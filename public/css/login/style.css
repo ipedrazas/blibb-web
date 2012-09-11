@@ -1,0 +1,6 @@
+body{background:#b21006;font-family:'Open Sans',sans-serif;color:#FFF;}
+#login-box{width:35%;margin:10em auto 5em auto;border-bottom:1px solid #FFF;}#login-box h2{border-bottom:1px solid #FFF;font-size:2em;text-shadow:1px 1px 0px #808080;padding-bottom:0.1em;font-weight:normal;}
+#login-box form{margin-top:2em;}#login-box form label{font-size:1.2em;}
+#login-box form input[type="email"],#login-box form input[type="password"]{width:80%;}
+footer{width:35%;margin:0em auto 1em auto;text-align:center;}
+@media screen and (max-width:800px){#login-box,footer{width:50%;}}@media screen and (max-width:600px){#login-box,footer{width:75%;}}@media screen and (max-width:480px){#login-box,footer{width:80%;} #login-box{margin:2em auto 1em auto;}}

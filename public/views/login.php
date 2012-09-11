@@ -1,45 +1,49 @@
-<?php
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/login/bootstrap.css">
+	<link href="/css/login/bootstrap-responsive.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/login/style.css">
+</head>
+<body>
+	<section id="login-box">
+		<h2>:blibb login</h2>
 
-require_once(__DIR__.'/../inc/header.php');
-?>
-<div class="container">
-        <ul id="messages">
+		<form action="login" class="form-horizontal" method="post">
 
-        <?php
-			if(isset($errorMsg)){
-				echo $errorMsg;
-			}
-        ?>
-        </ul>
+			<div class="control-group">
+    			<label class="control-label" for="email">Email</label>
+    			<div class="controls">
+      				<input type="email" id="email" name="email" placeholder="Enter your username or your email">
+    			</div>
+  			</div>
 
-		<section id="login" class="span4 offset4">
-			<form accept-charset="UTF-8" action="login" class="new_user_session" id="new_user_session" method="post">
-				<fieldset>
-					<legend><strong>Log In!</strong></legend>
-				<div style="margin:0;padding:0;display:inline">
-					<input name="utf8" type="hidden" value="&#x2713;" />
-					<input name="t" type="hidden" value="<?php echo $reqHash ?>" />
-				</div>
-				<p class"offset2">
-				  <label for="u">Username or Email <small>Don't have an account? <a href="signup.php" tabindex="999">Sign up</a></small></label>
+  			<div class="control-group">
+    			<label class="control-label" for="password">Password</label>
+    			<div class="controls">
+      				<input type="password" id="password" name="password" placeholder="">
+    			</div>
+  			</div>
 
-				  <input id="u" class="span4" name="u" placeholder="email@example.com" size="30" type="text" />
-				</p>
+  			<div class="control-group">
+    			<div class="controls">
+      				<label class="checkbox">
+        				<input type="checkbox"> Remember me
+      				</label>
+      				<button type="submit" class="btn pull-right">Log in</button>
+    			</div>
+  			</div>
 
 
-				<p class"offset2">
-				  <label for="p">Password <small><a href="forgotpassword.php" tabindex="999">Forgot your password?</a></small></label>
-
-				  <input id="p" class="span4" name="p" size="30" type="password" />
-				</p>
-
-				<p class"offset3">
-					<input type="submit" class="btn btn-primary span4" value="Log in">
-				</p>
-				</fieldset>
-			</form>
-		</section>
-	</div>
-<?php
-require_once(__DIR__.'/../inc/footer.php');
-?>
+		</form>
+	</section>
+	<footer>
+		:blibb ©2012 - Content everywhere
+	</footer>
+	<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/js/libs/bootstrap.min.js"></script>
+</body>
+</html>
