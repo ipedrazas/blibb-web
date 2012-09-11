@@ -62,7 +62,7 @@ $userName  = current_user();
                 <ul class="dropdown-menu">
                   <li><a href="/profile?p=<?php echo $userName?>">Profile</a></li>
                   <li><a href="/user/<?php echo $userName ?>">UserSpace</a></li>
-                  <li><a href="#" id="logout">Log Out</a></li>
+                  <li><a href="/logout" id="logout">Log Out</a></li>
                 </ul>
               </li>
             </ul>
