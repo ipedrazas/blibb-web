@@ -97,6 +97,13 @@ h4{
 .write_comment{
 		margin: 15px;
 }
+.offline{
+	background: #DFC5C5;
+}
+.red{
+	color: #8B1919;
+	padding: 25px;
+}
 </style>
 
 
@@ -108,6 +115,7 @@ h4{
  <script type="text/javascript" src="/js/offline?b=<?php echo $bid ?>" ></script>
 	</head>
 	<body>
+		<p id="status"></p>
 		<?php
 			echo $content;
 		?>
@@ -123,7 +131,6 @@ h4{
 
 			<footer>
 				 <p>Locally stored items: <span id="local-count">0</span></p>
-		        <p>You are working: <span id="status" class="offline">Offline</span></p>
 		    </footer>
     	</div>
     <script type="text/javascript">

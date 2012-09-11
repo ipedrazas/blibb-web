@@ -87,7 +87,7 @@ function saveDataLocally(item) {
     var timeStamp = new Date();
     timeStamp.getTime();
     try {
-        localStorage.setItem(timeStamp, dataString);
+        localStorage.setItem('BLIBB-' +timeStamp, dataString);
     } catch (e) {
 
         if (e == QUOTA_EXCEEDED_ERR) {
@@ -104,7 +104,8 @@ function sendLocalDataToServer() {
 
     var status = document.querySelector('#status');
     status.className = 'online';
-    status.innerHTML = 'Online';
+    status.innerHTML = 'You are working: Online';
+    document.querySelector('body').className= ''
 
     var i = 0,
         dataString = '';
@@ -124,8 +125,9 @@ function sendLocalDataToServer() {
 
 function notifyUserIsOffline() {
     var status = document.querySelector('#status');
-    status.className = 'offline';
-    status.innerHTML = 'Offline';
+    status.className = 'offline red';
+    status.innerHTML = 'You are working: Offline';
+    document.querySelector('body').className= 'offline'
 }
 
 function loaded() {
@@ -135,7 +137,9 @@ function loaded() {
     if (navigator.onLine) {
         var status = document.querySelector('#status');
         status.className = 'online';
-        status.innerHTML = 'Online';
+        status.innerHTML = '';
+    }else{
+        notifyUserIsOffline();
     }
 
     window.addEventListener('online', sendLocalDataToServer, false);
