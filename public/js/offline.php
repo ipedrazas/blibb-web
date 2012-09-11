@@ -54,7 +54,7 @@ function renderItem(item){
     }else{
         status = "offline";
     }
-    var ihtml = "<?php echo htmlspecialchars($content); ?>";
+    var ihtml = "<p>New entry added!</p>";
 
     $("#results").append(ihtml);
 }
@@ -136,10 +136,6 @@ function loaded() {
         var status = document.querySelector('#status');
         status.className = 'online';
         status.innerHTML = 'Online';
-        // getItems();
-        if (length !== 0) {
-            sendLocalDataToServer();
-        }
     }
 
     window.addEventListener('online', sendLocalDataToServer, false);
