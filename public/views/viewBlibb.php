@@ -110,10 +110,15 @@ h4{
 	<body>
 		<?php
 			echo $content;
-			echo $wb;
 		?>
-		<div id="results"></div>
 		 <a href="#" id="submit" class="btn btn-primary">Add Item</a>
+		<div id="addBox">
+			<?php
+				echo $wb;
+			?>
+		</div>
+		<div id="results"></div>
+
 	<footer>
 		 <p>Locally stored items: <span id="local-count">0</span></p>
         <p>You are working: <span id="status" class="offline">Offline</span></p>

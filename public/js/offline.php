@@ -17,7 +17,7 @@
     $template = $bli->template;
     echo "var Item = function(){\n";
     foreach ($template->i as $control) {
-        echo  "\tthis." . $control->s . " = document.querySelector('input[name=\"" . $control->tx . "-" . $control->s . "\"]').value;\n";
+        echo  "\tthis." . $control->s . " = document.querySelector('input[name=\"" . $control->s . "\"]').value;\n";
     }
     echo "};\n\n";
 
@@ -27,7 +27,7 @@
     $params= "app_token: '" . $bli->app_token . "', ";
     $ctrls = array();
     foreach ($bli->template->i as $control) {
-        $params .=  "'" . $control->tx . '-' . $control->s . "': item." . $control->s . ", ";
+        $params .=  $control->s . ": item." . $control->s . ", ";
         $ctrls[$control->s] = "\" + item." . $control->s . " + \"";
     }
     $ctrls['class'] = "\\\"item \"+ status + \"\\\"";
@@ -52,9 +52,8 @@ function renderItem(item){
     }else{
         status = "offline";
     }
-    var ihtml = "<?php echo $content ?>";
+    var ihtml = "<?php echo htmlspecialchars($content); ?>";
 
-    // var ihtml = "<div class=\"item "+ status+"\"><h1>" + item.title + '</h1>' + item.date + " <br>" + item.bug + "</div>";
     $("#results").append(ihtml);
 }
 
