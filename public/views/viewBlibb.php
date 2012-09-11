@@ -99,6 +99,7 @@ h4{
 }
 </style>
 
+<link rel="stylesheet" href="/css/notes.css">
 <link type="text/css" href="/css/blitzer/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
 <script src="/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="/js/libs/jquery.ui.core.js"></script>
