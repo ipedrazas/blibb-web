@@ -47,36 +47,36 @@
 			background: #eee;
 		}
 	</style>
-<script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js"></script> 
+
 <script type="text/javascript">
 
-	$('input[name=bgroup]').live("click", function(){	
+	$('input[name=bgroup]').live("click", function(){
 		var checked = $(this).attr('checked');
 
 		if(checked!='checked'){
-			$('#groupInvites').hide();	
+			$('#groupInvites').hide();
 		}else{
-			$('#groupInvites').show();	
+			$('#groupInvites').show();
 		}
-		
-	}); 
+
+	});
 
 
-	$('a[name=template]').live("click", function(){	
-		event.preventDefault();		 
+	$('a[name=template]').live("click", function(){
+		event.preventDefault();
 		var oid = $(this).attr('id');
 		$('#btemplate').val(oid);
-	}); 
-	
-	$('a[name=create]').live("click", function(){	
-		$('#nform').submit();
-	}); 
-	
-	$('a[name=cancel]').live("click", function(){	
-		$('#nform')[ 0 ].reset();
-	}); 
+	});
 
-	$("#nform").live("submit", function(){	
+	$('a[name=create]').live("click", function(){
+		$('#nform').submit();
+	});
+
+	$('a[name=cancel]').live("click", function(){
+		$('#nform')[ 0 ].reset();
+	});
+
+	$("#nform").live("submit", function(){
 		var isOk = false;
 		var name = $("#bname").val();
 		var template = $("#template").val();
@@ -93,9 +93,9 @@
 			$('#errorMsg').html("You have to write a name");
 		}
 		  return isOk;
-	} );	
+	} );
 
-	$('dl').live("click", function(){	
+	$('dl').live("click", function(){
 			$('dl').removeClass('clicked');
 			$(this).addClass('clicked');
 			$('#template').val($(this).attr('id'));
@@ -111,11 +111,11 @@
 	        var Text = $(this).val();
 	        Text = Text.toLowerCase();
 	        Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
-	        $("#bslug").val(Text);        
-		});             
+	        $("#bslug").val(Text);
+		});
         createUploader('imageUploader', '', '<?php echo getKey(); ?>');
-    }); 
-    function createUploader(element, bid, key){            
+    });
+    function createUploader(element, bid, key){
         var uploader = new qq.FileUploader({
             element: document.getElementById(element),
             action: 'actions/uploadImage',
@@ -134,20 +134,20 @@
             },
         });
     }
-    
+
 </script>
 	<div class="container">
 		<form action="saveBlibb" method="post" id="nform" class="form-horizontal" >
 			<fieldset>
 				<legend>Create blibb</legend>
-			<input type="hidden" name="template" id="template" /> 
-			<input type="hidden" name="bkey" value="<?php echo $key ?>" /> 
-			
+			<input type="hidden" name="template" id="template" />
+			<input type="hidden" name="bkey" value="<?php echo $key ?>" />
+
 			<div class="control-group">
       			<label class="control-label" for="bname">Name:</label>
       			<div class="controls">
         			<input type="text" class="input-xxlarge" name="bname" id="bname" placeholder="New Blibb name" value="<?php echo $bname ?>">
-        			
+
       			</div>
     		</div>
 
@@ -155,7 +155,7 @@
       			<label class="control-label" for="bslug">Slug:</label>
       			<div class="controls">
         			<input type="text" class="input-xxlarge" name="bslug" id="bslug" placeholder="Blibb unique name" value="<?php echo $bslug ?>">
-        			
+
       			</div>
     		</div>
 
@@ -163,7 +163,7 @@
       			<label class="control-label" for="bdesc">Description:</label>
       			<div class="controls">
         			<textarea type="text" class="input-xxlarge txtEditor" name="bdesc" id="bname" placeholder="Enter your Blibb description"><?php echo $bdesc ?></textarea>
-        			
+
       			</div>
     		</div>
 
@@ -172,13 +172,13 @@
       			<label class="control-label">Image:</label>
       			<div class="controls">
         			<div id="imageUploader" name="uploadImage">
-						<noscript><p>Please enable JavaScript to use file uploader.</p></noscript>         
+						<noscript><p>Please enable JavaScript to use file uploader.</p></noscript>
 					</div>
 					<div id="im_image" style="display:none"><img id="img_image"  alt="thumbnail" width="260"/></div>
-        			
+
       			</div>
     		</div>
-		
+
 			<div class="control-group">
 				<label class="control-label" for="inlineCheckboxes">Who can read?</label>
 				<div class="controls">
@@ -213,9 +213,9 @@
 					<div class="controls">
 					<ul class="listTemplate">
 
-						<?php								
+						<?php
 							echo $t;
-						?>	
+						?>
 					</ul>
 					</div>
 			</div>
@@ -239,14 +239,14 @@
 								<input type="submit" value="Upload" />
 							</li>
 						</ul>
-						</form>	
+						</form>
 					</div>
 			</div>
-			
+
 
 			<div id="errorMsg" class="alert alert-error" style="display:none"></div>
 			<?php
-				if(isset($_SESSION['ERROR_MSG'])){					
+				if(isset($_SESSION['ERROR_MSG'])){
 					echo '<div id="error" class="alert alert-error">'.$_SESSION['ERROR_MSG'].'</div>';
 					unset($_SESSION['ERROR_MSG']);
 				}
@@ -257,10 +257,10 @@
 				<li><a name="cancel" href="#" class="btn">Cancel</a></li>
 				<li><a name="create" href="#" class="btn btn-primary">Save Blibb</a></li>
 			</ul>
-			
+
 			</fieldset>
 		</form>
-				
+
 </div>
 
 

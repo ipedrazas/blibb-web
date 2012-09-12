@@ -16,8 +16,10 @@
     echo "\n\nvar API_URL = \"" . $url . "\"\n\n";
     $template = $bli->template;
     echo "var Item = function(){\n";
+    // echo "\t elements = document.querySelectorAll('[data-bid]');\n";
     foreach ($template->i as $control) {
-        echo  "\tthis." . $control->s . " = document.querySelector('input[name=\"" . $control->tx . "-" . $control->s . "\"]').value;\n";
+        echo  "\tthis." . $control->s . " = $(\"[data-bid='c-" . $control->s . "']\").val();\n";
+        // echo  "\tthis." . $control->s . " = ". $control->s . ".val();\n";
     }
     echo "};\n\n";
 
@@ -27,7 +29,7 @@
     $params= "app_token: '" . $bli->app_token . "', ";
     $ctrls = array();
     foreach ($bli->template->i as $control) {
-        $params .=  "'" . $control->tx . '-' . $control->s . "': item." . $control->s . ", ";
+        $params .=  $control->s . ": item." . $control->s . ", ";
         $ctrls[$control->s] = "\" + item." . $control->s . " + \"";
     }
     $ctrls['class'] = "\\\"item \"+ status + \"\\\"";
@@ -52,9 +54,8 @@ function renderItem(item){
     }else{
         status = "offline";
     }
-    var ihtml = "<?php echo $content ?>";
+    var ihtml = "<p>New entry added!</p>";
 
-    // var ihtml = "<div class=\"item "+ status+"\"><h1>" + item.title + '</h1>' + item.date + " <br>" + item.bug + "</div>";
     $("#results").append(ihtml);
 }
 
@@ -86,7 +87,7 @@ function saveDataLocally(item) {
     var timeStamp = new Date();
     timeStamp.getTime();
     try {
-        localStorage.setItem(timeStamp, dataString);
+        localStorage.setItem('BLIBB-' +timeStamp, dataString);
     } catch (e) {
 
         if (e == QUOTA_EXCEEDED_ERR) {
@@ -103,7 +104,8 @@ function sendLocalDataToServer() {
 
     var status = document.querySelector('#status');
     status.className = 'online';
-    status.innerHTML = 'Online';
+    status.innerHTML = 'You are working: Online';
+    document.querySelector('body').className= ''
 
     var i = 0,
         dataString = '';
@@ -123,8 +125,9 @@ function sendLocalDataToServer() {
 
 function notifyUserIsOffline() {
     var status = document.querySelector('#status');
-    status.className = 'offline';
-    status.innerHTML = 'Offline';
+    status.className = 'offline red';
+    status.innerHTML = 'You are working: Offline';
+    document.querySelector('body').className= 'offline'
 }
 
 function loaded() {
@@ -134,11 +137,9 @@ function loaded() {
     if (navigator.onLine) {
         var status = document.querySelector('#status');
         status.className = 'online';
-        status.innerHTML = 'Online';
-        // getItems();
-        if (length !== 0) {
-            sendLocalDataToServer();
-        }
+        status.innerHTML = '';
+    }else{
+        notifyUserIsOffline();
     }
 
     window.addEventListener('online', sendLocalDataToServer, false);
@@ -149,3 +150,4 @@ function loaded() {
 }
 
 window.addEventListener('load', loaded, true);
+

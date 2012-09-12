@@ -27,15 +27,10 @@ class SaveItemApp extends lib {
         $pestParams['tags'] = $tags;
 
             foreach($keys as $k){
-                if(strpos($k,'-')===2){
-                    $val = $_POST[$k];
-                    if(!empty($val)){
-                        $pestParams[$k] = $val;
-                    }
-                }else{
-                    echo strpos($k,'-') . '<br>';
+                $val = $_POST[$k];
+                if(!empty($val)){
+                    $pestParams[$k] = $val;
                 }
-
             }
 
             // print_r($pestParams);

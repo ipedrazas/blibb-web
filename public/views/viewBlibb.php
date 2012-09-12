@@ -97,9 +97,16 @@ h4{
 .write_comment{
 		margin: 15px;
 }
+.offline{
+	background: #DFC5C5;
+}
+.red{
+	color: #8B1919;
+	padding: 25px;
+}
 </style>
 
-<link rel="stylesheet" href="/css/notes.css">
+
 <link type="text/css" href="/css/blitzer/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
 <script src="/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="/js/libs/jquery.ui.core.js"></script>
@@ -108,16 +115,31 @@ h4{
  <script type="text/javascript" src="/js/offline?b=<?php echo $bid ?>" ></script>
 	</head>
 	<body>
+		<p id="status"></p>
 		<?php
 			echo $content;
-			echo $wb;
 		?>
-		<div id="results"></div>
-		 <a href="#" id="submit" class="btn btn-primary">Add Item</a>
-	<footer>
-		 <p>Locally stored items: <span id="local-count">0</span></p>
-        <p>You are working: <span id="status" class="offline">Offline</span></p>
-    </footer>
+		<div class="container">
+			<a href="#" name="addItemCtl"><i class="icon-edit"></i> Add</a>
+			<div id="addBox" style="display:none">
+				<?php
+					echo $wb;
+				?>
+				<a href="#" id="submit" class="btn btn-primary">Add Item</a>
+			</div>
+			<div id="results"></div>
+
+			<footer>
+				 <p>Locally stored items: <span id="local-count">0</span></p>
+		    </footer>
+    	</div>
+    <script type="text/javascript">
+    	$('a[name=addItemCtl]').live("click", function(e){
+    		e.preventDefault();
+			$('#addBox').toggle();
+		});
+
+    </script>
 	</body>
 
 </html>
