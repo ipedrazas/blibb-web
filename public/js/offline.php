@@ -16,10 +16,8 @@
     echo "\n\nvar API_URL = \"" . $url . "\"\n\n";
     $template = $bli->template;
     echo "var Item = function(){\n";
-    // echo "\t elements = document.querySelectorAll('[data-bid]');\n";
     foreach ($template->i as $control) {
         echo  "\tthis." . $control->s . " = $(\"[data-bid='c-" . $control->s . "']\").val();\n";
-        // echo  "\tthis." . $control->s . " = ". $control->s . ".val();\n";
     }
     echo "};\n\n";
 
@@ -79,6 +77,11 @@ function processData() {
     }else{
         saveDataLocally(item);
     }
+    <?php
+        foreach ($template->i as $control) {
+        echo  "\tthis." . $control->s . " = $(\"[data-bid='c-" . $control->s . "']\").val('');\n";
+    }
+    ?>
 }
 
 
@@ -109,14 +112,14 @@ function sendLocalDataToServer() {
 
     var i = 0,
         dataString = '';
-    while (i <= window.localStorage.length - 1) {
-        dataString = localStorage.key(i);
-        if (dataString) {
-            var json_item = localStorage.getItem(dataString);
+    for(var key in localStorage){
+        console.log(key);
+        if(key.indexOf('BLIBB')>0){
+            var json_item = localStorage.getItem(key);
             sendDataToServer(JSON.parse(json_item));
             window.localStorage.removeItem(dataString);
         }
-        else { i++; }
+
     }
 
     document.querySelector('#local-count').innerHTML = window.localStorage.length;
