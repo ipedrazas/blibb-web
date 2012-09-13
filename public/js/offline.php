@@ -113,16 +113,15 @@ function sendLocalDataToServer() {
     var i = 0,
         dataString = '';
     for(var key in localStorage){
-        console.log(key);
-        if(key.indexOf('BLIBB')>0){
+        console.log(key + ' ' + key.indexOf('BLIBB'));
+        if(key.indexOf('BLIBB')>-1){
             var json_item = localStorage.getItem(key);
+            console.log(json_item);
             sendDataToServer(JSON.parse(json_item));
-            window.localStorage.removeItem(dataString);
+            localStorage.removeItem(key);
         }
-
     }
-
-    document.querySelector('#local-count').innerHTML = window.localStorage.length;
+    $('#local-count').innerHTML = localStorage.length;
 }
 
 
@@ -138,6 +137,7 @@ function loaded() {
     document.querySelector('#local-count').innerHTML = length;
 
     if (navigator.onLine) {
+        localStorage.clear();
         var status = document.querySelector('#status');
         status.className = 'online';
         status.innerHTML = '';
