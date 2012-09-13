@@ -8,13 +8,10 @@ class Application extends lib {
     public function run() {
 
 		$current_user = require_login();
-		$k = getKey();
-
 
     	$pest = new Pest(REST_API_URL);
-    	$jts = $pest->get('/template/active/n,d,t');
+    	$jts = $pest->get('/templates?filter=q:active&fields=n,d,t');
  		$rs = json_decode($jts);
- 		$count = $rs->count;
 		$m = new Mustache();
  		$templates = array();
  		$template_html = '<dl id="{{id}}"><dt><img src="/img/templates/draft.png" hspace="10" width="50" height="60"></dt><dd>{{name}}</dd></dl>';
