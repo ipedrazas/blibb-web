@@ -15,8 +15,10 @@
     $url = REST_API_URL . '/' . $bli->owner . '/' . $bli->slug;
     echo "\n\nvar API_URL = \"" . $url . "\"\n\n";
     $template = $bli->template;
+    $controls = $template->i;
+
     echo "var Item = function(){\n";
-    foreach ($template->i as $control) {
+    foreach ($controls as $control) {
         echo  "\tthis." . $control->s . " = $(\"[data-bid='c-" . $control->s . "']\").val();\n";
     }
     echo "};\n\n";
@@ -26,7 +28,7 @@
     // parameters:
     $params= "app_token: '" . $bli->app_token . "', ";
     $ctrls = array();
-    foreach ($bli->template->i as $control) {
+    foreach ($controls as $control) {
         $params .=  $control->s . ": item." . $control->s . ", ";
         $ctrls[$control->s] = "\" + item." . $control->s . " + \"";
     }
@@ -78,7 +80,7 @@ function processData() {
         saveDataLocally(item);
     }
     <?php
-        foreach ($template->i as $control) {
+        foreach ($controls as $control) {
         echo  "\tthis." . $control->s . " = $(\"[data-bid='c-" . $control->s . "']\").val('');\n";
     }
     ?>
@@ -154,3 +156,10 @@ function loaded() {
 
 window.addEventListener('load', loaded, true);
 
+$('a[name=addItemCtl]').live("click", function(e){
+    $('#addBox').toggle();
+   <?php
+        $control = $controls[0];
+        echo  "\tthis." . $control->s . " = $(\"[data-bid='c-" . $control->s . "']\").val('');\n";
+    ?>
+});

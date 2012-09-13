@@ -116,28 +116,29 @@ h4{
 	</head>
 	<body>
 		<p id="status"></p>
+		<a name="top"></a>
+		<a href="#wform" name="addItemCtl"><i class="icon-edit"></i> Add</a>
 		<?php
 			echo $content;
 		?>
 		<div class="container">
-			<a href="#" name="addItemCtl"><i class="icon-edit"></i> Add</a>
+			<a href="#wform" name="addItemCtl"><i class="icon-edit"></i> Add</a>
+			<a href="#top" class="pull-right"><i class="icon-arrow-up"></i>Top</a>
+			<a name="wform"></a>
 			<div id="addBox" style="display:none">
 				<?php
 					echo $wb;
 				?>
-				<a href="#" id="submit" class="btn btn-primary">Add Item</a>
+
 			</div>
 			<div id="results"></div>
-
+			<a href="#" id="submit" class="btn btn-primary">Add Item</a>
 			<footer>
 				 <p>Locally stored items: <span id="local-count">0</span></p>
 		    </footer>
     	</div>
     <script type="text/javascript">
-    	$('a[name=addItemCtl]').live("click", function(e){
-    		e.preventDefault();
-			$('#addBox').toggle();
-		});
+
 
     </script>
 	</body>
