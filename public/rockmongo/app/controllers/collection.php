@@ -91,7 +91,7 @@ class CollectionController extends BaseController {
 		$this->_outputJson(array("code" => 200, "data" => $ret));
 	}
 	
-/** show one collection **/
+	/** show one collection **/
 	public function doIndex() {
 		$this->db = xn("db");
 		$this->collection = xn("collection");

@@ -191,6 +191,6 @@ $message["about_content"] = '<strong class="big">RockMongo</strong> ist ein in P
 /** Login **/
 $message["loginandrock"] = "Login und abrocken";
 $message["changeconfig"] = "Vielleicht möchten Sie ihren Benutzernamen und Passwort in config.php ändern.";
-$message["rockmongocredits"] = "Powered by RockMongo v" . (ROCK_MONGO_VERSION) . ", <a href=\"http://rockmongo.com/?action=downloads\" target=\"_blank\">auf neue Version prüfen.</a>";
+$message["rockmongocredits"] = "Powered by RockMongo v" . (ROCK_MONGO_VERSION) . ", <a href=\"http://rockmongo.com/downloads\" target=\"_blank\">auf neue Version prüfen.</a>";
 
 ?>

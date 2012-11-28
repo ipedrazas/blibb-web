@@ -93,6 +93,10 @@ function rock_real_id($id) {
 				return doubleval($value);
 			case "object":
 				return new MongoId($value);
+			case "MongoInt32":
+				return new MongoInt32($value);
+			case "MongoInt64":
+				return new MongoInt64($value);
 		}
 		return;
 	}
@@ -114,6 +118,9 @@ function rock_real_id($id) {
 function rock_id_string($id) {
 	if (is_object($id) && $id instanceof MongoId) {
 		return "rid_object:" . $id->__toString();
+	}
+	if (is_object($id)) {
+		return "rid_" . get_class($id) . ":" . $id->__toString();
 	}
 	return "rid_" . gettype($id) . ":" . $id;
 }

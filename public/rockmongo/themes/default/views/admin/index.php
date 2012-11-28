@@ -98,11 +98,7 @@
 
         <!-- quick links -->
         <div class="manual">
-            <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries" target="_blank"><?php hm("querying"); ?></a><br/>
-            <a href="http://www.mongodb.org/display/DOCS/Updating" target="_blank"><?php hm("updating"); ?></a><br/>
-            <a href="http://www.mongodb.org/display/DOCS/List+of+Database+Commands" target="_blank"><?php hm("commands"); ?></a><br/>
-            <a href="http://api.mongodb.org/js/" target="_blank"><?php hm("jsapi"); ?></a><br/>
-            <a href="http://www.php.net/manual/en/book.mongo.php" target="_blank"><?php hm("phpmongo"); ?></a>
+            <?php render_manual_items() ?>
         </div>
 
         <!-- menu when "Tools" clicked -->

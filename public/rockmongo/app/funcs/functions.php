@@ -136,13 +136,14 @@ function json_format_html($json)
             		$char = "<font color=\"blue\">" . $char . "</font>";
             	}
             	else {
-            		$char = htmlspecialchars($char);
+            		if ($char == "&" || $char == "'" || $char == "\"" || $char == "<" || $char == ">") {
+            			$char = htmlspecialchars($char);
+            		}
             	}
                 $new_json .= $char;
                 break;
         }
     }
-	
     $new_json = preg_replace_callback("{(<font color=\"blue\">([\da-zA-Z_\.]+)</font>)+}", create_function('$match','
     	$string = str_replace("<font color=\"blue\">", "", $match[0]);
     	$string = str_replace("</font>", "", $string);

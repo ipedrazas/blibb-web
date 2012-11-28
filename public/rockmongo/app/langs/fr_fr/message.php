@@ -194,11 +194,11 @@ $message["about_content"] = '<strong class="big">RockMongo</strong> est un outil
 <p>Si vous avez des questions, veuillez m\'envoyer un e-mail : <a href="mailto:iwind.liu@gmail.com">iwind.liu@gmail.com</a> .</p>
 
 <p>Documents:<ul>
-<li><a href="http://code.google.com/p/rock-php/wiki/rock_mongo_change_log" target="_blank">Changelog</a></li>
-<li><a href="http://code.google.com/p/rock-php/wiki/configuration" target="_blank">Configuration</a></li>
-<li><a href="http://code.google.com/p/rock-php/wiki/plugin" target="_blank">Plug-in</a></li>
-<li><a href="http://code.google.com/p/rock-php/wiki/FAQ" target="_blank">FAQ</a></li>
-<li><a href="http://rockmongo.com/?action=donation" target="_blank">Donation<br/><img src="http://www.paypal.com/en_US/i/btn/x-click-but04.gif"/></a></li>
+<li><a href="http://rockmongo.com/wiki/changeLog" target="_blank">Changelog</a></li>
+<li><a href="http://rockmongo.com/wiki/configuration" target="_blank">Configuration</a></li>
+<li><a href="http://rockmongo.com/wiki/plugin" target="_blank">Plug-in</a></li>
+<li><a href="http://rockmongo.com/wiki/faq" target="_blank">FAQ</a></li>
+<li><a href="http://rockmongo.com/donation" target="_blank">Donation<br/><img src="http://www.paypal.com/en_US/i/btn/x-click-but04.gif"/></a></li>
 <li><a href="http://code.google.com/p/rock-php/issues/list" target="_blank">Report an Issue</li>
 </ul></p>
 ';
@@ -206,6 +206,6 @@ $message["about_content"] = '<strong class="big">RockMongo</strong> est un outil
 /** Login **/
 $message["loginandrock"] = "Connexion & Rock";
 $message["changeconfig"] = "Vous devriez changer votre nom d'utilisateur et mot de passe dans le fichier config.php";
-$message["rockmongocredits"] = "Powered by RockMongo v" . (ROCK_MONGO_VERSION) . ", <a href=\"http://rockmongo.com/?action=downloads\" target=\"_blank\">check out new version here.</a>";
+$message["rockmongocredits"] = "Powered by RockMongo v" . (ROCK_MONGO_VERSION) . ", <a href=\"http://rockmongo.com/downloads\" target=\"_blank\">check out new version here.</a>";
 
 ?>

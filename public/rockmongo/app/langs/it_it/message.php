@@ -188,16 +188,16 @@ $message["switch_hosts"] = "Cambia Hosts";
 /** About **/
 $message["about_content"] = '<strong class="big">RockMongo</strong> è uno strumento per amministrare MongoDB, scritto in PHP 5.
 
-<p>Visita <a href="http://code.google.com/p/rock-php/wiki/rock_mongo" target="_blank">http://code.google.com/p/rock-php/wiki/rock_mongo</a> per maggiori dettagli.</p>
+<p>Visita <a href="http://rockmongo.com/" target="_blank">http://rockmongo.com/</a> per maggiori dettagli.</p>
 
 <p>Se hai domande da porre, inviami una email: <a href="mailto:iwind.liu@gmail.com">iwind.liu@gmail.com</a> .</p>
 
 <p>Documentazione:<ul>
-<li><a href="http://code.google.com/p/rock-php/wiki/rock_mongo_change_log" target="_blank">Changelog</a></li>
-<li><a href="http://code.google.com/p/rock-php/wiki/configuration" target="_blank">Configurazione</a></li>
-<li><a href="http://code.google.com/p/rock-php/wiki/plugin" target="_blank">Plug-in</a></li>
-<li><a href="http://code.google.com/p/rock-php/wiki/FAQ" target="_blank">FAQ</a></li>
-<li><a href="http://code.google.com/p/rock-php/wiki/Donation" target="_blank">Donazioni<br/><img src="http://www.paypal.com/en_US/i/btn/x-click-but04.gif"/></a></li>
+<li><a href="http://rockmongo.com/wiki/changeLog" target="_blank">Changelog</a></li>
+<li><a href="http://rockmongo.com/wiki/configuration" target="_blank">Configurazione</a></li>
+<li><a href="http://rockmongo.com/wiki/plugin" target="_blank">Plug-in</a></li>
+<li><a href="http://rockmongo.com/wiki/faq" target="_blank">FAQ</a></li>
+<li><a href="http://rockmongo.com/donation" target="_blank">Donazioni<br/><img src="http://www.paypal.com/en_US/i/btn/x-click-but04.gif"/></a></li>
 <li><a href="http://code.google.com/p/rock-php/issues/list" target="_blank">Segnala un problema</li>
 </ul></p>
 ';
@@ -205,6 +205,6 @@ $message["about_content"] = '<strong class="big">RockMongo</strong> è uno strum
 /** Login **/
 $message["loginandrock"] = "Login and Rock";
 $message["changeconfig"] = "Puoi cambiare la tua username e la password nel file config.php";
-$message["rockmongocredits"] = "Powered by RockMongo v" . (ROCK_MONGO_VERSION) . ", <a href=\"http://code.google.com/p/rock-php/downloads/list\" target=\"_blank\">verifica nuove versione disponibili.</a>";
+$message["rockmongocredits"] = "Powered by RockMongo v" . (ROCK_MONGO_VERSION) . ", <a href=\"http://rockmongo.com/downloads\" target=\"_blank\">verifica nuove versione disponibili.</a>";
 
 ?>
