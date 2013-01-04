@@ -40,9 +40,9 @@ class Application extends lib {
 			$_SESSION['ERROR_MSG'] = $jsonResult->error;
 			header("Location: newBlibb");
 		}
-		
+
  		// header("Location: editBlibbCss?b=$result");
-    	
+
     }
 
     private function sendInvites($emails, $user, $blibb, $blibb_name){
@@ -62,5 +62,5 @@ class Application extends lib {
 
 require_login();
 $app = new Application();
-$app->run();  
+$app->run();
 
