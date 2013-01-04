@@ -11,21 +11,21 @@ class qqUploadedFileXhr {
      * Save the file to the specified path
      * @return boolean TRUE on success
      */
-    function save($path) {    
+    function save($path) {
         $input = fopen("php://input", "r");
         $temp = tmpfile();
         $realSize = stream_copy_to_stream($input, $temp);
         fclose($input);
-        
-        if ($realSize != $this->getSize()){            
+
+        if ($realSize != $this->getSize()){
             return false;
         }
-        
-        $target = fopen($path, "w");        
+
+        $target = fopen($path, "w");
         fseek($temp, 0, SEEK_SET);
         stream_copy_to_stream($temp, $target);
         fclose($target);
-        
+
         return true;
     }
     function getName() {
@@ -33,17 +33,17 @@ class qqUploadedFileXhr {
     }
     function getSize() {
         if (isset($_SERVER["CONTENT_LENGTH"])){
-            return (int)$_SERVER["CONTENT_LENGTH"];            
+            return (int)$_SERVER["CONTENT_LENGTH"];
         } else {
             throw new Exception('Getting content length is not supported.');
-        }      
-    }   
+        }
+    }
 }
 
 /**
  * Handle file uploads via regular form post (uses the $_FILES array)
  */
-class qqUploadedFileForm {  
+class qqUploadedFileForm {
     /**
      * Save the file to the specified path
      * @return boolean TRUE on success
@@ -67,71 +67,71 @@ class qqFileUploader {
     private $sizeLimit = 10485760;
     private $file;
 
-    function __construct(array $allowedExtensions = array(), $sizeLimit = 10485760){        
+    function __construct(array $allowedExtensions = array(), $sizeLimit = 10485760){
         $allowedExtensions = array_map("strtolower", $allowedExtensions);
-            
-        $this->allowedExtensions = $allowedExtensions;        
+
+        $this->allowedExtensions = $allowedExtensions;
         $this->sizeLimit = $sizeLimit;
-        
-        $this->checkServerSettings();       
+
+        $this->checkServerSettings();
 
         if (isset($_GET['qqfile'])) {
             $this->file = new qqUploadedFileXhr();
         } elseif (isset($_FILES['qqfile'])) {
             $this->file = new qqUploadedFileForm();
         } else {
-            $this->file = false; 
+            $this->file = false;
         }
     }
-    
-    private function checkServerSettings(){        
+
+    private function checkServerSettings(){
         $postSize = $this->toBytes(ini_get('post_max_size'));
-        $uploadSize = $this->toBytes(ini_get('upload_max_filesize'));        
-        
+        $uploadSize = $this->toBytes(ini_get('upload_max_filesize'));
+
         // if ($postSize < $this->sizeLimit || $uploadSize < $this->sizeLimit){
-        //     $size = max(1, $this->sizeLimit / (1024 * 1024)) . 'M';             
-        //     die("{'error':'current size: $this->sizeLimit increase post_max_size and upload_max_filesize to $size - pot: $postSize  - upload: $uploadSize'}");    
-        // }        
+        //     $size = max(1, $this->sizeLimit / (1024 * 1024)) . 'M';
+        //     die("{'error':'current size: $this->sizeLimit increase post_max_size and upload_max_filesize to $size - pot: $postSize  - upload: $uploadSize'}");
+        // }
     }
-    
+
     private function toBytes($str){
         $val = trim($str);
         $last = strtolower($str[strlen($str)-1]);
         switch($last) {
             case 'g': $val *= 1024;
             case 'm': $val *= 1024;
-            case 'k': $val *= 1024;        
+            case 'k': $val *= 1024;
         }
         return $val;
     }
-    
+
     /**
      * Returns array('success'=>true) or array('error'=>'error message')
      */
     function handleUpload($uploadDirectory, $replaceOldFile = FALSE, $filename){
         // Check if the dir exists, if not, create it
-        
+
         if (!is_writable($uploadDirectory)){
             return array('error' => "Server error. Upload directory ".$uploadDirectory." isn't writable.");
         }
         if (!is_dir($uploadDirectory)) {
             mkdir($uploadDirectory, 0755, true);
         }
-        
+
         if (!$this->file){
             return array('error' => 'No files were uploaded.');
         }
-        
+
         $size = $this->file->getSize();
-        
+
         if ($size == 0) {
             return array('error' => 'File is empty');
         }
-        
+
         if ($size > $this->sizeLimit) {
             return array('error' => 'File is too large');
         }
-        
+
         $pathinfo = pathinfo($this->file->getName());
         // $filename = $pathinfo['filename'];
         //$filename = md5(uniqid());
@@ -141,7 +141,7 @@ class qqFileUploader {
             $these = implode(', ', $this->allowedExtensions);
             return array('error' => 'File has an invalid extension, it should be one of '. $these . '.');
         }
-        
+
         if(!$replaceOldFile){
             /// don't overwrite previous files that were uploaded
             while (file_exists($uploadDirectory . $filename . '.' . $ext)) {
@@ -149,7 +149,7 @@ class qqFileUploader {
             }
         }
         $filepath = $uploadDirectory . $filename . '.' . $ext;
-        
+
         if ($this->file->save($filepath)){
             $data =  analyzeImage($filepath);
             $data['file'] = $pathinfo['filename'] . '.' . $ext;
@@ -173,16 +173,16 @@ class qqFileUploader {
             // $this->thumbnail_box($image, $uploadDirectory, $uploadDirectory . '220/',  $imageName);
             // $this->thumbnail_box($image, $uploadDirectory, $uploadDirectory . '160/',  $imageName);
             // $this->thumbnail_box($image, $uploadDirectory, $uploadDirectory . '60/',  $imageName);
-            
+
 
             $this->resizeImage($image, '260', $uploadDirectory, $imageName);
             $this->resizeImage($image, '220', $uploadDirectory, $imageName);
             $this->resizeImage($image, '160', $uploadDirectory, $imageName);
             //$this->thumbnail_box($image, $uploadDirectory, $imageName);
             $this->resizeImage($image, '60', $uploadDirectory, $imageName);
-            
-            
-            
+
+
+
             $data['thumb'] = $thumbnails;
 
             return $data;
@@ -190,7 +190,7 @@ class qqFileUploader {
             return array('error'=> 'Could not save uploaded file.' .
                 'The upload was cancelled, or server error encountered');
         }
-        
+
     }
 
      function thumbnail_box($image, $path, $imagename){
@@ -213,14 +213,14 @@ class qqFileUploader {
         // if($size==160){
         //     $image->resize($size, 120);
         // }else{
-        //     $image->resizeToWidth($size);    
+        //     $image->resizeToWidth($size);
         // }
         $image->resizeToWidth($size);
-        
+
         $image->save($imagePath . $imagename);
     }
 
-    
+
 }
 
 // list of valid extensions, ex. array("jpeg", "xml", "bmp")
@@ -234,7 +234,7 @@ $b = $_GET['bid'];
 $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
 
 if (strlen($b)<1){
-    $b = '101'; 
+    $b = '101';
 }
 
 $pest = new Pest(REST_API_URL);
@@ -247,7 +247,7 @@ $imgId = $pest->post('/picture',array(
 
 if(strlen($imgId)>0){
 
-    $result['i'] = $uploader->handleUpload(UPLOAD_DIR.'/images/', true, $imgId);
+    $result['i'] = $uploader->handleUpload(UPLOAD_DIR.'/images/'.current_user().'/', true, $imgId);
     $result['b'] = $b;
     $result['u'] = current_user();
     $result['id'] = $imgId;
@@ -259,8 +259,8 @@ if(strlen($imgId)>0){
                 'p' => $jsonData
             ));
 
-    echo $img;    
+    echo $img;
 }else{
-     die("{'error':'Image could not be uploaded'}");    
+     die("{'error':'Image could not be uploaded'}");
 }
 
