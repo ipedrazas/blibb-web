@@ -111,11 +111,12 @@ class qqFileUploader {
     function handleUpload($uploadDirectory, $replaceOldFile = FALSE, $filename){
         // Check if the dir exists, if not, create it
 
+         if (!is_dir($uploadDirectory)) {
+            mkdir($uploadDirectory, 0755, true);
+        }
+
         if (!is_writable($uploadDirectory)){
             return array('error' => "Server error. Upload directory ".$uploadDirectory." isn't writable.");
-        }
-        if (!is_dir($uploadDirectory)) {
-            mkdir($uploadDirectory, 0755, true);
         }
 
         if (!$this->file){
