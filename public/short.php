@@ -15,8 +15,7 @@ class ShortApplication extends lib {
         $jbid = $pest->get($url_api);
         $bid = json_decode($jbid);
 
-
-        $url_api = '/blibb/object/' . $bid . '?fields=n,d,s,u,c,t.v';
+        $url_api = '/blibb/object/' . $bid->id . '?fields=n,d,s,u,c,t.v';
         $jb = $pest->get($url_api);
         $bli = json_decode($jb);
 
