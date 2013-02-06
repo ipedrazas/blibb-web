@@ -12,9 +12,13 @@ class ShortApplication extends lib {
         $url_api = '/blibb/short/' . $shortid;
 
         $pest = new Pest(REST_API_URL);
+        $jbid = $pest->get($url_api);
+        $bid = json_decode($jbid);
+
+
+        $url_api = '/blibb/object/' . $bid . '?fields=n,d,s,u,c,t.v';
         $jb = $pest->get($url_api);
         $bli = json_decode($jb);
-
 
         $bid = $bli->id;
         $current_user = current_user();
