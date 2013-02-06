@@ -11,7 +11,7 @@ class ShortApplication extends lib {
         if(!empty($shortid)){
             $pos = strpos($shortid,'/go');
             if($pos===0){
-                $shortid = substr($shortid, 6);
+                $shortid = substr($shortid, 4);
             }
         }
 
