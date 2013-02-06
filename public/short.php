@@ -8,6 +8,13 @@ class ShortApplication extends lib {
 
         $this->setRedirect();
         $shortid = $this->gt("id");
+        if(!empty($shortid)){
+            $pos = strpos($shortid,'/go');
+            if($pos===0){
+                $shortid = substr($shortid, 6);
+            }
+        }
+
         $view_mode = $this->gt("v", false);
         $url_api = '/blibb/short/' . $shortid;
 
