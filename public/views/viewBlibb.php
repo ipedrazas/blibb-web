@@ -129,10 +129,10 @@ h4{
 				<?php
 					echo $wb;
 				?>
-
+				<a href="#" id="submit" class="btn btn-primary">Add Item</a>
 			</div>
 			<div id="results"></div>
-			<a href="#" id="submit" class="btn btn-primary">Add Item</a>
+
 			<footer>
 				 <p>Locally stored items: <span id="local-count">0</span></p>
 		    </footer>
