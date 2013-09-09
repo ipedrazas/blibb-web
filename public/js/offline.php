@@ -26,7 +26,7 @@
     echo "\n\nfunction sendDataToServer(item) {\n";
 
     // parameters:
-    $params= "app_token: '" . $bli->app_token . "', ";
+    $params= "app_token: '" . hash('sha1', $bli->name . $bli->description) . "', ";
     $ctrls = array();
     foreach ($controls as $control) {
         $params .=  $control->s . ": item." . $control->s . ", ";
