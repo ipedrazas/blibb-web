@@ -9,6 +9,10 @@ class EditItem extends lib {
 
 		$current_user = require_login();
 		$iid = $this->gt("id");
+		$url = $this->gt("curl");
+
+		// print_r("Curl " . $url);
+		$this->setRedirect($url);
 		$params = "t.v.default,f";
 
 		$pest = new Pest(REST_API_URL);
@@ -45,7 +49,7 @@ class EditItem extends lib {
 			$data_set .= "$('[name=" . $entry->s . "]').val(". cleanUp($entry->v) .");";
 		}
 		// print_r($buffer);
-		// print_r($data_set);
+		// print_r($_SESSION['redirect_to']);
     	$this->render('editItem',compact('current_user', 'buffer', 'bid', 'iid' ,'elements', 'tags', 'data_set', 'fields'));
     }
 }

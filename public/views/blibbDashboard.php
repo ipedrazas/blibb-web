@@ -77,6 +77,7 @@
 <script>
 	$(function() {
 		createUploader('imageUploader', '<?php echo $bli->id  ?>', '<?php echo getKey(); ?>');
+
 	});
 	function createUploader(element, bid, key){
 		var uploader = new qq.FileUploader({
@@ -302,7 +303,8 @@
 										 	$field = explode("-", $tfield);
 										 	echo '<td>' . renderByType($item->$field[1], $field[0]) . '</td>';
 										}
-									echo '<td><a href="editItem?id='.$item->_id.'"><i class="icon-pencil"></i> Edit </a><a href="deleteItem?id='.$item->_id.'"> <i class="icon-trash"></i> Delete</a></td>';
+									// echo '<td><a class="baction" data-blitem="$item->_id" href="editItem?id='.$item->_id.'"><i class="icon-pencil"></i> Edit </a><a href="deleteItem?id='.$item->_id.'"> <i class="icon-trash"></i> Delete</a></td>';
+									echo '<td><a class="editaction" data-blitem="'.$item->_id.'" href="#"><i class="icon-pencil"></i> Edit </a><a href="deleteItem?id='.$item->_id.'"> <i class="icon-trash"></i> Delete</a></td>';
 									echo '<tr>';
 								}
 							?>
@@ -586,8 +588,23 @@
  						this.value = style_html(this.value);
  					});
 
+ 					// Javascript to enable link to tab
+					var url = document.location.toString();
+					if (url.match('#')) {
+					    $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
+					}
 
+					// Change hash for page-reload
+					$('.nav-tabs a').on('shown', function (e) {
+					    window.location.hash = e.target.hash;
+					})
+			});
 
+			$('.editaction').live("click", function(e){
+				e.preventDefault();
+				bid = $(this).attr('data-blitem');
+				url = document.location.toString();
+				window.location = "editItem?id=" + bid + "&curl=" + encodeURIComponent(url);
 			});
 
 			$('a[name=update_view]').live("click", function(e){

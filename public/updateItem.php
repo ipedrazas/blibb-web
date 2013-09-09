@@ -53,6 +53,9 @@ class UpdateItemApp extends lib {
             header("Location: updateItem?b=$bid");
         }
 
+        // print_r($destURL);
+        // print_r($_SESSION['redirect_to']);
+
 
     }
 

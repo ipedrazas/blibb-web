@@ -6,14 +6,14 @@ class lib {
 
 
     public function log(){
-    	
+
     	$common = new common();
-    	
+
         $elements = array();
         $elements['u'] = $common->getPageURL();
         $elements['i'] = $common->getIpAddress();
         if(isset($_SERVER['HTTP_USER_AGENT'])){
-            $elements['b'] = $_SERVER['HTTP_USER_AGENT'];    
+            $elements['b'] = $_SERVER['HTTP_USER_AGENT'];
         }
         $elements['c'] = new DateTime('now');
         $sId = session_id();
@@ -22,12 +22,12 @@ class lib {
         }
         $current_user = current_user();
         if(isset($current_user)){
-            $elements['p'] = $current_user;            
+            $elements['p'] = $current_user;
         }
         # TODO: Replace this insert for a Redis insert
         # we don't want to overload Mongo because the Audit
 		// Db::insert('audit',  $elements);
-			
+
     }
 
         # Access to GET/POST/COOKIE parameters the easy way
@@ -56,8 +56,8 @@ class lib {
          if(is_array($val)){
             return $val;
          }else{
-            return trim($val);    
-         }        
+            return trim($val);
+         }
     }
 
     public function utf8entities($s) {
@@ -78,12 +78,18 @@ class lib {
         return dirname(__FILE__);
     }
 
-    protected function setRedirect(){
-        $_SESSION['redirect_to'] = $_SERVER["REQUEST_URI"];
+    protected function setRedirect($url){
+        if(isset($url)){
+            $_SESSION['redirect_to'] = $url;
+        }else{
+            $_SESSION['redirect_to'] = $_SERVER["REQUEST_URI"];
+        }
+
     }
+
     protected function render($file_name, $variables_array = null) {
     	$this->log();
-        
+
         if($variables_array)
             extract($variables_array);
         require($this->root() . '/../../public/views/' . $file_name . '.php');
