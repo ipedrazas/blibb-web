@@ -141,7 +141,7 @@
 			<fieldset>
 				<legend>Create blibb</legend>
 			<input type="hidden" name="template" id="template" />
-			<input type="hidden" name="bkey" value="<?php echo $key ?>" />
+			<input type="hidden" name="bkey" value="<?php echo getKey() ?>" />
 
 			<div class="control-group">
       			<label class="control-label" for="bname">Name:</label>
@@ -234,7 +234,7 @@
 							<li><input type="file" name="file" /></li>
 							<li>
 								<input type="hidden" name="file_type" value="excel" />
-								<input type="hidden" name="login_key" value="<?php echo $key; ?>">
+								<input type="hidden" name="login_key" value="<?php echo getKey() ?>">
 								<input type="hidden" name="blibb_id"  value="-1">
 								<input type="submit" value="Upload" />
 							</li>
