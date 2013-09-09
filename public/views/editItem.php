@@ -34,6 +34,7 @@ require_once(__DIR__.'/../inc/header.php');
  		 <input type="hidden" name="blibb_id" value="<?php echo $bid ?>">
  		 <input type="hidden" name="blitem_id" value="<?php echo $iid ?>">
  		 <input type="hidden" name="k" value="<?php echo getKey(); ?>">
+ 		 <input type="hidden" name="fields" value="<?php echo $fields ?>">
 
 			<?php echo $buffer; ?>
 			<label for="tags" >Tags:</label>
@@ -47,7 +48,7 @@ require_once(__DIR__.'/../inc/header.php');
 				<fieldset>
 				<ul>
 					<li><a name="cancel" href="#" class="btn">Cancel</a></li>
-					<li><a name="addItem" href="#" class="btn btn-primary">Add Item</a></li>
+					<li><a name="addItem" href="#" class="btn btn-primary">Update Item</a></li>
 				</ul>
 			</fieldset>
 		</form>

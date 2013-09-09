@@ -43,7 +43,7 @@ class bDashboard extends lib {
         }
 
         // print_r($items);
- 		$this->render('blibbDashboard', compact('bli', 'num_items', 'num_writes', 'num_views', 'items', 'views'));
+ 		$this->render('blibbDashboard', compact('bli', 'num_items', 'num_writes', 'num_views', 'items', 'views', 'fields'));
     }
 }
 

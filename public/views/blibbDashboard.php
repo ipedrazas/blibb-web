@@ -295,7 +295,7 @@
 							<tbody>
 
 							<?php
-
+								$i = 0;
 								foreach ($items as $item) {
 									echo '<tr>';
 										 foreach ($fields as $tfield) {

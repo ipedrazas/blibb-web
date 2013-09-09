@@ -9,7 +9,7 @@ class EditItem extends lib {
 
 		$current_user = require_login();
 		$iid = $this->gt("id");
-		$params = "t.v.default";
+		$params = "t.v.default,f";
 
 		$pest = new Pest(REST_API_URL);
 
@@ -32,6 +32,7 @@ class EditItem extends lib {
 
 		// print_r($item);
 		// print_r($blibb);
+		$fields = implode(",", $blibb->fields);
 
 		$t = $blibb->template;
 		$buffer = $t->v->default->wb;
@@ -45,7 +46,7 @@ class EditItem extends lib {
 		}
 		// print_r($buffer);
 		// print_r($data_set);
-    	$this->render('editItem',compact('current_user', 'buffer', 'bid', 'iid' ,'elements', 'tags', 'data_set'));
+    	$this->render('editItem',compact('current_user', 'buffer', 'bid', 'iid' ,'elements', 'tags', 'data_set', 'fields'));
     }
 }
 
