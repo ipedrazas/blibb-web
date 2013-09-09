@@ -10,8 +10,6 @@ class EditItem extends lib {
 		$current_user = require_login();
 		$iid = $this->gt("id");
 		$url = $this->gt("curl");
-
-		// print_r("Curl " . $url);
 		$this->setRedirect($url);
 		$params = "t.v.default,f";
 

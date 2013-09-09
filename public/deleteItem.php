@@ -9,6 +9,8 @@ class DeleteItem extends lib {
 
         $current_user = require_login();
         $iid = $this->gt("id");
+        $url = $this->gt("curl");
+        $this->setRedirect($url);
 
         $pest = new Pest(REST_API_URL);
         $result = $pest->delete('/blitem/' .$iid . '/' . getKey());

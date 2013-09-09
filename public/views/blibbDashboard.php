@@ -303,8 +303,8 @@
 										 	$field = explode("-", $tfield);
 										 	echo '<td>' . renderByType($item->$field[1], $field[0]) . '</td>';
 										}
-									// echo '<td><a class="baction" data-blitem="$item->_id" href="editItem?id='.$item->_id.'"><i class="icon-pencil"></i> Edit </a><a href="deleteItem?id='.$item->_id.'"> <i class="icon-trash"></i> Delete</a></td>';
-									echo '<td><a class="editaction" data-blitem="'.$item->_id.'" href="#"><i class="icon-pencil"></i> Edit </a><a href="deleteItem?id='.$item->_id.'"> <i class="icon-trash"></i> Delete</a></td>';
+									echo '<td><a class="editaction" data-blitem="'.$item->_id.'" href="#"><i class="icon-pencil"></i> Edit </a>
+									<a class="deleteaction" data-blitem="'.$item->_id.'" href="#"> <i class="icon-trash"></i> Delete</a></td>';
 									echo '<tr>';
 								}
 							?>
@@ -605,6 +605,12 @@
 				bid = $(this).attr('data-blitem');
 				url = document.location.toString();
 				window.location = "editItem?id=" + bid + "&curl=" + encodeURIComponent(url);
+			});
+			$('.deleteaction').live("click", function(e){
+				e.preventDefault();
+				bid = $(this).attr('data-blitem');
+				url = document.location.toString();
+				window.location = "deleteItem?id=" + bid + "&curl=" + encodeURIComponent(url);
 			});
 
 			$('a[name=update_view]').live("click", function(e){
