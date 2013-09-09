@@ -10,7 +10,8 @@ class Application extends lib {
 		$current_user = require_login();
 
     	$pest = new Pest(REST_API_URL);
-    	$jts = $pest->get('/templates?filter=q:active&fields=n,d,t');
+    	// $jts = $pest->get('/templates?filter=q:active&fields=n,d,t');
+        $jts = $pest->get('/templates?filter=q:active,u:'.$current_user.'&fields=n,d,t');
  		$rs = json_decode($jts);
 		$m = new Mustache();
  		$templates = array();
