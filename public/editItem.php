@@ -41,7 +41,7 @@ class EditItem extends lib {
 		$data_set = '';
 		foreach($entries as $entry){
 			// print_r($entry);
-			$data_set .= "$('[name=" . $entry->s . "]').val(". json_encode($entry->v) .");";
+			$data_set .= "$('[name=" . $entry->s . "]').val(". cleanUp($entry->v) .");";
 		}
 		// print_r($buffer);
 		// print_r($data_set);

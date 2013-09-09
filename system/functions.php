@@ -178,4 +178,9 @@ function renderByType($elem, $type){
   return $elem;
 }
 
+
+function cleanUp($text){
+  $text = str_replace('</p>', "\n", $text);
+  return json_encode(strip_tags($text, '<a>'));
+}
 ?>
