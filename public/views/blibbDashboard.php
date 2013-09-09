@@ -302,7 +302,7 @@
 										 	$field = explode("-", $tfield);
 										 	echo '<td>' . renderByType($item->$field[1], $field[0]) . '</td>';
 										}
-									echo '<td><a href="editItem?id='.$item->id.'"><i class="icon-pencil"></i> Edit </a><a href="deleteItem?id='.$item->id.'"> <i class="icon-trash"></i> Delete</a></td>';
+									echo '<td><a href="editItem?id='.$item->_id.'"><i class="icon-pencil"></i> Edit </a><a href="deleteItem?id='.$item->_id.'"> <i class="icon-trash"></i> Delete</a></td>';
 									echo '<tr>';
 								}
 							?>

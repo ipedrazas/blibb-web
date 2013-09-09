@@ -56,9 +56,12 @@ require_once(__DIR__.'/../inc/header.php');
 <script type="text/javascript">
 <?php
 
-	foreach ($elements as $key => $value) {
-		echo "$('[name=". $key ."]').val('". htmlentities($value) ."');";
-	}
+	// foreach ($elements as $key => $value) {
+	// 	echo "$('[name=". $key ."]').val('". htmlentities($value) ."');";
+	// }
+
+
+	echo $data_set;
 
 	if(count($tags) >  0){
 		$tgs = implode(" ", $tags);

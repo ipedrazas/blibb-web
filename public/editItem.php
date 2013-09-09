@@ -34,18 +34,22 @@ class EditItem extends lib {
 		// print_r($blibb);
 
 		$t = $blibb->template;
-		$i = $t->v->default;
+		$buffer = $t->v->default->wb;
 
-		$buffer = '';
-		foreach($i as $f){
-			$w = $f->wb;
-			// print_r($w);
-			$buffer .= $w;
+		$entries = $item->i;
+
+		$data_set = '';
+		foreach($entries as $entry){
+			// print_r($entry);
+			$data_set .= "$('[name=" . $entry->s . "]').val(". json_encode($entry->v) .");";
 		}
-    	$this->render('editItem',compact('current_user', 'buffer', 'bid', 'iid' ,'elements', 'tags'));
+		// print_r($buffer);
+		// print_r($data_set);
+    	$this->render('editItem',compact('current_user', 'buffer', 'bid', 'iid' ,'elements', 'tags', 'data_set'));
     }
 }
 
 $app = new EditItem();
 $app->run();
+
 
