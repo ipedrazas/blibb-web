@@ -10,6 +10,8 @@ require_once(__DIR__.'/../inc/header.php');
 <script type="text/javascript" src="/js/libs/jquery.ui.core.js"></script>
 <script type="text/javascript" src="/js/libs/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="/js/libs/jquery.ui.datepicker.js"></script>
+<script type="text/javascript" src="/js/bootstrap-modal.js"></script>
+
 <script>
 	$(function() {
 	    	$( "#datepicker" ).datepicker();
@@ -58,6 +60,26 @@ require_once(__DIR__.'/../inc/header.php');
 		    	<progress style="display:none"></progress>
 		    <div id="result"></div>
 		</div>
+
+        <div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 	</div>
 
 
