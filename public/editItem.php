@@ -29,7 +29,7 @@ class EditItem extends lib {
 		}
 
 		$bid = $item->b;
-    	$result = $pest->get('/blibb/' .$bid . '/p/' . $params);
+    		$result = $pest->get('/blibb/' .$bid . '/p/' . $params);
 		$blibb = json_decode($result);
 
 		// print_r($item);

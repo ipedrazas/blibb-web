@@ -7,7 +7,7 @@
     $bid = $_GET['b'];
 
     $pest = new Pest(REST_API_URL);
-    $url_api = '/blibb/object/' . $bid . '?fields=t.i,n,s,u,at,t.v.default.ri' ;
+    $url_api = '/blibb/object/' . $bid . '?fields=t.i,n,d,s,u,at,t.v.default.ri' ;
     $jb = $pest->get($url_api);
     $bli = json_decode($jb);
     // print_r($bli);
@@ -27,6 +27,7 @@
 
     // parameters:
     $params= "app_token: '" . hash('sha1', $bli->name . $bli->description) . "', ";
+
     $ctrls = array();
     foreach ($controls as $control) {
         $params .=  $control->s . ": item." . $control->s . ", ";
